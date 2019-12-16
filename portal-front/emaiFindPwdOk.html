@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">密码找回</p>
+				<ul class="loginWaySort">
+					<li class="col-w-6 liactive">通过邮箱找回</li>
+					<li class="col-w-6" id="gophone">通过手机找回</li>
+				</ul>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--通过邮箱找回-->
+						<div class="waysThis">
+							<!--邮箱找回第三步-->
+							<ul class="cmpAllUl cmpCoverUl unreset">
+								<li>
+									<ul class="form_head clearfix">
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step1"></span>
+											输入邮箱
+										</li>
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step2g"></span>
+											接收密码找回邮件
+										</li>
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step3g"></span>
+											重置密码
+										</li>
+									</ul>
+								</li>
+								<li>
+									<input type="password" class="frmtype frmtypeW" placeholder="请设置您的新密码"  id="newPassword" onBlur="passwordVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+				    				<div class="frmmsg msgReset1"><span></span></div>
+								</li>
+								<li>
+									<input type="password" class="frmtype frmtypeW" placeholder="请再次输入密码确认" id="newPasswordok" onBlur="passwordVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+				    				<div class="frmmsg msgReset2"><span></span></div>
+								</li>
+								<li>
+									<button type="button" class="frmtype frmtypeW btnModel headRadius save-block" disabled id="paswSubmit" onclick="resetPassword(this)">重置密码</button>
+									<div class="frmmsg msgReset2"><span></span></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/emaiFindPwdOk.js"></script>
+
+</body>
+</html>

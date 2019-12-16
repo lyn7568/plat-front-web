@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<meta charset="UTF-8">
+<title>完善个人信息</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock" style="min-width: 440px;">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">完善个人信息</p>
+		<div class="fillMore">
+			<div class="alignCenter fillMoreHead">
+				<div class="fillHead userRadius">
+					<a href="photo-set.html" id="userimg" style=" display:block;width:100px;height: 100px;"></a>
+				</div>
+				<span class="h1Font" id="username"></span>
+			</div>
+			<div class="fillShow">
+				<ul>
+			        <li>
+			        	<div class="col-w-2"><em class="emspace">职</em>称</div>
+			        	<div class="col-w-10">
+			        		<div class="textinput " contenteditable="true" onBlur="nameVal(this,40)" onfocus="getFocus(this)" id="title"></div>
+			        		<div class="frmmsg msgLog1"><span></span></div>
+			        	</div>
+			        </li>
+			        <li>
+			        	<div class="col-w-2">所在机构</div>
+			        	<div class="col-w-10">
+			        		<div class="textinput" contenteditable="true" onBlur="nameVal(this,100)" onfocus="getFocus(this)" id="orgName"></div>
+			        		<div class="frmmsg msgLog1"><span></span></div>
+			        	</div>
+			        </li>
+			        <li>
+			        	<div class="col-w-2">所属部门</div>
+			        	<div class="col-w-10">
+			        		<div class="textinput" contenteditable="true" onBlur="nameVal(this,40)" onfocus="getFocus(this)" id="department"></div>
+			        		<div class="frmmsg msgLog1"><span></span></div>
+			        	</div>
+			        </li>
+			        <li>
+			        	<div class="col-w-2"><em class="emspace">职</em>位</div>
+			        	<div class="col-w-10">
+			        		<div class="textinput" contenteditable="true" onBlur="nameVal(this,40)" onfocus="getFocus(this)" id="office"></div>
+			        		<div class="frmmsg msgLog1"><span></span></div>
+			        	</div>
+			        </li>
+			        <li>
+			        	<div class="col-w-2">所在城市</div>
+			        	<div class="col-w-10">
+			       			<div class="citybox">
+                                <form action="" name="form1">
+                                    <div class="infolist">
+                                        <div class="liststyle clearfix">
+                                            <span id="Province">
+                                                <em class="mr_sj"></em>
+                                                <i class="mr_show" id="oprovince">请选择省/直辖市</i>
+                                                <ul>
+                                                    <li><a href="javascript:void(0)" alt="请选择省/直辖市">请选择省/直辖市</a></li>
+                                                </ul>
+                                                <input type="hidden" name="cho_Province" value="请选择省/直辖市">
+                                            </span>
+                                            <span id="City" style="margin-left:2%;">
+                                                <em class="mr_sj"></em>
+                                                <i class="mr_show" id="ocity">请选择城市</i>
+                                                <ul>
+                                                    <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+                                                </ul>
+                                                <input type="hidden" name="cho_City" value="请选择城市">
+                                            </span>
+                                        </div>
+                                    </div>
+                                </form> 
+                            </div>
+                        </div>
+			        </li>
+			        <li class="alignCenter">
+			        	<div class="col-w-6">
+			        		<a href="fillinfo-select.html"><button type="button" class="frmtype btnModel btnCancel save-block headRadius">返回</button></a>
+			        	</div>
+			        	<div class="col-w-6">
+			        		<button type="button" class="frmtype btnModel save-block headRadius" onclick="modifyUserInformation()">进入科袖</button>
+			        	</div>
+			        </li>
+			    </ul>
+			</div>
+		</div>
+		</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/city.min.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/fillinfoNew.js"></script>
+<script type="text/javascript">
+	//省份城市颜色
+	if($("#oprovince").text()=="请选择省/直辖市"){
+		$("#oprovince").removeClass("mr_select");
+	}else{
+		$("#oprovince").addClass("mr_select");
+	}
+	if($("#ocity").text()=="请选择城市"){
+		$("#ocity").removeClass("mr_select");
+	}else{
+		$("#ocity").addClass("mr_select");
+	}
+
+</script>
+</body>
+</html>

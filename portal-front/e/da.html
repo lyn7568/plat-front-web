@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>回答分享-科袖网</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/share.css" />
+		<style>
+			html,body {background: #FFFFFF;}
+		</style>
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+		<script type="text/javascript" src="../js/public/shareCom.js"></script>
+		<script type="text/javascript" src="../js/public/shareLeaveWord.js"></script>
+		<script type="text/javascript" src="../js/public/openApp.js"></script>
+	</head>
+
+	<body>
+		<div class="contentBody2">
+			<div class="showDetail">
+				<div class="qa-top flexCenter">
+					<div class="h1Font hWeight flex-pright" id="questTit"></div>
+					<em></em>
+				</div>
+
+				<div class="madiaBlock">
+					<ul class="mui-table-view noactiveTab">
+						<li class="mui-table-view-cell">
+							<div class="flexCenter flex-pright" id="ownerCon">
+								<!--<div class="madiaHead useHead"></div>
+									<div class="madiaInfo">
+										<p><span class="h1Font">张某某</span><em class="authicon authicon-pro" title="科袖认证专家"></em></p>
+										<p class="ellipsisSty h2Font">职称/职位，所在机构</p>
+									</div>-->
+							</div>
+							<div class="goSpan">
+								<span class="attenSpan">关注</span>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!--文章内容区-->
+				<div class="showMain" id="answerCnt"></div>
+				<div class="h3Font" style="margin-top: 10px;" id="answerTime"></div>
+				<!--点赞模块-->
+				<div class="thumbBlock">
+					<span class="thumbBtn">赞 <span id="snum"></span></span>
+					<span class="stepBtn">踩</span>
+				</div>
+				<!--留言-->
+				<div class="madiaBlock">
+					<div class="madiaTit" id="olisten">留言</div>
+					<ul class="mui-table-view commentBlock noactiveTab">
+
+					</ul>
+				</div>
+			</div>
+			<div class="shareEcode">
+				<img class="Ecodecon" src="../images/ecordCard.jpg" />
+				<div class="Ecodeinfo">
+					<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app"><button class="frmbtn frmactive">下载移动客户端</button></a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var imgUrl = "http://www.ekexiu.com/images/logo180.png",
+					lineLink = document.location.href,
+					descContent = "",
+					shareTitle,
+					appid = '';
+				var answerId = GetQueryString("id");
+				wlog("answer",answerId,'3');
+				module.lWord(answerId,4);
+				var oAjax = function(url, dataS, otype, oFun) {
+						$.ajax({
+							url: url,
+							dataType: 'json',
+							type: otype,
+							data: dataS,
+							success: function(res) {
+								if(res.success) {
+									oFun(res)
+								}
+							}
+						});
+					},
+					getConmain = function() {
+						oAjax('/ajax/question/answer', {
+							"id": answerId
+						}, "get", function(res) {
+							var $da = res.data
+							document.getElementById("answerTime").innerHTML = commenTime($da.createTime);
+							document.getElementById("snum").innerHTML = $da.agree;
+							if($da.cnt) {
+								document.getElementById("answerCnt").innerHTML = ($da.cnt).replace(/\n/g,"<br />");
+								descContent =document.getElementById("answerCnt").innerHTML.substr(0, 70);
+							}
+							proinfo($da.uid)
+							questioninfo($da.qid)
+						})
+					},
+					proinfo = function(uid) {
+						oAjax("/ajax/professor/baseInfo/" + uid, {}, "get", function(res) {
+							var dataStr = res.data
+							var baImg = "../images/default-photo.jpg";
+							if(dataStr.hasHeadImage == 1) {
+								baImg = "/images/head/" + dataStr.id + "_l.jpg";
+							}
+							var userType = autho(dataStr.authType, dataStr.orgAuth, dataStr.authStatus);
+							var os = "";
+							if(dataStr.title) {
+								if(dataStr.orgName) {
+									os = dataStr.title + "，" + dataStr.orgName;
+								} else {
+									os = dataStr.title;
+								}
+							} else {
+								if(dataStr.office) {
+									if(dataStr.orgName) {
+										os = dataStr.office + "，" + dataStr.orgName;
+									} else {
+										os = dataStr.office;
+									}
+								} else {
+									if(dataStr.orgName) {
+										os = dataStr.orgName;
+									}
+								}
+							}
+							var styStr='<em class="authiconNew ' + userType.sty + '" title="' + userType.title + '"></em>'
+							if(userType.sty=="e"){
+								styStr=""
+							}
+							var str = '<div class="madiaHead useHead" style="background-image:url(' + baImg + ')"></div>' +
+								'<div class="madiaInfo">' +
+								'<p><span class="h1Font">' + dataStr.name + '</span><em class="authicon ' + userType.sty + ' title="' + userType.title + '"></em></p>' +
+								'<p class="ellipsisSty h2Font">' + os + '</p>' +
+								'</div>'
+							document.getElementById("ownerCon").innerHTML = str
+							document.getElementById("ownerCon").setAttribute("data-id", uid);
+						});
+					},
+					questioninfo = function(qid) {
+						oAjax("/ajax/question/qo", {
+							"id": qid,
+						}, "get", function(res) {
+							document.getElementById("questTit").innerHTML = res.data.title;
+							document.getElementById("questTit").setAttribute("data-id", qid);
+							
+							if(res.data.img) {
+								var subs=strToAry(res.data.img)
+								imgUrl="/data/question"+subs[0].replace(/\.(jpg|jpeg|png)$/,"_s.jpg");
+							}
+							
+							shareTitle = res.data.title;
+							document.title = res.data.title;
+						});
+
+					}
+
+				getConmain()
+
+				var this_ = "../html/qa-answer-show.html?anid=" + answerId;
+				wcFresh(this_);
+				$("body").on("click", ".goSpan,.collectBtn,.thumbBtn,.stepBtn,.plusbtn,.replyLew", function() {
+					isInstalled(this_, true);
+					$(this).addClass("activeThis");
+				})
+
+				$("#ownerCon").on("click", function() {
+					var id = this.getAttribute("data-id");
+					location.href = "http://" + window.location.host + "/e/p.html?id=" + id;
+				})
+				$("#questTit").on("click", function() {
+					var id = this.getAttribute("data-id");
+					location.href = "http://" + window.location.host + "/e/wen.html?id=" + id;
+				})
+				/*微信分享*/
+				$.ajax({
+					url: "../ajax/weixin/jsapiTicket",
+					type: 'get',
+					dataType: 'json',
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					data: {
+						'url': location.href.split('#')[0]
+					},
+					success: function(data) {
+						if(data.data) {
+							wx.config({
+								debug: false, //调试模式好犀利
+								appId: data.data.appId,
+								timestamp: data.data.timestamp,
+								nonceStr: data.data.nonceStr,
+								signature: data.data.signature,
+								jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+									"onMenuShareAppMessage",
+									"onMenuShareTimeline",
+									"onMenuShareQQ",
+									"onMenuShareQZone",
+									"scanQRCode",
+								]
+							});
+							wx.ready(function() {
+								// 在这里调用 API
+								wx.onMenuShareAppMessage({ //分享给朋友
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareTimeline({ //分享到朋友圈
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareQQ({ //分享到QQ
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareQZone({ //分享到QQ空间
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+							});
+							//分享成功后的回调函数	
+							function share_success_callback() {}
+							//用户取消分享后执行的回调函数	
+							function share_cancel_callback() {}
+						}
+					}
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

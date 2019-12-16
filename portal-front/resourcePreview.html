@@ -1,0 +1,171 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览资源-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="js/jquery.imagezoom.min.js"></script>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL leftconBox2">
+				<div class="showDetail">
+					<!--资源基本信息-->
+					<div class="showReBasic clearfix">
+						<div class="Imagebox floatL">
+		                    <div class="tb-booth tb-pic tb-s360">
+		                        <a href="" target="_blank">
+		                            <img src="" alt="美女" rel="" class="jqzoom" id="firstFigure"/>
+		                        </a>
+		                    </div>
+		                    <ul class="tb-thumb" id="thumblist">
+		                       
+		                    </ul>
+		                </div>
+		                <div class="reInfoBlock floatL">
+		                	<div class="h1Font" id="resourceName"></div>
+		                	<div class="h2Font">应用用途：<span id="application"></span></div>
+		                	<div class="operateBlock resShareUl" style="display:none">
+		                		<ul>
+		                			<li><span>浏览量 </span><span id="pageView"></span></li>
+		                			<li id="attention"><span>收藏</span> <em class="operateicon operateicon2 icon-collect"></em></li>
+									<li>
+										<span>分享到</span>
+										<em class="operateicon operateicon2 icon-sina"></em>
+										<em class="operateicon operateicon2 icon-wechat shareWeixin">
+											<div class="shareCode clearfix">
+												<div class="floatL" id="qrcode"></div>
+												<div class="shareWord floatR">
+													<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+												</div>
+											</div>
+										</em>
+									</li>
+		                		</ul>
+		                	</div>
+		                </div>
+	                </div>
+	                <div class="showReOther">
+						<!--资源详情区-->
+						<div class="showMain showMain2">
+							<ul>
+								<li class="displayNone" id="orgName">
+									<div class="showTit">所属机构：</div>
+									<div class="showCon" id="organizationName">
+									</div>
+								</li>
+								<li>
+									<div class="showTit">厂商型号：</div>
+									<div class="showCon" id="modelNumber">
+									</div>
+								</li>
+								<li>
+									<div class="showTit">性能参数：</div>
+									<div class="showCon" id="performancePa">
+									</div>
+								</li>
+								<li>
+									<div class="showTit">合作备注：</div>
+									<div class="showCon" id="remarkContent">
+									</div>
+								</li>
+								<li id="articleContent">
+									<div class="showTit">详细介绍：</div>
+									<div class="showCon" id="descp">
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!--标签模块-->
+						<ul class="tagList">
+							
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem conItemG alignCenter displayNone" id="person">
+					<div class="madiaHead useHead" id="headImg" style="cursor:pointer"></div>
+					<div class="proInfo">
+						<div class="h3Font clearfix">
+							<span class="h1Font" id="nameS" style="cursor:pointer"></span>
+							<span class="authiconNew" title="" id="authFlag"></span>
+						</div>
+						<p class="h2Font" id="titleOffice"></p>
+						<p class="h2Font" id="orgType"></p>
+					</div>
+				</div>
+				<div class="conItem conItemG alignCenter displayNone" id="enterprise">
+					<a class="qiyego">
+						<div class="madiaHead cmpHead" id="Qimg">
+							<div class="boxBlock">
+								<img class="boxBlockimg" src="" id="companyImg">
+							</div>
+						</div>
+					</a>
+					<div class="proInfo alignCenter">
+						<div class="h3Font clearfix">
+							<a class="h1Font qiyego" id="Qname"></a>
+							<span class="authiconNew" title="" id="QauthFlag"></span>
+						</div>
+						<p class="h2Font ellipsisSty" id="Qindustry"></p>
+					</div>
+				</div>
+				<div class="conItem displayNone" id="resPerson">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">负责人/联系人</div>
+						<div class="form-result addexpertRe">
+							<ul class="addexpert" id="expertli">
+								
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/resourcePreview.js"></script>
+<script type="text/javascript">
+
+	//分享关注按钮
+	//$('.shareWeixin').hover(function(){$('.shareCode').stop(true,false).fadeToggle();});
+	
+	//微信分享
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 100,
+		height : 100
+	});
+	function makeCode(){
+		var hurl = window.location.host;
+		var resourceId =  GetQueryString("resourceId");
+		var elurl = "http://" + hurl + "/e/r.html?id=" + resourceId ; 
+		qrcode.makeCode(elurl);
+	}
+	makeCode();
+	
+</script>
+</body>
+</html>

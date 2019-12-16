@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>企业找回账户</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body>
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+<!--中间-->
+<div id="container">
+	<div class="conBanner"></div>
+	<div class="containerCon" id="containerCon">
+        <div class="conTit">
+			<h4 class="tit-hh4"><img src="images/business_icon_chuangjian_nor.png">找回账户</h4>
+		</div>
+		<form class="cmpAllFrm">
+			<ul class="cmpAllUl cmpSettledul">
+				<li>
+					<p class="smalltip">请输入与营业执照一致的企业名称，找回后不可更改！</p>
+					<input type="text" class="frmtype frmtypeW" placeholder="请输入要找回的企业名称" id="companyName"/>
+    				<div class="frmmsg msgReg1"><span></span></div>
+				</li>
+				<li>
+					<input type="email" class="frmtype frmtypeW companyEmail" placeholder="请输入企业邮箱" />
+    				<div class="frmmsg msgReg2"><span></span></div>
+				</li>
+				<li>
+					<input type="password" class="frmtype frmtypeW" placeholder="请设置您的登录密码" id="companyPasw"/>
+				    <div class="frmmsg msgReg3"><span></span></div>
+				</li>
+				<li>
+        			<div class="col-w-12 uploadFile">
+        				<div class="uploadlogo">
+        					<div class="upFront">
+	        					<p>请上传《企业法人营业执照》</p>
+	        					<p class="smalltip">支持jpg、jpeg、png、gif、pdf格式，文件不超过10M</p>
+		            			<input type="file"  name= "file" value="上传企业logo" class="uploadInp uploadFileHidden" id="fileone1" data-id="" onchange="uploadFun(this,1)"/>
+	            			</div>
+	            			<div class="upBack displayNone">
+	        					已上传《 <span></span> 》       <a href="javascript:;" class="delupload"  onclick="deluploadFun(this,1)">删除</a>
+	            			</div>
+	            		</div>
+        			</div>
+        		</li>
+        		<li>
+        			<div class="col-w-12 uploadFile">
+        				<div class="uploadlogo">
+        					<div class="upFront">
+	        					<p>请上传加盖公章的《入驻科袖授权证明》</p>
+	        					<p class="smalltip">支持jpg、jpeg、png、gif、pdf格式，文件不超过10M</p>
+		            			<input type="file" value="上传企业logo" name= "file" class="uploadInp uploadFileHidden" id="fileone2" data-id="" onchange="uploadFun(this,2)"/>
+	            			</div>
+	            			<div class="upBack displayNone">
+	        					已上传《 <span></span> 》       <a href="javascript:;" class="delupload" onclick="deluploadFun(this,2)">删除</a>
+	            			</div>
+	            		</div>
+        			</div>
+        		</li>
+        		<li>
+				    <a href="../data/kexiuFiles/kexiu_authorization.docx?_dl=入驻科袖授权证明.docx" class="cmpColor">点击下载 《入驻科袖授权证明》模板</a>
+				</li>
+				<li>
+					<img class="cmpAgree" src="images/business_button_xuanze_hig.png" />
+					<span>我是本企业的官方代表，且有权代表企业注册此账户！</span>
+				</li>
+				<li>
+					<button type="button" disabled class="frmtype frmtypeW btnModel btnModelBig headRadius save-block" id="znameSubmit">提交</button>
+				</li>
+			</ul>
+		</form>
+		
+	</div>
+</div>
+
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-setAuth-imgup.js"></script>
+<script type="text/javascript" src="js/cmp-settled-reback.js"></script>
+</body>
+</html>

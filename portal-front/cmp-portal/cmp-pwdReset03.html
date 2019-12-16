@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>密码重置</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="../index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter cmpColor">重置企业账户密码</p>
+				<ul class="cmpAllUl cmpCoverUl unreset" id="cmpCoverUl">
+					<li>
+						<ul class="form_head clearfix">
+							<li class="col-w-4 stepActive">
+								<span class="icon_step step1"></span>
+								输入企业邮箱
+							</li>
+							<li class="col-w-4 stepActive">
+								<span class="icon_step step2g"></span>
+								接收密码重置邮件
+							</li>
+							<li class="col-w-4 stepActive">
+								<span class="icon_step step3g"></span>
+								重置密码
+							</li>
+						</ul>
+					</li>
+					<li>
+						<input type="password" class="frmtype frmtypeW" placeholder="请设置您的登录密码"  id="newPassword"/>
+	    				<div class="frmmsg msgReset1"><span></span></div>
+					</li>
+					<li>
+						<input type="password" class="frmtype frmtypeW" placeholder="请再次输入密码确认" id="newPasswordok"/>
+	    				<div class="frmmsg msgReset2"><span></span></div>
+					</li>
+					<li>
+						<button type="button" class="frmtype frmtypeW btnModel btnModelBig headRadius save-block" disabled id="paswSubmit">重置密码</button>
+					</li>
+				</ul>
+				<ul class="cmpAllUl cmpCoverUl  onreset displayNone">
+					<li class="failImg" style="margin-top:40px;" ></li>
+					<li class="importBlock">
+						<p class="importTip">很抱歉，当前的链接已失效</p>
+						<p class="smalltip alignCenter" id="smalltip">小提醒：邮件内的链接有效时长为10分钟。</p>
+					</li>
+					<!--验证激活成功-已登录时隐藏按钮-->
+					<li>
+						<button type="button" class="frmtype frmtypeW btnModel btnModelBig headRadius save-block" id="butGo">重新找回密码</button>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-pwdReset03.js"></script>
+</body>
+</html>

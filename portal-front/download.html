@@ -1,0 +1,60 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖APP下载页</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	body{width: 100%;height: 100%;}
+</style>
+</head>
+
+<body class="covbodyBg">
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container" class="mainDownP">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="main">
+				<div class="main_left"></div>
+				<div class="main_right">
+					<div class="mright_top"></div>
+					<div class="mright_bottom">
+						<div class="mbleft"></div>
+					<div class="downlond_box">
+						<div class="downlond iphons">
+							<a class="clearfix" href="https://itunes.apple.com/cn/app/ke-xiu-da-jian-qi-ye-yu-zhuan/id1197110983?l=en&mt=8">
+								<h4>iPhone</h4><span></span>
+							</a>
+						</div>
+						<div class="downlond Android">
+							<a class="clearfix" href="http://www.ekexiu.com/download/com.ekexiu.app_V1.7.0.apk">
+								<h4>Android</h4><span></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		loginStatus(); //判断个人是否登录
+		$(".searchblock").hide();
+	})
+</script>
+</body>
+</html>

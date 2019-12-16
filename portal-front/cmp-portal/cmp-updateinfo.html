@@ -1,0 +1,296 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>企业信息修改</title>
+		<link rel="shortcut icon" href="images/favicon.ico " />
+		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+		<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/webuploader/webuploader.css">
+		<link type="text/css" rel="stylesheet" href="css/glyIcon.css">
+		<link type="text/css" rel="stylesheet" href="css/common.css">
+		<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+
+		<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+		<style type="text/css">
+			input.frmtype[readonly] {
+				color: #333;
+			}
+			
+			.worksubcon {
+				padding: 30px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--头部-->
+		<header>
+			<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+		</header>
+
+		<!--中间-->
+		<div id="container">
+			<div class="containerCon">
+				<div class="con-center contentCon clearfix conBlock">
+					<div class="workblockS clearfix">
+						<form class="cmpFrm">
+							<div class="leftlogo cmplogo floatL">
+								<div id="uploader">
+									<div id="fileList" class="boxBlock uploader-list "><img class="boxBlockimg " src="../images/default-icon.jpg" id="oimg" /></div>
+									<div id="filePicker" class="uploadInp">上传企业logo</div>
+								</div>
+								<p class="smalltip">JPG/PNG格式，5M以内</p>
+							</div>
+							<div class="floatR" style="width: 80%;">
+								<h1 class="h1Font comLable"></h1>
+								<ul class="cmpFrmList">
+									<li>
+										<span class="col-w-2 lableSpan"><span class="requiredcon">*</span>企业简称：</span>
+										<div class="col-w-5">
+											<input type="text" class="frmcontype" placeholder="请填写用于对外展示的简称" id="businessAbbreviation" />
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">创立时间：</span>
+										<div class="col-w-5" style="position:relative">
+											<div class="input-append date form_date dateBtn" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+												<em class="mr_sj"></em>
+												<input size="16" type="text" value="" readonly class="frmtype frmcontype" placeholder="请选择企业的创立时间" id="createTime">
+												<span class="dateIcon"><i class="icon-calendar displayNone"></i></span>
+												<span class="add-on"><i class="icon-th displayNone"></i></span>
+											</div>
+											<input type="hidden" id="dtp_input2" value="" />
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">企业类型：</span>
+										<div class="col-w-5" style="position: relative;">
+											<em class="mr_sj"></em>
+											<select class="frmcontype" id="orgType">
+												<option value="0">请选择最符合的一项</option>
+												<option value="2">上市企业</option>
+												<option value="3">外资企业</option>
+												<option value="4">合资企业</option>
+												<option value="5">独资企业</option>
+												<option value="6">个体经营</option>
+												<option value="7">政府机构</option>
+												<option value="8">公益组织</option>
+												<option value="9">协会学会</option>
+												<option value="10">新闻媒体</option>
+												<option value="11">教育机构</option>
+											</select>
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">企业规模：</span>
+										<div class="col-w-5" style="position: relative;">
+											<em class="mr_sj"></em>
+											<select class="frmcontype" id="qualificationList">
+												<option value="0">请选择员工数量范围</option>
+												<option value="1">50人以内</option>
+												<option value="2">50-100人</option>
+												<option value="3">100-200人</option>
+												<option value="4">200-500人</option>
+												<option value="5">500-1000人</option>
+												<option value="6">1000人以上</option>
+											</select>
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">企业官网：</span>
+										<div class="col-w-10">
+											<input type="url" class="frmcontype" placeholder="请输入企业的官网网址" id="inteAddress" />
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">所在城市：</span>
+										<div class="col-w-10">
+											<form action="" name="form1">
+												<div class="col-w-6 citybox">
+													<span class="frmcontype" id="Province">
+				                                        	<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="oprovince">请选择企业总部所在省或直辖市</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择企业总部所在省或直辖市">请选择企业总部所在省或直辖市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_Province" value="请选择企业总部所在省或直辖市">
+				                                        </span>
+												</div>
+												<div class="col-w-6 citybox">
+													<span class="frmcontype floatR" id="City">
+				                                       		<em class="mr_sj"></em>
+				                                            <i class="mr_show" id="ocity">请选择企业总部所在城市</i>
+				                                            <ul>
+				                                                <li><a href="javascript:void(0)" alt="请选择企业总部所在城市">请选择企业总部所在城市</a></li>
+				                                            </ul>
+				                                            <input type="hidden" name="cho_City" value="请选择企业总部所在城市 ">
+				                                        </span>
+												</div>
+											</form>
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">企业地址：</span>
+										<div class="col-w-10">
+											<input type="text" class="frmcontype" placeholder="如：北京市海淀区学院路方兴大厦" id="cmpAddress" />
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">联系电话：</span>
+										<div class="col-w-5">
+											<input type="tel" class="frmcontype" placeholder="请填写办公电话" id="phone" />
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">联系邮箱：</span>
+										<div class="col-w-5">
+											<input type="email" class="frmcontype" placeholder="请填写客服邮箱" id="mail" />
+										</div>
+									</li>
+									<li class="form-item">
+										<span class="col-w-2 lableSpan">所属行业：</span>
+										<div class="col-w-10">
+											<div class="col-w-12" style="position: relative;">
+												<input type="text" class="frmcontype oinput" placeholder="请填写企业所属的行业，如：制造业、互联网、服务业" data-pro="所属行业不得超过15个字" data-num="3" data-fontSizeN="15" />
+												<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+												<div class="form-drop keydrop">
+													<ul>
+
+													</ul>
+												</div>
+											</div>
+											<div class="form-result keyResult allResult">
+												<ul class="ulspace editUlist clearfix" id="industryList">
+													<!--<li>行业标签<div class="closeThis"></div></li>-->
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="form-item">
+										<span class="col-w-2 lableSpan">专注领域：</span>
+										<div class="col-w-10">
+											<div class="col-w-12" style="position: relative;">
+												<input type="text" class="frmcontype oinput" placeholder="请填写企业专注的领域，如：腐蚀防护、石墨烯、纳米材料" data-pro="专注领域不得超过15个字" data-num="20" data-fontSizeN="15" />
+												<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+												<div class="form-drop keydrop">
+													<ul>
+
+													</ul>
+												</div>
+											</div>
+											<div class="form-result keyResult allResult">
+												<ul class="ulspace editUlist clearfix" id="subjectList">
+
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li>
+										<span class="col-w-2 lableSpan">企业简介：</span>
+										<div class="col-w-10 msgContbox">
+											<textarea class="msgCont" placeholder="请填写一个简单的介绍，让大家更好地了解您的企业"></textarea>
+											<span class="msgconNum"><em class="limitNum">0</em>/1000</span>
+										</div>
+									</li>
+									<li class="form-item">
+										<span class="col-w-2 lableSpan">企业资质：</span>
+										<div class="col-w-10">
+											<div class="col-w-12" style="position: relative;">
+												<input type="text" class="frmcontype oinput" placeholder="请填写企业获得的资质，如：ISO9000认证、高新技术企业认证" data-pro="企业资质不得超过100个字" data-num="10" data-fontSizeN="100" />
+												<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+											</div>
+											<div class="form-result keyResult allResult" style="margin-right: -10px;">
+												<ul class="ulspace editUlistC clearfix" id="subjectList">
+
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="form-item">
+										<span class="col-w-2 lableSpan">供应商领域：</span>
+										<div class="col-w-10">
+											<div class="col-w-12" style="position: relative;">
+												<input type="text" class="frmcontype oinput" placeholder="请填写企业上游所涉及的领域" data-pro="所属领域不得超过15个字" data-num="5" data-fontSizeN="15" />
+												<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+												<div class="form-drop keydrop">
+													<ul>
+
+													</ul>
+												</div>
+											</div>
+											<div class="form-result keyResult allResult">
+												<ul class="ulspace editUlist clearfix" id="subjectListOut">
+
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="form-item">
+										<span class="col-w-2 lableSpan">客户领域：</span>
+										<div class="col-w-10">
+											<div class="col-w-12" style="position: relative;">
+												<input type="text" class="frmcontype oinput" placeholder="请填写企业下游所涉及的领域" data-pro="所属领域不得超过15个字" data-num="5" data-fontSizeN="15" />
+												<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+												<div class="form-drop keydrop">
+													<ul>
+
+													</ul>
+												</div>
+											</div>
+											<div class="form-result keyResult allResult">
+												<ul class="ulspace editUlist clearfix" id="subjectListIn">
+
+												</ul>
+											</div>
+										</div>
+									</li>
+									<li class="saveBtn">
+										<span class="col-w-2">&nbsp;</span>
+										<div class="col-w-10">
+											<button type="button" class="frmcontype btnModel">保存</button>
+											<button type="button" class="frmcontype btnModel btnCancel" style="background:#ccc" id="Ocancel">取消</button>
+										</div>
+
+									</li>
+								</ul>
+							</div>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!--底部-->
+		<footer>
+			<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+		</footer>
+
+		<script type="text/javascript" src="js/public/jquery.cookie.js"></script>
+		<script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+		<script type="text/javascript" src="js/public/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/public/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+		<script type="text/javascript" src="js/public/city.min.js"></script>
+		<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+		<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+		<script type="text/javascript">
+			$('.dateBtn').datetimepicker({
+				language: 'ch',
+				weekStart: 0,
+				todayBtn: 1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				minView: 2,
+				forceParse: 0,
+			});
+		</script>
+		<script type="text/javascript" src="js/cmp-updateinfo.js"></script>
+	</body>
+
+</html>

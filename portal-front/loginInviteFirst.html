@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">欢迎 <span id="name"></span> 登录科袖</p>
+				<p class="smallTip alignCenter" style="margin:-10px auto 20px;">请设置您的登录密码，让您的账号更安全</p>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--邀请码登录-->
+						<ul class="cmpAllUl cmpCoverUl">
+							<li>
+								<input type="password" class="frmtype frmtypeW" id="password" placeholder="请输入设置您的登录密码" onBlur="valPassword(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<input type="password" class="frmtype frmtypeW" id="passwordok" placeholder="请再次输入密码确认" onBlur="valPassword2(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+							    <div class="frmmsg msgLog2"><span></span></div>
+							</li>
+							<li>
+								<button type="button" disabled class="frmtype frmtypeW btnModel save-block headRadius" id="ButSubmit" onclick="savePassword()">确认</button>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix" style="margin-top:-15px;">
+						<span class="serviceBox floatR" style="color:#999">不是本人？
+							<div class="serviceTel alignCenter displayNone">
+								<p>请拨打客服电话  010-62343359</p>
+								<p>找回您的账号</p>
+								<div class="triangleB"></div>
+							</div>
+						</span>
+					</div>	
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript"src="js/loginInviteFirst.js"></script>
+</body>
+</html>

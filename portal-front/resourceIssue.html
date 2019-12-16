@@ -1,0 +1,170 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>资源发布-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./css/webuploader/webuploader.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<ul class="artAbout">
+					<li>
+						<dl class="clearfix" id="fileList">
+							<dd class="uploadD" id="uploadDd">
+								<div class="uploadFile">
+			        				<div class="uploadblock">
+			        					<span class="" id="filePicker">上传图片</span>
+			        					<!--未上传图片时-->
+			        					<div class="upFront" id="uploader">
+				        					<p>资源图片<em class="requiredcon">*</em></p>
+				        					<p class="uploadtip">JPG/JPEG/PNG格式，<br/>2M以内</p>
+				            				<span class="upbtn" style="margin-top:8px">上传图片</span>
+			        					</div>
+				            		</div>
+			        			</div>
+							</dd>
+							<dd></dd>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<div class="aboutTit">资源名称<em class="requiredcon">*</em><span class="frmconmsg" id="resourceNamePrompt" style="display:none;">30字以内</span></div>
+						<input type="text" class="frmtype frmcontype" id="resourceName" value="" placeholder="请输入资源名称" />
+					</li>
+					<li class="form-item">
+						<div class="aboutTit">关键词<span class="frmconmsg" id="keyPrompt"></span></div>
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请输入关键词" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" id="KeyWord" />
+							<button type="button" class="frmcontype btnModel frmaddG addButton">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult" style="margin-top: -10px;">
+							<ul class="ulspace editUlist clearfix" id="keyWordlist">
+								<!--<li>dd<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="aboutTit">应用用途<em class="requiredcon">*</em><span class="frmconmsg" id="applicationPrompt" style="display:none;">250字以内</span></div>
+						<div class="msgContbox">
+				    		<textarea class="msgCont" placeholder="请输入应用用途" id="application"></textarea>
+				    		<span class="msgconNum"><em>0</em>/250</span>
+				    	</div>
+					</li>
+					<li>
+						<div class="aboutTit">所属机构<span class="frmconmsg" id="organization" style="display:none">50字以内</span></div>
+						<input type="text" class="frmtype frmcontype" id="organizationName" value="" placeholder="请输入所属机构" />
+						<div class="form-drop keydrop displayNone" id="department">
+							<ul class="clearfix">
+								<!--<li class="clearfix">
+									<img src="images/authsort2.png" alt="" class="floatL" style="width:50px;height:50px;"/>
+									<p class="h2Font floatL">金属材料工程与腐蚀</p>
+								</li>-->
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="aboutTit">厂商型号<span class="frmconmsg" id="model" style="display:none;">50字以内</span></div>
+						<input type="text" class="frmtype frmcontype" id="modelNumber" value="" placeholder="请输入厂商型号" />
+					</li>
+					<li>
+						<div class="aboutTit">性能参数<span class="frmconmsg" id="performance" style="display:none;">1000字以内</span></div>
+				    	<div class="msgContbox">
+				    		<textarea class="msgCont" placeholder="请输入性能参数" id="performancePa"></textarea>
+				    		<span class="msgconNum"><em>0</em>/1000</span>
+				    	</div>
+					</li>
+					<li>
+						<div class="aboutTit">合作备注<span class="frmconmsg" id="remark" style="display:none;">1000字以内</span></div>
+						<div class="msgContbox">
+				    		<textarea class="msgCont" placeholder="请输入合作备注" id="remarkContent"></textarea>
+				    		<span class="msgconNum"><em>0</em>/1000</span>
+				    	</div>
+					</li>
+					<li>
+						<div class="aboutTit">详细介绍<span class="frmconmsg"></span></div>
+						<!--这块还是使用编辑框插件-->
+						<div class="editBlock">
+							<script id="editor" name="content" type="text/plain" style="height:500px;"></script>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem conItemFirst">
+					<ul class="operateBlock" id="operateBlocko">
+						<li class="goFabu">
+							<em class="operateicon icon-issue"></em>
+							<p>发布</p>
+						</li>
+						<li class="articalPreview" id="oPreview">
+							<em class="operateicon icon-preview"></em>
+							<p>预览</p>
+						</li>
+						<li id="oDraft">
+							<em class="operateicon icon-draft"></em>
+							<p>存草稿</p>
+						</li>
+						<li class="disableLi" id="deleteResource"><!--只要预览、存草稿、发布之后移除disableLi类-->
+							<em class="operateicon icon-delete"></em>
+							<p>删除</p>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer_tools">
+  <a id="scrollUp" href="javascript:;" title="返回顶部"></a>
+</div>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="js/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="./js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/resourceIssue.js"></script>
+<script type="text/javascript">
+	//回到顶部
+	var $body = $(document.body);;
+	var $bottomTools = $('.footer_tools');
+	$(window).scroll(function () {
+		var scrollHeight = $(document).height();
+		var scrollTop = $(window).scrollTop();
+		var $footerHeight = $('footer').outerHeight(true);
+		var $windowHeight = $(window).innerHeight();
+		scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display","block") : $("#scrollUp").fadeOut(200);			
+		$bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 20 : $windowHeight + scrollTop + $footerHeight + 20 - scrollHeight);
+	});
+	$('#scrollUp').click(function (e) {
+		e.preventDefault();
+		$('html,body').animate({ scrollTop:0});
+	});
+</script>
+</body>
+</html>

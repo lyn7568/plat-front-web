@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>需求分享-科袖网</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/share.css" />
+<style>
+	html,body{background: #FFFFFF;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/openApp.js"></script>	
+</head>
+
+<body>
+	<div class="contentBody2">
+	    <div class="showDetail">
+    		<div class="h1Font hWeight" id="demandTit"></div>
+    		<div class="madiaBlock">
+    			<ul class="mui-table-view noactiveTab infoBlock">
+			        <li class="mui-table-view-cell">
+			            <div class="flexCenter clearfix" id="personAL">
+			            	<a id="personAL">
+				                <div class="madiaHead cmpHead2">
+				                	<div class="boxBlock"><img class="boxBlockimg" id="companyImg" src="../images/default-icon.jpg"></div>
+				                </div>
+								<div class="madiaInfo">
+									<p class="ellipsisSty"><span class="h1Font ellipsisSty" id="cmpname"></span><em class="authicon " id="QauthFlag"></em></p>
+									<p class="h3Font" id="oTime"></p>
+								</div>
+							</a>
+							<div class="goSpan" style="display:none;">
+								<span class="attenSpan">关注</span>
+							</div>
+			            </div>
+			        </li>
+			    </ul>
+    		</div>
+	    	<!--内容区-->
+			<div class="showMain showMainP" style="margin-top: 0;">
+				<ul>
+					<li id="demandInfo">
+						
+					</li>
+					<li>
+						<div class="showTit">需求内容：</div>
+						<div class="showCon" id="demandDesp">
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+	    </div>
+		
+	    <div class="shareEcode">
+			<img class="Ecodecon" src="../images/ecordCard.jpg" />
+			<div class="Ecodeinfo">
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app"><button class="frmbtn frmactive">下载移动客户端</button></a>
+			</div>
+	    </div>
+	</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	var imgUrl = "http://www.ekexiu.com/images/logo180.png";
+	var lineLink = document.location.href;
+	var descContent;
+	var shareTitle;
+	
+	var demandId = GetQueryString("id");
+	getDemandinfo();
+	pageViewLog(demandId,7)
+	
+	var this_="../html/needShow.html?demanid="+demandId;
+	wcFresh(this_);
+	$(".attenSpan").on("click",function(event){
+		isInstalled(this_,true);
+		$(this).addClass("activeThis");
+		event.stopPropagation()
+	})
+	$('#personAL').on('click', function() {
+		var id = this.getAttribute("data-id");
+		if (id == null) {
+			return;
+		}
+		location.href="http://" + window.location.host + "/e/c.html?id=" + id;
+		$(this).addClass("activeThis");
+	})
+
+	function getDemandinfo(){
+		$.ajax({
+			"url":"/ajax/demand/qo",
+			"type": "GET",
+			"data": {
+				"id": demandId
+			 },
+			"async": false,
+			"dataType": "json",
+			"success": function(data) {
+				console.log(JSON.stringify(data));
+				if(data.success) {
+					var $da=data.data;
+					document.getElementById("demandTit").innerHTML=$da.title; //名字
+					document.getElementById("oTime").innerHTML=commenTime($da.createTime);
+					document.getElementById("demandDesp").innerHTML=$da.descp; //内容
+					document.title=$da.title; 
+					
+					var strCon="";
+					if($da.city){ strCon+='<div class="showTit">所在城市：<span class="showCon">'+$da.city+'</span></div>' }
+					if($da.duration!=0){ strCon+='<div class="showTit">预计周期：<span class="showCon">'+demandDuration[$da.duration]+'</span></div>' }
+					if($da.cost!=0){ strCon+='<div class="showTit">费用预算：<span class="showCon">'+demandCost[$da.cost]+'</span></div>' }
+					if($da.invalidDay){ strCon+='<div class="showTit">有效期至：<span class="showCon">'+TimeTr($da.invalidDay)+'</span></div>' }
+					document.getElementById("demandInfo").innerHTML=strCon;
+					
+					cmpFun($da.orgName);
+					
+					descContent=$da.descp.substring(0, 70);
+					shareTitle=$da.title;
+				}
+			},
+			error: function() {
+			}
+		});
+		
+	}
+	
+	/*企业用户信息*/
+	function cmpFun(par) {
+		$.ajax({
+			"url":"/ajax/org/queryByName",
+			"type": "get",
+			"data": {
+				name: par
+			},
+			"async": true,
+			'traditional': true,
+			"success": function(data) {
+				if(data.success) {
+					if(data.data != null) {
+						$(".goSpan").show();
+						if(data.data.forShort) {
+							document.getElementById("cmpname").innerHTML=data.data.forShort;
+						}else{
+							document.getElementById("cmpname").innerHTML=data.data.name;
+						}
+						var img="../images/default-icon.jpg";
+						if(data.data.hasOrgLogo==1){
+							img="/images/org/" + data.data.id + ".jpg";
+						}
+						document.getElementById("personAL").setAttribute("data-id",data.data.id);
+						document.getElementById("companyImg").setAttribute("src",img);
+						if(data.data.authStatus==3){
+							document.getElementById("QauthFlag").classList.add("authicon-com-ok");
+						}
+					} else {
+						$("#companyImg").attr("src",'../images/default-icon.jpg');
+						$("#cmpname").text(par);
+					}
+				}
+			},
+			error: function() {
+			}
+		});
+	}
+    /*微信分享*/
+	$.ajax({
+		url: "../ajax/weixin/jsapiTicket",
+		type: 'get',
+		dataType: 'json',
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		data: {
+			'url': location.href.split('#')[0]
+		},
+		success: function(data) {
+			if(data.data) {
+				wx.config({
+					debug: false, //调试模式好犀利
+					appId: data.data.appId,
+					timestamp: data.data.timestamp,
+					nonceStr: data.data.nonceStr,
+					signature: data.data.signature,
+					jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+						"onMenuShareAppMessage",
+						"onMenuShareTimeline",
+						"onMenuShareQQ",
+						"onMenuShareQZone",
+						"scanQRCode",
+					]
+				});
+				wx.ready(function() {
+					// 在这里调用 API
+					wx.onMenuShareAppMessage({ //分享给朋友
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareTimeline({ //分享到朋友圈
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQQ({ //分享到QQ
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQZone({ //分享到QQ空间
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+				});
+				//分享成功后的回调函数	
+				function share_success_callback() {}
+				//用户取消分享后执行的回调函数	
+				function share_cancel_callback() {}
+    		}
+		}
+	});
+})
+</script>
+</body>
+
+</html>

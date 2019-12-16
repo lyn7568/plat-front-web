@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>完善个人信息</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">完善个人信息</p>
+				<div class="selectSortBox">
+					<div class="bindtip"><img src="images/sign_bg_tishi_1_nor.png" width="100%" /></div>
+					<ul class="mui-table-view mui-grid-view mui-grid-9">
+						<li class="col-w-4" data-num="1">
+					        <span class="selectSort sort-pro"></span>
+					        <div class="sortbody">科研工作者</div>
+						</li>
+						<li class="col-w-4" data-num="2">
+						    <span class="selectSort sort-mana"></span>
+						    <div class="sortbody">企业高管</div>
+						</li>
+						<li class="col-w-4" data-num="3">
+						    <span class="selectSort sort-stu"></span>
+					        <div class="sortbody">在校生</div>
+						</li>
+						<li class="col-w-4" data-num="4">
+						    <span class="selectSort sort-skill"></span>
+					        <div class="sortbody">技术人员</div>
+						</li>
+						<li class="col-w-4" data-num="5">
+						    <span class="selectSort sort-hr"></span>
+					        <div class="sortbody">HR/猎头</div>
+						</li>
+						<li class="col-w-4" data-num="6">
+						    <span class="selectSort sort-sale"></span>
+					        <div class="sortbody">销售人员</div>
+						</li>
+						<li class="col-w-4" data-num="7">
+						    <span class="selectSort sort-invest"></span>
+					        <div class="sortbody">投资方</div>
+						</li>
+						<li class="col-w-4" data-num="8">
+						    <span class="selectSort sort-consult"></span>
+					        <div class="sortbody">咨询顾问</div>
+						</li>
+						<li class="col-w-4 selectNow" data-num="0">
+						    <span class="selectSort sort-user"></span>
+					        <div class="sortbody">普通用户</div>
+					        <span class="selectNowicon"></span>
+						</li>
+					</ul>
+					<div class="frmboxNew">
+						<button type="button" class="frmtype btnModel save-block headRadius" id="nextbut">下一步</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript">
+$(function(){
+	var id=$.cookie('userid')
+	$(".selectSortBox").on("click","li",function(){
+		
+		var liAll = document.getElementsByTagName('li');
+		var slescted =document.createElement("span")
+		slescted.className = "selectNowicon";
+		for(var i = 0;i <liAll.length;i++){
+			if(liAll[i].classList.contains("selectNow")){
+				liAll[i].classList.remove("selectNow");
+				liAll[i].removeChild(liAll[i].getElementsByTagName("span")[1]);
+			}
+		}
+		this.classList.add("selectNow");
+		this.appendChild(slescted);
+	})
+	
+	$("#nextbut").on("click",function(){
+		var authentication = $(".selectNow").attr("data-num");
+		$.ajax({	
+			"url":"../ajax/professor/authen",
+			"type":"POST",
+			"data":{"id":id,"authentication":authentication},
+			"success":function(data){
+				console.log(data);
+				if(data.success){
+					$.cookie('authentication', authentication, {path: "/"});
+					location.href = "fillinfoNew.html";
+				}
+			},
+			"error":function(){
+				$.MsgBox.Alert('消息', '服务器请求失败');
+			}
+		})	
+	})
+	
+})	
+</script>
+</body>
+
+</html>

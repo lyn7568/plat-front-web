@@ -1,0 +1,213 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览问答-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/zoomify.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<link type="text/css" href="css/leaveWord.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="leftconBox leftconBoxbg floatL">
+				<div class="list-main scroll-view">
+					<section class="listbg list_content">
+						<ul class="tagList">
+							<!--<li><span class="h2Font">快递分类设计稿既然</span></li>-->
+						</ul>
+						<div class="item_detail" id="questionId">
+							<h3 class="h1Font hWeight" id="questionTit"></h3>
+							<div class="list_con" id="questionCnt"></div>
+							<ul class="list_image"><li><span class="imgspan"></span></li></ul>
+							<div class="list_hander clearfix" data-type="1">
+								<div class="goSpan floatL">
+				                	<span class="go-answer">我来回答</span>
+									<span class="invite-answer">邀请回答</span>
+								</div>
+								<div class="operateBlock bottomShow floatL">
+				            		<ul class="clearfix">
+				            			<li><span>阅读量</span> <span id="pageview"></span></li>
+				            			<li><span>关注 </span><span id="attenCountQ"></span><em class="operateicon operateicon2 icon-collect" id="attention"></em></li>
+										<li>
+											<span>分享到</span>
+											<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+											<em class="operateicon operateicon2 icon-wechat shareWeixin">
+												<div class="shareCode clearfix">
+													<div class="floatL" id="qrcode"></div>
+													<div class="shareWord floatR">
+														<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+													</div>
+												</div>
+											</em>
+										</li>
+				            		</ul>
+				            	</div>
+				            	<div class="operateBlock tip-offs floatR">
+				            		<span id="jubao">举报</span>
+				            	</div>
+							</div>
+						</div>
+					</section>
+					<section class="listbg list-hold answerQu displayNone"><!--回答框--></section>
+					<section class="listbg list-hold request-qa displayNone"><!--邀请列表-->
+						<div class="searchRw clearfix">
+							<h4 class="floatL">邀请其他用户，获得更多答案</h4>
+							<div class="searchA floatR">
+								<input type="text" placeholder="搜索您想邀请的人" class="search-txt floatL" id="searchAval">
+								<div class="search-btn floatL" id="searchAbtn">
+									<span class="search-icon"></span>
+								</div>
+							</div>
+						</div>
+						<div class="requestLc">
+							<ul id="requestA">
+								<!--<li>
+						            <div class="flexCenter qa-owner">
+						                <div class="owner-head useHead"></div>
+										<div class="owner-info">
+											<div class="owner-name"><span>张某某</span><em class="authiconNew authicon-pro" title="科袖认证专家"></em></div>
+											<div class="owner-tit ellipsisSty h2Font">职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构</div>
+										</div>
+										<div class="goSpan"><span class="yaoqing">邀请回答</span></div>
+						            </div>
+						            
+						        </li>-->
+							</ul>
+							<button class="js-load-more"></button>
+						</div>
+					</section>
+					<section class="list-main-group show-list-allAn">
+						<div class="listbg">
+							<div class="list-hold-count">
+								<span><em id="replyCount"></em>个回答</span>
+								<ul>
+									<li class="active" data-type="1"><span>默认</span></li>
+									<li data-type="2"><span>最新</span></li>
+								</ul>
+							</div>
+						</div>	
+						<div class="list-hold">
+							<div class="list-hold-list">
+								<ul class="myAllneeds partLine" id="curAnswers">
+									<!--<li class="list-qa">
+										<div class="madiaInfo">
+											<div class="flexCenter qa-owner">
+												<div class="owner-head useHead"></div>
+												<div class="owner-info">
+													<div class="owner-name"><span>张某某</span><em class="authiconNew authicon-pro" title="科袖认证专家"></em></div>
+													<div class="owner-tit ellipsisSty h2Font">职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构职称/职位,所在机构</div>
+												</div>
+												<div class="goSpan">
+								                	<span class="attenSpan">关注</span>
+												</div>
+											</div>
+											<p class="qa-con ellipsisSty-3">我们是一家医疗器械公司，主要生产健康理疗类的电子产品，目前希望对护膝、护腰类的产品进行改进， 想先找一位有资深设计经验的三维工业设计专家，通过三维建模的方式先设计出产品的三维模型，用于展示以及为后续生产做准备我们是一家医疗器械公司，主要生产健康理疗类的电子产品，目前希望对护膝、护腰类的产品进行改进， 想先找一位有资深设计经验的三维工业设计专家，通过三维建模的方式先设计出
+											</p>
+											<div class="item_info">
+												<span class="time">发布于 20分钟之前</span>
+											</div>
+											<div class="list_hander clearfix">
+												<div class="holdSpan floatL">
+								                	<div class="zan"><em class="hold-icon icon-zan"></em><span>45</span></div>
+													<div class="cai"><em class="hold-icon icon-cai"></em></div>
+												</div>
+												<div class="operateBlock bottomShow floatL">
+								            		<ul class="clearfix">
+								            			<li><span>留言</span> <span class="leaveMsgCount">1000</span></li>
+								            			<li class="attention"><span>收藏</span> <em class="operateicon operateicon2 icon-collect" id="collectBtn"></em></li>
+														<li>
+															<span>分享到</span>
+															<a class="weiboQA" href="" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+															<em class="operateicon operateicon2 icon-wechat shareWeixin">
+																<div class="shareCode clearfix">
+																	<div class="floatL qrcodeQA"></div>
+																	<div class="shareWord floatR">
+																		<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+																	</div>
+																</div>
+															</em>
+														</li>
+								            		</ul>
+								            	</div>
+								            	<div class="operateBlock tip-offs floatR">
+								            		<span>举报</span>
+								            	</div>
+											</div>
+										</div>
+									</li>-->
+								</ul>
+								<!--加载更多按钮-->
+	    						<button class="js-load-more"></button>
+							</div>
+						</div>
+					</section>
+					<section class="list-main-group show-list-thisAn">
+						<div class="list-hold">
+							<div class="list-hold-list zhidingAn">
+								<ul class="myAllneeds partLine" id="topAnshow"></ul>
+							</div>
+							<div class="otherAn displayNone">
+								<div class="split-line"></div>
+								<div class="list-hold-list">
+									<ul class="myAllneeds partLine" id="otherAnshow"></ul>
+									<!--加载更多按钮-->
+		    						<button class="js-load-more"></button>
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem advertBox advertItem"></div>
+				<div class="conBlock conItem displayNone">
+					<div class="form-item">
+						<div class="aboutTit">等您回答</div>
+						<div class="form-result form-M0 currentArt currentArt2">
+							<ul id="waitingA">
+							</ul>
+						</div>
+					</div>	
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!--反馈建议-->
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="js/ueditor/ueditor.all.js"> </script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/answerLeaveW.js"></script>
+<script type="text/javascript" src="js/public/zoomify.js"></script>
+<script type="text/javascript" src="js/qa-show.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+<script type="text/javascript">
+	$(function () {	
+		addscript("ad_common");
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>来自科袖网的邀请</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/share.css">
+</head>
+<body class="invitebody invitebody2">
+<div class="contentBody2">
+	<div class="topSTit">
+		<img src="../images/share_bg_img_nor@3x.png" />
+		<div class="titSort" style="top: -86px;">
+			<img class="biaoti" src="../images/share_bg_lunwen_nor@3x.png"/>
+			<img src="../images/share_bg_huanying_nor@3x.png" />
+		</div>
+		
+	</div>
+	<form class="form-inline">
+		<!--填写表单信息-->
+		<div class="formblock" style="margin-top: -36px;">
+			<div class="formTit ellipsisSty-2"></div>
+			<div class="form-group">
+				<div class="input-group">
+			    	<input type="text" class="form-control input_name" placeholder="请输入您的姓名" id="username" >
+			    </div>
+				<div class="input-group">
+			    	<input type="tel" class="form-control input_phone" placeholder="请输入您的手机号码" id="userphone" >
+			    </div>
+			    <div class="input-group">
+			    	<input type="text" class="form-control" placeholder="请输入图形验证码" id="imgCode"/>
+					<img src="/ajax/PictureVC" class="canPoint" style="position: absolute;top:-1px;right:-1px;width:128px;height:44px;border-radius:0 4px 4px 0;" id="changImage"/>
+			    </div>
+			    <div class="input-group">
+			      <input class="form-control input_code" type="number" placeholder="请输入验证码" id="code" >
+			      <button type="button" class="btn input-group-addon canPoint" id="obtain-code">获取验证码</button>
+			    </div>
+			</div>
+		    <button type="button" class="btn btn-lg btn-block canPoint" disabled id="regbtn">立即认领</button>
+	    </div>
+	</form>
+</div>
+
+<div class="bomb-box"></div>
+<script type="text/javascript" src="../js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" ></script>
+<script type="text/javascript" src="../js/public/baseUtil.js" ></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/inviteAuthor.js" ></script>
+</body>
+</html>

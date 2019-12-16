@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>员工-企业工作台-科袖网</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/jquery.page.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+</head>
+<body>
+
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+<div class="blackcover2"></div>
+<div class="setTimeBlock modelContain">
+	<span class="mb_tit">邀请员工</span>
+	<a class="mb_close"></a>
+	<div class="mb_msg clearfix" id="promotTh">
+		<div class="col-w-9">
+			<input type="email" name="staffemail" class="frmcontype staffemail" placeholder="请输入员工的邮箱地址" id="mailVal"/>
+			<div class="mb_success"></div>
+		</div>
+		<div class="col-w-3" id="mailPub">
+			<button type="button" class="frmcontype btnModel identBtn">邀请</button>
+		</div>
+	</div>
+</div>
+<div id="container">
+	<div class="containerCon">
+		<div class="con-center contentCon clearfix conBlock">
+	        <div class="workmenu">
+	        	<script src="js/public/workMenu.js"></script>
+	        </div>
+		    <div class="workcon workconG">
+				<div class="workcontit"><a class="worksamlltit worksamlltitnow">企业员工</a></div>
+				<div class="itemListBolck main-wrapper" id="staffContent">
+					<div class="workblock identityState" id="identityState" style="display:none">
+						<div class="nowState">
+						   <p><span class="identProcess" id="identProcess">通过企业认证，让您的认证员工在科袖网开展业务。</span><span class="identts" id="identts"></span></p>
+						   <a href="cmp-setAuth.html?auth=1"><button type="button" class="frmtype btnModel headRadius identBtn" id="identBtn">马上认证</button></a>
+						</div>
+					</div>
+					<div class="form-item itemListCon" id="companyDemandList" style="display:none;">
+					<div class="list-wrapper">
+						<div class="block-title">默认联系人</div>
+						<div class="block-wrapper">
+							<div class="block-container" id="defaultUserList">
+								<!--<a class="block-item" target="_blank">
+							        <div class="show-head" style="background-image:url()"></div>
+							        <div class="show-info">
+							          <div class="info-tit ellipsisSty">{{item.name}}<em class="authicon"></em></div>
+							          <div class="info-tag ellipsisSty" v-if="item.offt">{{item.offt}}</div>
+							        </div>
+							    </a>-->
+							</div>
+						</div>
+						<div class="goSpan"><span>邀请</span></div>
+					</div>
+					<div class="list-wrapper">
+						<div class="block-title">认证员工(<span id="authStaffs">0</span>)</div>
+						<div class="block-wrapper">
+							<div class="block-container" id="authorizedUserList">
+							     <!--<div class="block-item">
+							     	<a class="block-item-child" href="">
+								        <div class="show-head" style="background-image:url()"></div>
+								        <div class="show-info">
+								          <div class="info-tit ellipsisSty">{{item.name}}<em class="authicon"></em></div>
+								          <div class="info-tag ellipsisSty" v-if="item.offt">{{item.offt}}</div>
+								        </div>
+							        </a>
+							        <div class="block-btn">
+							        	<span class="block-btn-1">设为默认联系人</span>
+							        	<span>取消认证</span>
+							        </div>
+							     </div>-->
+							</div>
+							<div class="tcdPageCode" id="authtcdPageCode"></div>
+						</div>
+					</div>
+					<div class="list-wrapper">
+						<div class="block-title">待认证的员工</div>
+						<div class="block-wrapper">
+							<div class="block-container" id="UnauthorizedUserList">
+								<!--<div class="block-item">
+							     	<a class="block-item-child" href="">
+								        <div class="show-head" style="background-image:url()"></div>
+								        <div class="show-info">
+								          <div class="info-tit ellipsisSty">{{item.name}}<em class="authicon"></em></div>
+								          <div class="info-tag ellipsisSty" v-if="item.offt">{{item.offt}}</div>
+								        </div>
+							        </a>
+							        <div class="block-btn block-btnT">
+							        	<span class="block-btn-1">认证</span>
+							        </div>
+							    </div>-->
+							</div>
+							<div class="tcdPageCode" id="UnauthtcdPageCode"></div>
+						</div>
+					</div>
+					</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript"src="js/cmp-staffListNew.js"></script>
+</body>
+</html>

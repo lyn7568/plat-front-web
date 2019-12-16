@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/share.css" />
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/openApp.js"></script>	
+</head>
+
+<body>
+<div class="bomb-box" style="top: 15%"></div>
+<div class="contentBody2">
+	<div class="bannerA">
+	    <img class="logoA" src="../images/banner/bglogo.png" />
+	    <img width="100%" src="../images/banner/bg1218.jpg" />
+	    
+	    <div class="search-wrap">
+		    <input type="text" placeholder="搜索专家、服务、资源" class="search-input" />
+		    <icon type="search" class="search-icon"></icon>
+		</div>
+	</div>
+	<div class="conblock btnLinkBox clearfix">
+		<ul class="row clearfix">
+			<li class="col-xs-6" id="improfessor">
+				<a href="javascript:;">
+					<div class="btnLinkIcon proBtn"></div>
+					<div class="media-body btnLink">
+						<h4 class='h1Font'>找专家</h4>
+						<p class='h2Font ellipsisSty'>解决企业研发难题</p>
+					</div>
+				</a>
+			</li>
+			<li class="col-xs-6" id="demandP">
+				<a href="javascript:;">
+					<div class="btnLinkIcon fabuBtn"></div>
+					<div class="media-body btnLink">
+						<h4 class='h1Font'>发需求</h4>
+						<p class='h2Font ellipsisSty'>快速获得专家回复</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<div class="mainbox">
+		<div class="maintitbox">
+			<div class="maintit">热门领域</div>
+		</div>
+		<ul class="row gridbg">
+			<li class="col-xs-4" data-title="腐蚀与防护">
+			    <a href="#">
+			        <span class="fieldicon fieldicon01"></span>
+			        <div class="media-body">腐蚀与防护</div>
+			    </a>
+			</li>
+			<li class="col-xs-4" data-title="材料失效与保护">
+			    <a href="#">
+			        <span class="fieldicon fieldicon02"></span>
+			        <div class="media-body">材料失效与保护</div>
+			    </a>
+			</li>
+			<li class="col-xs-4" data-title="材料加工">
+			    <a href="#">
+			        <span class="fieldicon fieldicon03"></span>
+			        <div class="media-body">材料加工</div>
+			    </a>
+			</li>
+			<li class="col-xs-4" data-title="复合材料">
+			    <a href="#">
+			        <span class="fieldicon fieldicon04"></span>
+			        <div class="media-body">复合材料</div>
+			    </a>
+			</li>
+			<li class="col-xs-4" data-title="金属材料">
+			    <a href="#">
+			        <span class="fieldicon fieldicon05"></span>
+			        <div class="media-body">金属材料</div>
+			    </a>
+			</li>
+			<li class="col-xs-4" data-title="">
+			    <a href="#">
+			        <span class="fieldicon fieldicon-more"></span>
+			        <div class="media-body">更多领域</div>
+			    </a>
+			</li>
+		</ul>
+			
+	</div>
+	<div class="mainbox">
+		<div class="maintitbox">
+			<div class="maintit">推荐专家</div>
+		</div>
+		<div class="infocon madiaBlock">
+			<ul class="mui-table-view"  id="hotPro">
+		        
+		    </ul>
+		</div>
+		<div class="seeMore" id="moreHotp"><em>查看更多</em></div>
+	</div>
+	<div class="mainbox">
+		<div class="maintitbox">
+			<div class="maintit">热门资源</div>
+		</div>
+		<div class="infocon madiaBlock">
+			<ul class="mui-table-view" id="resShare">
+		       
+		    </ul>
+		</div>
+		<div class="seeMore" id="moreShare"><em>查看更多</em></div>
+	</div>
+	<div class="mainbox" style="margin-bottom: 20px;">
+		<div class="maintitbox">
+			<div class="maintit">入驻企业</div>
+		</div>
+		<div class="infocon madiaBlock">
+			<ul class="mui-table-view" id="ruZhuCmp">
+		        
+		    </ul>
+		</div>
+		<div class="seeMore" id="moreRcmp"><em>查看更多</em></div>
+	</div>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() {
+	proShow()
+	resShare()
+	ruZhuCmp()
+
+	$("#resShare").on("click","li", function() {
+		var OdataId=this.getAttribute("data-id");
+		location.href="http://" + window.location.host + "/e/r.html?id=" + OdataId;
+	})
+	$("#hotPro").on("click","li", function() {
+		var OdataId=this.getAttribute("data-id");
+		location.href="http://" + window.location.host + "/e/p.html?id=" + OdataId;
+	})
+	$("#ruZhuCmp").on("click","li", function() {
+		var OdataId=this.getAttribute("data-id");
+		location.href="http://" + window.location.host + "/e/c.html?id=" + OdataId;
+	})
+	$("#moreRcmp").on("click", function() {//查看更多企业
+		location.href="http://" + window.location.host + "/e/search.html?flag=6";
+	})
+	$("#moreShare").on("click", function() {//查看更多资源
+		location.href="http://" + window.location.host + "/e/search.html?flag=2";
+	})
+	$("#moreHotp").on("click", function() {//查看更多专家
+		location.href="http://" + window.location.host + "/e/search.html?flag=1";
+	})
+	
+	var this_="../index.html";
+	wcFresh(this_);
+	document.getElementById("demandP").addEventListener("click", function() {
+		isInstalled(this_,true);
+	})
+	document.getElementById("improfessor").addEventListener("click", function() {
+		location.href="http://" + window.location.host + "/e/search.html?flag=1";
+	})
+	/*点击热门领域*/
+	$('.gridbg').on('click', 'li', function() {
+		var subject = this.getAttribute("data-title");
+		location.href="http://" + window.location.host + "/e/search.html?flag=1&key=" + subject;
+	})
+	
+	$(".search-input").keydown(function(e) {//search Enter
+		if(e.which == 13) {
+			var searchContent = $.trim($(".search-input").val());
+			if(searchContent){
+				location.href = "search.html?key=" + encodeURI(searchContent);
+			}else{
+				bombox("请输入关键词");
+				return;
+			}
+		}
+	
+	})
+	
+	function ruZhuCmp(){//入驻企业
+		$.ajax({
+			url:"/ajax/org/index/search",
+			type: "GET",
+			timeout: 10000,
+			dataType: "json",
+			data:{
+				"rows": 5
+			},
+			success: function(data) {
+				if(data.success) {
+					var $info = data.data;
+					for(var i = 0; i < $info.length; i++) {
+						var liStr=document.createElement("li");
+						liStr.className="mui-table-view-cell";
+						liStr.setAttribute("data-id", $info[i].id);
+						document.getElementById("ruZhuCmp").appendChild(liStr);
+						var cmpname,imgurl='../images/default-icon.jpg'
+						if($info[i].hasOrgLogo) {
+							imgurl='/images/org/' + $info[i].id + '.jpg';
+						}
+						if($info[i].forShort){
+							cmpname = $info[i].forShort;
+						}else{
+							cmpname = $info[i].name;
+						}
+						var oSty={sty:"",tit:""};
+						if($info[i].authStatus == 3) {
+							oSty.sty="authicon-com-ok"
+							oSty.tit="科袖认证企业"
+						}
+						var orgOther = "",orgType="";
+						if($info[i].industry) {
+							orgOther = $info[i].industry.replace(/,/gi, " | ");
+						}
+						if($info[i].orgType == "2") {
+							orgType = orgTypeShow[$info[i].orgType] + "<span style='margin-right:16px;'></span>";
+						}
+						var strCon='';
+						strCon += '<div class="flexCenter clearfix">'
+						strCon += '<div class="madiaHead cmpHead">'
+						strCon += '<div class="boxBlock"><img class="boxBlockimg" src="'+imgurl+'"></div></div>'
+						strCon += '<div class="madiaInfo OmadiaInfo">'
+						strCon += '<div class="h1Font  ellipsisSty">'
+						strCon += 	'<span class="qiyego">'+cmpname+'</span>'
+						strCon += 	'<span class="authiconNew '+oSty.sty+'" title="'+oSty.tit+'"></span>'
+						strCon += '</div>'
+						strCon += '<div class="h2Font  ellipsisSty">'
+						strCon += 	'<span>'+orgType+orgOther+'</span>'
+						strCon += '</div>'
+						strCon += '</div></div>'
+						liStr.innerHTML = strCon;
+					}
+				}
+			},
+			error: function() {
+			}
+		})
+	}
+	function resShare(){//资源共享
+		$.ajax({
+			url:"/ajax/resource/index/search",
+			type: "GET",
+			timeout: 10000,
+			dataType: "json",
+			data:{
+				"rows":5
+			},
+			success: function(data) {
+				if(data.success) {
+					var $info = data.data;
+					for(var i = 0; i < $info.length; i++) {
+						var liStr = document.createElement("li");
+						liStr.setAttribute("data-id", $info[i].resourceId);
+						liStr.className = "mui-table-view-cell";
+						document.getElementById("resShare").appendChild(liStr);
+	
+						var cmpname,imgurl='../images/default-resource.jpg'
+						var oSty={sty:"",tit:""};
+						if($info[i].images.length > 0) {
+							imgurl='/data/resource/' + $info[i].images[0].imageSrc 
+						}
+						if($info[i].resourceType == 1) { //个人资源
+							cmpname = $info[i].editProfessor.name;
+							oSty = autho($info[i].editProfessor.authType, $info[i].editProfessor.orgAuth, $info[i].editProfessor.authStatus);
+						} else if($info[i].resourceType == 2) { //企业资源
+							if($info[i].organization.forShort) {
+								cmpname = $info[i].organization.forShort;
+							}else{
+								cmpname = $info[i].organization.name;
+							}
+							if($info[i].organization.authStatus==3){
+								oSty.sty="authicon-com-ok"
+								oSty.tit="科袖认证企业"
+							}
+						}
+						
+						var strCon='';
+						strCon += '<div class="flexCenter clearfix">'
+						strCon += '<div class="madiaHead resouseHead" style="background-image:url('+imgurl+')"></div>'
+						strCon += '<div class="madiaInfo OmadiaInfo">'
+						strCon += '<div class="h1Font  ellipsisSty-2">'+$info[i].resourceName+'</div>'
+						strCon += '<div class="h3Font  ellipsisSty">'
+						strCon += 	'<span class="qiyego">'+cmpname+'</span>'
+						strCon += 	'<span class="authiconNew '+oSty.sty+'" title="'+oSty.tit+'"></span>'
+						strCon += '<div class=" ellipsisSty h2Font">用途：' + $info[i].supportedServices + '</div>'
+						strCon += '</div></div>'
+						liStr.innerHTML = strCon;
+					}
+				}
+			},
+			error: function() {
+			}
+		})
+	}
+	function proShow(){//专家
+		$.ajax({
+			url:"/ajax/professor/index/search",
+			type: "GET",
+			timeout: 10000,
+			dataType: "json",
+			data:{
+				"rows": 5
+			},
+			success: function(data) {
+				if(data.success) {
+					var $info = data.data;
+					for(var i = 0; i < $info.length; i++) {
+						var liStr = document.createElement("li");
+						liStr.setAttribute("data-id", $info[i].id);
+						liStr.className = "mui-table-view-cell";
+						document.getElementById("hotPro").appendChild(liStr);
+	
+						var cmpname,imgurl='../images/default-photo.jpg'
+						var oSty=autho($info[i].authType, $info[i].orgAuth, $info[i].authStatus);
+						cmpname = $info[i].name;
+						if($info[i].hasHeadImage) {
+							imgurl='/images/head/' + $info[i].id + '_l.jpg';
+						}
+						var oTitle='';
+						if($info[i].title) {
+							oTitle = $info[i].title;
+							if($info[i].orgName){
+								oTitle = $info[i].title +'，'+ $info[i].orgName;
+							}
+						} else {
+							if($info[i].office) {
+								oTitle = $info[i].office;
+								if($info[i].orgName){
+									oTitle = $info[i].office +'，'+ $info[i].orgName;
+								}
+							}
+						}
+						var oResult=""
+						if($info[i].researchAreas.length > 0){
+							oResult = '研究方向：';
+							for(var n = 0; n < $info[i].researchAreas.length; n++) {
+								oResult += $info[i].researchAreas[n].caption
+								if(n < $info[i].researchAreas.length - 1) {
+									oResult += "；"
+								}
+							}
+						}
+						
+						var strCon='';
+						strCon += '<div class="flexCenter clearfix">'
+						strCon += '<div class="madiaHead useHead" style="background-image:url('+imgurl+')"></div>'
+						strCon += '<div class="madiaInfo">'
+						strCon += '<div class="h1Font  ellipsisSty">'
+						strCon += 	'<span class="qiyego">'+cmpname+'</span>'
+						strCon += 	'<span class="authiconNew '+oSty.sty+'" title="'+oSty.tit+'"></span>'
+						strCon += '</div>'
+						strCon += '<div class="h3Font  ellipsisSty" style="margin-top:0;">'+oTitle+'</div>'
+						strCon += '<div class="h3Font  ellipsisSty">'+oResult+'</div>'
+						strCon += '</div></div>'
+						liStr.innerHTML = strCon;
+					}
+				}
+			},
+			error: function() {
+			}
+		})
+	}
+
+})
+</script>
+
+</body>
+
+</html>

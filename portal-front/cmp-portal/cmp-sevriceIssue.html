@@ -1,0 +1,190 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>服务发布-科袖网</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="../css/webuploader/webuploader.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/cmpindex.css" rel="stylesheet">
+<style>
+	.childElement{position: absolute;top: 50%;transform: translateY(-50%);left:10px;width:100%;}
+	#resouselist p{width:95%;}
+	#resources p{width:78%;}
+</style>
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<header id="header">
+	<script src="js/public/cmpHeader.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock" style="padding-top:20px">
+			<div class="leftconBox floatL">
+				<ul class="artAbout">
+					<li>
+						<dl class="clearfix" id="fileList">
+							<dd class="uploadD" id="uploadDd">
+								<div class="uploadFile">
+			        				<div class="uploadblock">
+			        					<span class="" id="filePicker">上传图片</span>
+			        					<!--未上传图片时-->
+			        					<div class="upFront" id="uploader">
+				        					<p>服务图片</p>
+				        					<p class="uploadtip">JPG/JPEG/PNG格式，<br/>2M以内</p>
+				            				<span class="upbtn" style="margin-top:8px">上传图片</span>
+			        					</div>
+				            		</div>
+			        			</div>
+							</dd>
+							<dd></dd>
+							<dd></dd>
+						</dl>
+					</li>
+					<li>
+						<div class="aboutTit">服务名称<em class="requiredcon">*</em><span class="frmconmsg" id="resourceNamePrompt" style="display:none;">30字以内</span></div>
+						<input type="text" class="frmtype frmcontype" id="resourceName" value="" placeholder="请填写服务名称" />
+					</li>
+					<li class="form-item">
+						<div class="aboutTit">关键词<span class="frmconmsg" id="keyPrompt"></span></div>
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写相关的关键词，如：腐蚀防护、石墨烯、纳米材料" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" id="KeyWord" />
+							<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult" style="margin-top: -10px;">
+							<ul class="ulspace editUlist clearfix" id="keyWordlist">
+								<!--<li>dd<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</li>
+					<li class="jj">
+						<div class="aboutTit">服务内容<span class="frmconmsg" id="model" style="display:none;">250字以内</span></div>
+						<textarea class="frmtype frmcontype" placeholder="请输入服务内容" id="modelNumber" style="resize:none;min-height: 40px;height:40px;overflow: hidden;"></textarea>
+						<textarea class="frmtype frmcontype" placeholder="请输入服务内容" id="tt" style="position:absolute;top:0;left:-99999px;overflow: hidden;min-height: 40px;height:40px;"></textarea>
+						<!--<input type="text" class="frmtype frmcontype" id="modelNumber" value="" placeholder="请输入服务内容" />-->
+					
+					</li>
+					<li>
+						<div class="aboutTit">合作备注<span class="frmconmsg" id="remark" style="display:none;">1000字以内</span></div>
+						<div class="msgContbox">
+				    		<textarea class="msgCont" placeholder="请输入合作备注" id="remarkContent"></textarea>
+				    		<span class="msgconNum"><em>0</em>/1000</span>
+				    	</div>
+					</li>
+					<li>
+						<div class="aboutTit">详细介绍<span class="frmconmsg"></span></div>
+						<!--这块还是使用编辑框插件-->
+						<div class="editBlock">
+							<script id="editor" name="content" type="text/plain" style="height:500px;"></script>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem">
+					<ul class="operateBlock" id="operateBlocko">
+						<li class="goFabu">
+							<em class="operateicon icon-issue"></em>
+							<p>发布</p>
+						</li>
+						<li class="articalPreview" id="oPreview">
+							<em class="operateicon icon-preview"></em>
+							<p>预览</p>
+						</li>
+						<li id="oDraft">
+							<em class="operateicon icon-draft"></em>
+							<p>存草稿</p>
+						</li>
+						<li class="disableLi" id="deleteResource"><!--只要预览、存草稿、发布之后移除disableLi类-->
+							<em class="operateicon icon-delete"></em>
+							<p>删除</p>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">负责人/联系人<em class="requiredcon">*</em><span class="frmconmsg" id="linkman"></span></div>
+						<div class="form-result addexpertRe">
+							<ul class="addexpert" id="expertli">
+								<!--<li id="usid" data-id="7F26E3C720064AE8A10C7357BBBD239B">
+									<div class="madiaHead useHead" id="userimg"></div>
+									<div class="madiaInfo">
+										<p class="ellipsisSty">
+											<span class="h1Font" id="name"></span><em class="authicon authicon-staff-ok" title="企业认证员工"></em>
+										</p>
+										<p class="h2Font ellipsisSty"></p>
+									</div>
+									<div class="selectAdd"></div>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">本服务相关资源<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入资源名称" id="checkZy" value="">
+						<div class="form-drop">
+							<ul class="expertlist" id="resouselist">
+								<!--<li id="usid" class="flexCenter" data-id="4558F24B922E4FF9A5062AA9869808F8"><p class="h1Font ellipsisSty-2 childElement" style="width:95%;"id="resourceName">但渐渐地就的解决的记得记得就到家但渐渐地就但渐渐地就的解决的记得记得就到家但渐渐地就</p><div class="deleteThis"></div></li>-->
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="resources" style="padding:0 14px;">
+								
+							<!--<li id="usid" class="flexCenter" data-id="4558F24B922E4FF9A5062AA9869808F8"><p class="h1Font ellipsisSty-2 childElement" style="width:78%;"id="resourceName">但渐渐地就的解决的记得记得就到家但渐渐地就但渐渐地就的解决的记得记得就到家但渐渐地就</p><div class="deleteThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer_tools">
+  <a id="scrollUp" href="javascript:;" title="返回顶部"></a>
+</div>
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="../js/jquery.page.js"></script>
+<script type="text/javascript" src="../js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../js/ueditor/ueditor.all.js"></script>
+<script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="js/cmp-serviceIssue.js"></script>
+<script type="text/javascript">
+	//回到顶部
+	var $body = $(document.body);;
+	var $bottomTools = $('.footer_tools');
+	$(window).scroll(function () {
+		var scrollHeight = $(document).height();
+		var scrollTop = $(window).scrollTop();
+		var $footerHeight = $('footer').outerHeight(true);
+		var $windowHeight = $(window).innerHeight();
+		scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display","block") : $("#scrollUp").fadeOut(200);			
+		$bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 20 : $windowHeight + scrollTop + $footerHeight + 20 - scrollHeight);
+	});
+	$('#scrollUp').click(function (e) {
+		e.preventDefault();
+		$('html,body').animate({ scrollTop:0});
+	});
+</script>
+</body>
+</html>

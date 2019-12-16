@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>账户绑定</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body>
+<!--绑定邮箱model-->
+<div class="blackcover">
+	<div class="modelContain">
+		<form name="cmpAllFrm">
+			<ul class="cmpAllUl cmpBindul" id="emailone">
+				<li class="importBlock"><p class="importTip">验证企业邮箱，完成账号绑定</p></li>
+				<li>
+    				<input type="email" class="frmtype frmtypeW" style="height: 40px;line-height: 40px;" placeholder="请输入您的企业邮箱"  id="companyEmail"/>
+    				<div class="frmmsg msgBind1"><span></span></div>
+				</li>
+				<li class="alignCenter">
+					<button type="button" class="frmtype btnModel headRadius save-block" disabled id="saveSubmit">发送验证邮件</button>
+				</li>
+			</ul>
+			<ul class="cmpAllUl cmpBindul displayNone" id="emailtwo">
+				<li class="importBlock">
+					<p class="importTip">验证邮件已发送至：<br />
+						<span class="cmpColor" id="emailShow"></span>
+					</p>
+					<p class="smalltip alignCenter">请您在10分钟内登录您的企业邮箱，接收邮件，<br />点击链接后即可完成绑定。</p>
+				</li>
+				<li class="alignCenter">
+					<button type="button" class="frmtype btnModel headRadius save-block" id="emailGo">登录邮箱</button>
+				</li>
+			</ul>
+		</form>
+		<span class="modelClosebtn"></span>	
+	</div>
+</div>
+
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+<!--中间-->
+<div id="container">
+	<div class="containerCon con-center">
+        <div class="workmenu" style="background: #fff;">
+            <a class="workmenutit accouttit">账户设置</a>
+            <a href="cmp-setPwd.html" class="worksubmenu">密码修改</a>
+            <a href="javascript:;" class="worksubmenu cmpBg">账号绑定</a>
+            <a href="cmp-setAuth.html" class="worksubmenu">企业认证</a>
+        </div>
+        <div class="workcon">
+			<div class="workconitem">
+			    <div class="workcontit">账号绑定</div>
+			    <div class="worksubcon">
+			    	<div class="workblock">
+				        <form name="cmpAllFrm">
+				        	<p class="notetip smalltip">绑定后，您可以使用以下方式登录您的企业账户</p>
+				        	<ul class="cmpAllUl bindBlock">
+				        		<li>
+				        			<div class="col-w-9 bindFont">
+				        				<em></em>
+				        				您已绑定邮箱 <span class="cmpColor" id="orgEmail"></span>
+				        			</div>
+				        			<div class="col-w-3">
+				        				<button type="button" class="frmtype btnModel headRadius bindEmailbtn" >更换</button>
+				        			</div>
+				        		</li>
+				        	</ul>
+			            </form>
+		           </div>
+			    </div>
+			
+			</div>
+        </div>
+	</div>
+</div>
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-setBind.js"></script>
+</body>
+</html>

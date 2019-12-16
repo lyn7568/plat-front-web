@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>修改密码</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+<style type="text/css">
+	ul.cmpAllUl li .frmtype{height: 40px;}
+	ul.cmpAllUl>li .col-w-2 { line-height: 40px;}
+	.forgetLink{top:10px;right:-80px}
+</style>
+</head>
+<body>
+	
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+
+<!--中间-->
+<div id="container">
+	<div class="containerCon con-center">
+        <div class="workmenu" style="background: #fff;">
+            <a class="workmenutit accouttit">账户设置</a>
+            <a href="javascript:;" class="worksubmenu cmpBg">密码修改</a>
+            <a href="cmp-setBind.html" class="worksubmenu">账号绑定</a>
+            <a href="cmp-setAuth.html" class="worksubmenu">企业认证</a>
+        </div>
+        <div class="workcon">
+			<div class="workconitem">
+			    <div class="workcontit">密码修改</div>
+			    <div class="worksubcon">
+			    	<div class="workblock">
+				        <form name="cmpAllFrm">
+				        	<ul class="cmpAllUl" id="cmpAllUl">
+				        		<li>
+				        			<div class="col-w-2">当前密码</div>
+				        			<div class="col-w-10">
+				        				<input type="password" class="frmtype frmtypeW" placeholder="请输入当前使用的登录密码" id="oldPwd"/>
+				        				<a href="cmp-pwdReset01.html" class="fontLink forgetLink cmpColor">忘记密码？</a>
+				        				<div class="frmmsg msgPwd1"><span></span></div>
+				        			</div>
+				        		</li>
+				        		<li>
+				        			<div class="col-w-2">新密码</div>
+				        			<div class="col-w-10">
+				        				<input type="password" class="frmtype frmtypeW" placeholder="请设置您的新密码" id="newPwd"/>
+				        				<div class="frmmsg msgPwd2"><span></span></div>
+				        			</div>
+				        		</li>
+				        		<li>
+				        			<div class="col-w-2">确认密码</div>
+				        			<div class="col-w-10">
+				        				<input type="password" class="frmtype frmtypeW" placeholder="请再次输入密码确认" id="newPwdOk"/>
+				        				<div class="frmmsg msgPwd3"><span></span></div>
+				        			</div>
+				        		</li>
+				        		<li class="alignCenter">
+									<button type="button" class="frmtype btnModel headRadius save-block" disabled id="newpwdSubmit">保存</button>
+								</li>
+				        	</ul>
+			            </form>
+		           </div>
+			    </div>
+			
+			</div>
+        </div>
+	</div>
+</div>
+
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-setPwd.js"></script>
+</body>
+</html>

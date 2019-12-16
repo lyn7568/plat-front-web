@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览团队信息-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d3db502c8cee2d618c01fe7aa6518602";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+<style>
+.tag-show{
+	position:absolute;
+	right:-10px;
+	top: 6px;
+}
+.tag-show>span{
+	display: block;
+	margin-bottom:2px;
+	font-size: 10px;
+	color: #ffffff;
+	background:#ff0000;
+	border-radius: 20px;
+	padding:2px 6px;
+}
+.aboutTit .seeMore{
+	font-size: 13px;
+	color: #ff9900;
+	cursor: pointer;
+}
+.steptit{
+	margin-bottom: 10px;
+}
+.steptit>a{
+	display: inline-block;
+	font-size: 15px;
+	margin-right:10px;
+	line-height: 40px;
+	cursor: pointer;
+}
+.steptit>a.active{
+	color: #ff9900;
+    border-bottom: 2px solid #ff9900;
+}
+.leftconItem .steptit{
+	padding: 10px 20px;
+}
+.queStep .quemain{
+	border-top: 1px #eee solid;
+	padding-top:10px;
+	min-height: 200px;
+}
+.form-item .madiaEdit{
+	position:absolute;
+	top:25%;
+	right: 30px;
+	overflow: hidden;
+	z-index: 22;
+}
+.form-item .madiaInfo{
+	padding-right:280px;
+}
+.form-item .madiaEdit>li{
+	border:1px solid #ff9900;
+	color: #ff9900;
+	padding:2px 6px;
+	margin: 2px;
+	text-align: center;
+	float:left;
+}
+.form-item .madiaEdit>li.added{
+	color:#999;
+	cursor:auto;
+	border:none
+}
+.form-item .madiaEdit>li.authTeamSta{
+	background:#ff9900;
+	color:#fff;
+	cursor: auto;
+}
+</style>
+</head>
+
+<body>
+<div class="blackcover questionCover displayNone">
+	<div class="resAreaBox putquestion">
+		<div class="queStep">
+			<div class="steptit">
+				<a data-index='0' class="active">管理成员</a>
+				<a data-index='1'>添加成员</a>
+			</div>
+			<div class="quemain">
+				<div class="artAbout">
+					<div class="form-item">
+						<div class="form-result" style="margin: 18px -20px 0 -20px;">
+							<ul id="teamMembers">
+							</ul>
+							<button class="js-load-more"></button>
+						</div>
+					</div>
+				</div>
+				<div class="itemListBolck artAbout displayNone">
+					<div class="searchAbout">
+						<input class="frmcontype" type="search" id="searchMe" name=""
+							placeholder="搜素您想邀请的专家">
+						<span class="searchSpan"></span>
+					</div>
+					<div class="form-item">
+						<div class="form-result" style="margin: 18px -20px 0 -20px;">
+							<ul id="searchMembers">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<span class="workclose" id="workclose"></span>
+	</div>
+</div>
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="headconBox flexCenter">
+                <div class="reInfoBlock" style="padding-left:0">
+                	<div class="h1Font"><span id="proName"></span></div>
+                	<div class="h2Font ellipsisSty"><span id="proOther"></span></div>
+                	<div class="operateBlock bottomShow">
+                		<ul class="clearfix">
+                			<li><span id="proAddress"></span></li>
+							<li>
+								<span>分享到</span>
+								<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+								<em class="operateicon operateicon2 icon-wechat shareWeixin">
+									<div class="shareCode clearfix">
+										<div class="floatL" id="qrcode"></div>
+										<div class="shareWord floatR">
+											<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+										</div>
+									</div>
+								</em>
+							</li>
+                		</ul>
+                	</div>
+                </div>
+				<div class="goSpan">
+					<a class="goSpanTo" id="updateTeam">修改资料</a>
+					<a class="goSpanTo" id="delTeam">删除团队</a>
+				</div>
+			</div>
+			<div class="leftconBox floatL">
+				<div class="navconBox">
+					<ul class="mainNavUl clearfix">
+						<li rel="item1user" id="tab1user" class="liNow">主页</li>
+						<li rel="item6user" id="tab6user" tmp="item6more" class="wenda">成果 <span class="counts" id="qaCount"></span></li>
+						<li rel="item5user" id="tab5user">论文 <span class="counts" id="parCount"></span></li>
+					</ul>
+					<div class="moreNav wendaNav" id="item6more">
+						<ul class="moreNavUl wendaUl clearfix">
+							<li rel="item6drop1" data-num="1" class="liNow">非专利 <span class="counts" id="unpatCount"></span></li>
+							<li rel="item6drop2" data-num="2" class="">专利 <span class="counts" id="patCount"></span></li>
+						</ul>	
+					</div>
+				</div>
+				<div class="itremconBox">
+					<div id="item1user" class="leftconItem"style="background: #f4f6f8;">
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">团队简介</div>
+							<div class="coninfocon" id="descpS">
+								
+							</div>
+						</div>
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">学术领域</div>
+							<div class="coninfocon listArea">
+								<ul id="subjectShow">
+									
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">行业领域</div>
+							<div class="coninfocon listArea">
+								<ul id="industryShow">
+	
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfotit">非专 <span class="seeMore" id="seeMoreF">查看全部<em></em></span></div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="showUnPatent">
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfotit">专利 <span class="seeMore" id="seeMoreZ">查看全部<em></em></span></div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="showPatent">	
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfotit">论文 <span class="seeMore" id="seeMoreL">查看全部<em></em></span></div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="showPaper">
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item5user" class="leftconItem">
+						<div class="steptit">
+							<a data-index='0' class="active">管理论文</a>
+							<a data-index='1'>添加论文</a>
+						</div>
+						<div class="coninfobox form-item otherShow" style="padding-top: 0px">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proPaper">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="coninfocon aboutRes displayNone">
+								<div class="itemListBolck form-result">
+									<div class="searchAbout" style="margin:0px 20px 10px">
+										<input class="frmcontype" type="search" id="searchPaperKey" name=""
+											placeholder="搜素您想添加的论文">
+										<span class="searchSpan"></span>
+									</div>
+									<div>
+										<ul id="searchPaper">
+										
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="item6user" class="leftconItem">
+						<div id="item6drop1" class="coninfobox form-item otherShow dropconItem">
+							<div class="steptit" style="margin:-30px -30px 0;">
+								<a data-index='0' class="active">管理非专</a>
+								<a data-index='1'>添加非专</a>
+							</div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proUnPatent">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="coninfocon aboutRes displayNone">
+								<div class="itemListBolck form-result">
+									<div class="searchAbout" style="margin:0px 20px 10px">
+										<input class="frmcontype" type="search" id="searchUnPatentKey" name=""
+											placeholder="搜素您想添加的非专">
+										<span class="searchSpan"></span>
+									</div>
+									<div>
+										<ul id="searchUnPatent">
+										
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="item6drop2" class="coninfobox form-item otherShow dropconItem">
+							<div class="steptit" style="margin:-30px -30px 0;">
+								<a data-index='0' class="active">管理专利</a>
+								<a data-index='1'>添加专利</a>
+							</div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proPatent">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="coninfocon aboutRes displayNone">
+								<div class="itemListBolck form-result">
+									<div class="searchAbout" style="margin:0px 20px 10px">
+										<input class="frmcontype" type="search" id="searchPatentKey" name=""
+											placeholder="搜素您想添加的专利">
+										<span class="searchSpan"></span>
+									</div>
+									<div>
+										<ul id="searchPatent">
+										
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem alignCenter">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">团队专家 <span class="seeMore floatR" id="manageMembers">管理成员<em></em></span></div>
+						<div class="form-result addexpertRe" style="margin-top:0">
+							<ul class="addexpert" id="expertli">
+								
+							</ul>
+							<button class="js-load-more"></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--尾部-->
+<footer class="footerblock">
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/tabCom.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/public/cacheUtil.js"></script>
+<script type="text/javascript" src="js/teamManage.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>搜索-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d3db502c8cee2d618c01fe7aa6518602";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+<style>
+.steptit{
+	background: #ffffff;
+	padding-left: 20px;
+	margin-bottom: 10px;
+}
+.steptit>a{
+	display: inline-block;
+	font-size: 14px;
+	margin-right:20px;
+	line-height: 40px;
+	cursor: pointer;
+}
+.steptit>a.active{
+	color: #ff9900;
+    border-bottom: 2px solid #ff9900;
+}
+</style>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="leftconBox searchWon floatL" style="background: none;margin-bottom: 0;">
+				<div class="searchdiv">
+					<input type="search" name="searchsome" class="searchsome col-w-12" placeholder="请输入专家姓名、机构、研究方向或相关关键词" />
+					<span class="searchgo">搜索</span>
+				</div>
+				<ul class="choosediv clearfix filterdiv">
+					<li id="tabUser" rel="itemUser" class="liactive" data-id="1">找专家</li>
+					<!-- <li id="tabTeam" rel="itemTeam" data-id="8">找团队</li> -->
+					<li id="tabSer" rel="itemSer" data-id="7">找服务</li>
+					<li id="tabRes" rel="itemRes" data-id="2">找资源</li>
+					<li id="tabPat" rel="itemPat" data-id="5">找成果</li>
+					<li id="tabPar" rel="itemPar" data-id="6">找论文</li>
+					<!-- <li id="tabArt" rel="itemArt" data-id="3">找文章</li> -->
+					<li id="tabCmp" rel="itemCmp" data-id="4">找企业</li>
+				</ul>
+				<div class="listdiv">
+					<!--找人-->
+					<div class="listbox" id="itemUser">
+						<ul class="filterListNew clearfix">
+							<li>
+								<span class="leftsort">学术领域：</span>
+								<ul class="filterUl academicField" id="academicField1">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">行业领域：</span>
+								<ul class="filterUl applicationIndustry" id="applicationIndustry1">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">所在城市：</span>
+								<ul class="filterUl cityList" id="cityList1">
+									
+								</ul>
+								<span class="rightbtn">全部<em class="foldtr"></em></span>
+							</li>
+						</ul>
+						<div class="searchCon">
+							<ul class="listitemdiv" id="expertList"></ul>
+							<button class="js-load-more"></button>	
+					    </div>
+					</div>
+					<!--找团队-->
+					<div class="listbox" id="itemTeam">
+						<ul class="filterListNew clearfix">
+							<li>
+								<span class="leftsort">学术领域：</span>
+								<ul class="filterUl academicField" id="academicField2">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">行业领域：</span>
+								<ul class="filterUl applicationIndustry" id="applicationIndustry2">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">所在城市：</span>
+								<ul class="filterUl cityList" id="cityList2">
+									
+								</ul>
+								<span class="rightbtn">全部<em class="foldtr"></em></span>
+							</li>
+						</ul>
+						<div class="searchCon">
+							<ul class="listitemdiv" id="teamList"></ul>
+							<button class="js-load-more"></button>	
+						</div>
+					</div>
+					<!--找企业-->
+					<div class="listbox" id="itemCmp">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="companyList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找资源-->
+					<div class="listbox" id="itemRes">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="resourceList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找专利-->
+					<div class="listbox" id="itemPat">
+						<div class="steptit">
+							<a data-index='0' class="active">非专利</a>
+							<a data-index='1'>专利</a>
+						</div>
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="unpatentList"></ul>
+							<button class="js-load-more"></button>	
+						</div>
+						<div class="searchCon displayNone">
+							<ul class="listitemdiv listmorediv" id="patentList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找论文-->
+					<div class="listbox" id="itemPar">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="paperList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找文章-->
+					<!-- <div class="listbox" id="itemArt">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="articalList"></ul>
+							<button class="js-load-more"></button>
+					  	</div>
+					</div> -->
+					<!--找服务-->
+					<div class="listbox" id="itemSer">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="serviceList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div id="scroll-fixed-ad">
+					<div class="conItem advertBox advertItem advertItem-A"></div>
+					<div class="conItem advertBox advertItem advertItem-B"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/tabCom.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/public/cacheUtil.js"></script>
+<script type="text/javascript" src="js/scrollfix.js"></script>
+<script type="text/javascript" src="js/searchNew.js"></script>
+<script type="text/javascript">
+$(function () {
+	addscript("ad_search_a");
+	addscript("ad_search_b");
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>搜索-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d3db502c8cee2d618c01fe7aa6518602";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+<style>
+.steptit{
+	background: #ffffff;
+	padding-left: 20px;
+	margin-bottom: 10px;
+}
+.steptit>a{
+	display: inline-block;
+	font-size: 14px;
+	margin-right:20px;
+	line-height: 40px;
+	cursor: pointer;
+}
+.steptit>a.active{
+	color: #ff9900;
+    border-bottom: 2px solid #ff9900;
+}
+</style>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="leftconBox searchWon floatL" style="background: none;margin-bottom: 0;">
+				<div class="searchdiv">
+					<input type="search" name="searchsome" class="searchsome col-w-12" placeholder="请输入专家姓名、机构、研究方向或相关关键词" />
+					<span class="searchgo">搜索</span>
+				</div>
+				<ul class="choosediv clearfix filterdiv">
+					<li id="tabUser" rel="itemUser" class="liactive" data-id="1">找专家</li>
+					<!-- <li id="tabTeam" rel="itemTeam" data-id="8">找团队</li> -->
+					<li id="tabSer" rel="itemSer" data-id="7">找服务</li>
+					<li id="tabRes" rel="itemRes" data-id="2">找资源</li>
+					<li id="tabPat" rel="itemPat" data-id="5">找成果</li>
+					<li id="tabPar" rel="itemPar" data-id="6">找论文</li>
+					<!-- <li id="tabArt" rel="itemArt" data-id="3">找文章</li> -->
+					<li id="tabCmp" rel="itemCmp" data-id="4">找企业</li>
+				</ul>
+				<div class="listdiv">
+					<!--找人-->
+					<div class="listbox" id="itemUser">
+						<ul class="filterListNew clearfix">
+							<li>
+								<span class="leftsort">学术领域：</span>
+								<ul class="filterUl academicField" id="academicField1">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">行业领域：</span>
+								<ul class="filterUl applicationIndustry" id="applicationIndustry1">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">所在城市：</span>
+								<ul class="filterUl cityList" id="cityList1">
+									
+								</ul>
+								<span class="rightbtn">全部<em class="foldtr"></em></span>
+							</li>
+						</ul>
+						<div class="searchCon">
+							<ul class="listitemdiv" id="expertList"></ul>
+							<button class="js-load-more"></button>	
+					    </div>
+					</div>
+					<!--找团队-->
+					<div class="listbox" id="itemTeam">
+						<ul class="filterListNew clearfix">
+							<li>
+								<span class="leftsort">学术领域：</span>
+								<ul class="filterUl academicField" id="academicField2">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">行业领域：</span>
+								<ul class="filterUl applicationIndustry" id="applicationIndustry2">
+									
+									</ul>
+									<span class="rightbtn">全部<em class="foldtr"></em></span>
+								</li>
+								<li>
+								<span class="leftsort">所在城市：</span>
+								<ul class="filterUl cityList" id="cityList2">
+									
+								</ul>
+								<span class="rightbtn">全部<em class="foldtr"></em></span>
+							</li>
+						</ul>
+						<div class="searchCon">
+							<ul class="listitemdiv" id="teamList"></ul>
+							<button class="js-load-more"></button>	
+						</div>
+					</div>
+					<!--找企业-->
+					<div class="listbox" id="itemCmp">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="companyList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找资源-->
+					<div class="listbox" id="itemRes">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="resourceList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找专利-->
+					<div class="listbox" id="itemPat">
+						<div class="steptit">
+							<a data-index='0' class="active">非专利</a>
+							<a data-index='1'>专利</a>
+						</div>
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="unpatentList"></ul>
+							<button class="js-load-more"></button>	
+						</div>
+						<div class="searchCon displayNone">
+							<ul class="listitemdiv listmorediv" id="patentList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找论文-->
+					<div class="listbox" id="itemPar">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="paperList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+					<!--找文章-->
+					<!-- <div class="listbox" id="itemArt">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="articalList"></ul>
+							<button class="js-load-more"></button>
+					  	</div>
+					</div> -->
+					<!--找服务-->
+					<div class="listbox" id="itemSer">
+						<div class="searchCon">
+							<ul class="listitemdiv listmorediv" id="serviceList"></ul>
+							<button class="js-load-more"></button>
+					    </div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div id="scroll-fixed-ad">
+					<div class="conItem advertBox advertItem advertItem-A"></div>
+					<div class="conItem advertBox advertItem advertItem-B"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/tabCom.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/public/cacheUtil.js"></script>
+<script type="text/javascript" src="js/scrollfix.js"></script>
+<script type="text/javascript" src="js/searchNew.js"></script>
+<script type="text/javascript">
+$(function () {
+	addscript("ad_search_a");
+	addscript("ad_search_b");
+});
+</script>
+</body>
+</html>
+

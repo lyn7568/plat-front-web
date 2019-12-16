@@ -1,0 +1,116 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>修改论文-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	.aboutPa .form-result>ul>li{display:block;}
+</style>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+					<div class="h1Font" id="paperName"></div>
+                	
+					<!--资源详情区-->
+					<div class="showMain showMainP">
+						<ul>
+							<li>
+								<div class="showTit">期刊：<span class="showCon" id="paperJournal"></span></div>
+							</li>
+							<li>
+								<div class="showTit">期卷：<span class="showCon" id="paperVolume"></span></div>
+							</li>
+							<li>
+								<div class="showTit">摘要：</div>
+								<div class="showCon" id="paperAbstract">
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--标签模块-->
+					<div class="form-item">
+						<div class="aboutTit">关键词</div>
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写相关的关键词，如：腐蚀防护、石墨烯、纳米材料" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" />
+							<button type="button" class="frmcontype btnModel frmaddG addButton">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="paperSList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+					<!--作者-->
+					<div class="form-item aboutPa">
+						<div class="aboutTit">作者</div>
+						<div class="form-result">
+							<ul class="clearfix" id="aboutAuthors">
+								
+							</ul>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem conItemFirst">
+					<ul class="operateBlock">
+						<li class="goFabu" id="release">
+							<em class="operateicon icon-issue"></em>
+							<p>发布</p>
+						</li>
+						<li class="feedBack">
+							<em class="operateicon icon-feedback"></em>
+							<p>纠错</p>
+						</li>
+						<li class="disableLi" id="delete">
+							<em class="operateicon icon-delete"></em>
+							<p>删除</p>
+						</li>
+					</ul>
+				</div>
+				<div class="correctBlock feedbackBox" id="feedbackBox"> 
+					<div class="cBacktit">
+						<span>纠错反馈</span>
+						<em class="closeFeed"></em>
+					</div>
+					<textarea class="frmcontype correctCon" placeholder="请具体说明您发现的问题，以便我们为您快速解决"></textarea>
+					<button class="frmcontype btnModel correctSubmit" disabled>提交</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/paperModify.js"></script>
+
+</body>
+</html>

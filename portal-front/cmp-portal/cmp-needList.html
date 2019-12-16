@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>需求-企业工作台-科袖网</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+<link type="text/css" rel="stylesheet" href="css/glyIcon.css">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript"src="../js/jquery.page.js"></script>
+<script type="text/javascript"src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/public/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+</head>
+<body>
+<div class="blackcover2" style="display: none;"></div>
+<div class="setTimeBlock modelContain">
+	<span class="mb_tit">提示</span>
+	<a class="mb_close"></a>
+	<div class="mb_msg" id="promotTh">
+		<input type="hidden" id="oldName" />
+	</div>
+	<div class="mb_btnbox" id="promotGt">
+		<input class="mb_btn mb_btnNo" type="button" value="取消">
+	</div>
+</div>
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+
+<!--中间-->
+<div id="container">
+	<div class="containerCon">
+		<div class="con-center contentCon clearfix conBlock">
+	        <div class="workmenu">
+	        	<script src="js/public/workMenu.js"></script>
+	        </div>
+	        <div class="workcon workconG">
+				<div class="workcontit"><a class="worksamlltit worksamlltitnow">企业需求</a></div>
+				<div class="itemListBolck">
+					<div class="workblock identityState" id="identityState" style="display:none">
+						<div class="nowState">
+						   <p><span class="identProcess" id="identProcess">通过企业认证，发布您的需求，让专家找上门。</span><span class="identts" id="identts"></span></p>
+						   <a href="cmp-setAuth.html?auth=1"><button type="button" class="frmtype btnModel headRadius identBtn" id="identBtn">马上认证</button></a>
+						</div>
+					</div>
+					
+					<div class="form-item itemListCon" id="companyDemandList" style="display:none;">
+						<div class="topOperaBlock clearfix"style="margin-bottom:20px;">
+						<div class="issueSpanBlock col-w-4 floatR">
+							<a class="issueSpan">发布需求</a>
+						</div>
+					</div>
+						<div class="form-result aboutRes" style="border:none;margin-top:0;">
+							<ul class="form-need" id="cmpneedList">
+								
+							</ul>
+							<div class="nodatabox displayNone">
+						        <div class="nodata">
+						            <div class="picbox picNull"></div>
+						            <div class="txtbox">
+						            	<p class="noContip">您的认证员工尚未发布任何需求</p>
+						            </div>
+						        </div>
+						    </div>
+							<div class="tcdPageCode"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		    
+        </div>
+	</div>
+</div>
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-needList.js"></script>
+<script type="text/javascript">
+//Model模态框打开关闭
+$(".mb_close,.mb_btnNo").click(function() {
+	$(".modelContain").hide();
+	$(".blackcover2").fadeOut();
+	$("body").removeClass("modelOpen");
+})
+</script>
+</body>
+</html>

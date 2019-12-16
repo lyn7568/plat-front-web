@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">注册科袖</p>
+				<ul class="loginWaySort">
+					<li class="col-w-6 liactive">手机注册</li>
+					<li class="col-w-6">邮箱注册</li>
+				</ul>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--手机注册-->
+						<ul class="cmpAllUl cmpCoverUl" id="regMess">
+							<li>
+								<input type="text" class="frmtype frmtypeW" placeholder="请输入真实姓名" id="yourName"/>
+			    				<div class="frmmsg msgLog0"><span></span></div>
+							</li>
+							<li>
+								<input type="phone" class="frmtype frmtypeW" placeholder="请输入手机号码" id="lp_phone"/>
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<div class="col-w-7">
+									<input type="text" class="frmtype frmtypeW" style="width: 98%;" placeholder="请输入图形验证码" id="imgCode"/>
+								    <div class="frmmsg msgImage"><span></span></div>
+							    </div>
+							    <div class="col-w-5">
+							    	<img src="/ajax/PictureVC" alt="" class="frmtypeW" id="changImage"/>
+							    </div>
+							</li>
+							<li>
+								<div class="col-w-7">
+									<input type="tel" class="frmtype frmtypeW companysc" style="width: 98%;" placeholder="请输入短信验证码"/>
+								    <div class="frmmsg msgCmp03"><span></span></div>
+							    </div>
+							    <div class="col-w-5">
+							    	<button type="button"  class="frmtype frmtypeW btnModel headRadius" id="getcode">获取验证码</button>
+							    </div>
+							</li>
+							<li>
+								<input type="password" class="frmtype frmtypeW" placeholder="请设置登录密码" id="phone_password"/>
+			    				<div class="frmmsg msgLog3"><span></span></div>
+							</li>
+							<li>
+								<!--未选中状态c-sign-on_button_xuanze_nor.png-->
+								<img class="cmpAgree ifxuanze" src="images/c-sign-on_button_xuanze_hig.png" />
+								<span>我已阅读并同意<a class="mainColor" href="privacy.html">《科袖用户协议》</a></span>
+							</li>
+							<li>
+								<button type="button" disabled class="frmtype frmtypeW btnModel save-block headRadius" id="reg">注册</button>
+							</li>
+						</ul>
+						<!--邮箱注册-->
+						<ul class="cmpAllUl cmpCoverUl displayNone" id="mailMess">
+							<li>
+								<input type="text" class="frmtype frmtypeW" placeholder="请输入真实姓名" id='mailName'/>
+			    				<div class="frmmsg msgLog0"><span></span></div>
+							</li>
+							<li>
+								<input type="email" class="frmtype frmtypeW" placeholder="请输入邮箱地址" id="mailAddress"/>
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<input type="password" class="frmtype frmtypeW" placeholder="请设置登录密码" id="mailLoginPassword"/>
+			    				<div class="frmmsg msgLog3"><span></span></div>
+							</li>
+							<li>
+								<!--未选中状态c-sign-on_button_xuanze_nor.png-->
+								<img class="cmpAgree ifxuanze" src="images/c-sign-on_button_xuanze_hig.png" />
+								<span>我已阅读并同意<a class="mainColor" href="privacy.html">《科袖用户协议》</a></span>
+							</li>
+							<li>
+								<button type="button" disabled class="frmtype frmtypeW btnModel save-block headRadius" id="mailReg">注册</button>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix" style="margin-top:-15px;">
+						<span class="floatR" style="color:#999">已有账号？<a href="login.html" class="fontLink">立即登录</a></span>
+					</div>
+				</div>
+				<!--邮箱第二步-->
+				<ul class="cmpAllUl cmpCoverUl maliTo displayNone">
+					<li class="alignCenter">
+						<p class="importTip" style="margin:8px 0;">账户激活邮件已发送至：<br />
+							<span class="mainColor" id="omaile"></span>
+						</p>
+						<p class="smalltip alignCenter">请您在10分钟内登录您的邮箱，接收邮件，<br />点击链接后即可激活账户。</p>
+					</li>
+					<li>
+						<button type="button" class="frmtype frmtypeW btnModel headRadius save-block" id="loginMail">登录邮箱</button>
+					</li>
+				</ul>	
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/register.js"></script>
+</body>
+</html>

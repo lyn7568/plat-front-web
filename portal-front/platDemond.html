@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览需求-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<style>
+     .platName {
+        margin-left: 15px;
+    }
+    .showStatus li{
+        list-style:none;
+        margin-top: 10px;
+    }
+    .showMain .showStatusY {
+        text-align: left;
+        color: #666666;
+    }
+</style>
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+        <div class="blackcover questionCover displayNone">
+                <div class="resAreaBox putquestion">
+                    <div class="queStep queStep01">
+                        <div class="steptit">回复需求</div>
+                        <ul class="artAbout">
+                            <li>
+                                <div class="aboutTit">确定后，将在【消息】中收到对方发来的信息。您可以先给对方留言
+                                    <em class="requiredcon">*</em><span class="frmconmsg"></span></div>
+                                <div class="msgContbox">
+                                    <textarea class="msgCont" id="queTit"></textarea>
+                                </div>
+                            </li>
+                            <li class="saveBtn" style="text-align:center;">
+                                    <button type="button" class="frmcontype btnModel" id="pubSte" style="float:none">确定</button>
+                                    <button type="button" class="frmcontype btnModel btnCancel" id="preSte" style="float:none">取消</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="workclose" id="workclose"></span>
+                </div>
+            </div>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+                    <div>来自：<span class="platName"></span></div>
+					<div class="h1Font" id="demandTit"></div>
+					<div class="operateBlock bottomShow" style="margin-top:10px;">
+                		<ul class="clearfix" id="demandNum">
+                		</ul>
+                	</div>
+					<!--详情区-->
+					<div class="showMain">
+						<div class="showCon" style="min-height: 60px;" id="demandDesp"></div>
+						<ul class="showli clearfix h3Font" id="demandInf">
+							
+						</ul>
+						<div class="showStatus">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/platDemond.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+</body>
+</html>

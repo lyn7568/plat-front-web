@@ -1,0 +1,8 @@
+{
+  "handleFiles": [],
+  "ignoreFiles": [
+    "/build_cfg/**/*",
+    "/**/.git/**/*",
+    "/**/.gitignore"
+  ]
+}

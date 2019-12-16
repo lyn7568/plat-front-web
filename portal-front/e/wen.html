@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>问题分享-科袖网</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/zoomify.min.css">
+		<link rel="stylesheet" href="../css/common.css" />
+		<link rel="stylesheet" href="../css/share.css" />
+		<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+		<script type="text/javascript" src="../js/public/zoomify.js"></script>
+		<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+		<script type="text/javascript" src="../js/public/shareCom.js"></script>
+		<script type="text/javascript" src="../js/public/openApp.js"></script>
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0px;
+				background: #F4F6F8;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="contentBody2">
+			<div class="list-main scroll-view">
+				<section class="list_content clearfix">
+					<ul class="tagList"></ul>
+					<div class="item_detail" id="questionId">
+						<h3 class="h1Font" id="questionTit"></h3>
+						<div class="list_con" id="questionCnt"></div>
+						<ul class="list_image clearfix"><li><span class="imgspan"></span></li></ul>
+						<div class="item_info">
+							<span class="time h3Font" id="questionTime"></span>
+						</div>
+					</div>
+					<ul class="item-btn clearfix">
+						<li class="go-answer"><span>回答</span></li>
+						<li class="invite-answer"><span>邀请回答</span></li>
+						<li class="collectBtn"><span class="iconfontnew icon-shoucang"></span></li>
+					</ul>
+				</section>
+				<section class="list-hold">
+					<div class="list-hold-count">
+						<span>全部 <em id="replyCount"></em> 个回答</span>
+						<ul>
+							<li class="active" data-type="1"><span>默认</span></li>
+							<li data-type="2"><span>最新</span></li>
+						</ul>
+					</div>
+					<ul class="mui-table-view myAllneeds partLine" id="curAnswers">
+
+					</ul>
+				</section>
+			</div>
+
+			<div class="shareEcode">
+				<img class="Ecodecon" src="../images/ecordCard.jpg" />
+				<div class="Ecodeinfo">
+					<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app"><button class="frmbtn frmactive">下载移动客户端</button></a>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var imgUrl = "http://www.ekexiu.com/images/logo180.png",
+					lineLink = document.location.href,
+					descContent = "",
+					shareTitle,
+					appid = '';
+				var questionId = GetQueryString("id");
+				wlog("question",questionId,'3');
+				pageViewLog(questionId,8);
+				var rows = 5,
+					dataO = {
+						time: "",
+						id: "",
+						score: "",
+						agree:""
+					};
+				var pkey = [],
+					byway;
+				var oAjax = function(url, dataS, otype, oFun) {
+						$.ajax({
+							url: url,
+							dataType: 'json',
+							type: otype,
+							data: dataS,
+							success: function(res) {
+								if(res.success) {
+									oFun(res)
+								}
+							}
+						});
+					},
+					getConmain = function() {
+						oAjax('/ajax/question/qo', {
+							"id": questionId
+						}, "get", function(res) {
+							var $da = res.data
+							document.getElementById("questionId").setAttribute("data-id", $da.id);
+							document.getElementById("questionTit").innerHTML = $da.title;
+							document.getElementById("questionTime").innerHTML = commenTime($da.createTime);
+							document.getElementById("replyCount").innerHTML = $da.replyCount;
+
+							if($da.cnt) {
+								document.getElementById("questionCnt").innerHTML = ($da.cnt).replace(/\n/g,"<br />");
+								descContent = document.getElementById("questionCnt").innerHTML.substr(0, 70);
+							}
+
+							shareTitle = $da.title;
+							document.title = $da.title;
+
+							if($da.keys != undefined && $da.keys.length != 0) {
+								var subs=strToAry($da.keys)
+								var pstr = ""
+								if(subs.length > 0) {
+									for(var i = 0; i < subs.length; i++) {
+										pstr += '<li><span class="h2Font">' + subs[i] + '</span></li>'
+									};
+									document.getElementsByClassName("tagList")[0].innerHTML = pstr;
+								} else {
+									document.getElementsByClassName("tagList")[0].style.display = "none";
+								}
+							}
+							if($da.img) {
+								var subs=strToAry($da.img)
+								var pstr = ""
+								if(subs.length > 0) {
+									for(var i = 0; i < subs.length; i++) {
+										var imgu= "/data/question"+subs[i]
+										pstr += '<li><span class="imgspan" style="background-image: url('+imgu+');"><img src="'+imgu+'" data-preview-src="" /></span></li>'
+									};
+									document.getElementsByClassName("list_image")[0].style.display = "block";
+									document.getElementsByClassName("list_image")[0].innerHTML = pstr;
+								} 
+								$('.list_image img').zoomify();
+
+								imgUrl = "http://www.ekexiu.com/data/question" + subs[0].replace(/\.(jpg|jpeg|png)$/,"_s.jpg");
+							}
+
+						})
+					},
+					answerList = function() {
+						var byway = document.querySelector('.list-hold-count>ul').querySelector("li.active").getAttribute("data-type");
+						var typeurl, dataStr = {};
+						if(byway == 1) {
+							typeurl = "/ajax/question/answer/qes/byScore"
+							dataStr = {
+								"qid": questionId,
+								"score": dataO.score,
+								"agree":dataO.agree,
+								"id": dataO.id,
+								"rows": rows
+							}
+						} else if(byway == 2) {
+							typeurl = "/ajax/question/answer/qes/byTime"
+							dataStr = {
+								"qid": questionId,
+								"time": dataO.time,
+								"id": dataO.id,
+								"rows": rows
+							}
+						}
+						oAjax(typeurl, dataStr, "get", function(res) {
+							var aimId = "curAnswers",
+								newStr = "暂无回答"
+							var $info = res.data;
+							if($info.length > 0) {
+								for(var i = 0; i < $info.length; i++) {
+									var liStr = document.createElement("li");
+									liStr.className = "mui-table-view-cell";
+									liStr.setAttribute("data-id", $info[i].id);
+									document.getElementById(aimId).appendChild(liStr);
+									answerModule($info[i], liStr);
+								}
+							}
+							var liLen=document.getElementById(aimId).querySelectorAll("li").length;
+			                removeAfter(aimId);
+			                if($info.length == 0 && liLen == 0 ){
+			                    insertAfter(newStr,aimId);
+			                }
+						})
+					},
+					insertAfter = function (newStr, targetE) {
+		                var parent = document.getElementById(targetE).parentNode;
+		                var kong = document.createElement("div");
+		                kong.className = "con-kong";
+		                kong.innerHTML = newStr;
+		                if (parent.firstChild.className == "con-kong") {
+		                    return
+		                } else {
+		                    parent.insertBefore(kong,parent.firstChild);
+		                }
+		
+		            },
+		            removeAfter = function (targetE) {
+		                var parent = document.getElementById(targetE).parentNode;
+		                console.log(parent.firstChild.className);
+		                if (parent.firstChild.className == "con-kong") {
+		                    parent.removeChild(parent.firstChild);
+		                } else {
+		                    return
+		                }
+		            },
+					answerModule = function(dataStr, liStr) {
+						var hd = "",
+							hl = "";
+						if(dataStr.agree > 0) {
+							hd = '<span>赞 ' + dataStr.agree + '</span>'
+						}
+						liStr.setAttribute("data-id", dataStr.id);
+						liStr.className = "mui-table-view-cell";
+						liStr.innerHTML = '<div class="madiaInfo">' +
+							'<div class="flexCenter qa-owner"></div>' +
+							'<div class="qa-con mui-ellipsis-5">' + listConCut(dataStr.cnt) + '</div>' +
+							'<div class="showliSpan mui-ellipsis">' +
+							'<span>' + commenTime(dataStr.createTime) + '</span>' + hd + '<span class="leaveMsgCount"></span>' +
+							'</div>' +
+							'</div>'
+						var $str = $(liStr)
+						proinfo(dataStr.uid, $str);
+						leaveMsgCount(dataStr.id,4, $str);
+					},
+					proinfo = function(pid, $str) {
+						oAjax("/ajax/professor/baseInfo/" + pid, {}, "get", function(res) {
+							var dataStr = res.data
+							var baImg = "../images/default-photo.jpg";
+							if(dataStr.hasHeadImage == 1) {
+								baImg = "/images/head/" + dataStr.id + "_l.jpg";
+							}
+							var userType = autho(dataStr.authType, dataStr.orgAuth, dataStr.authStatus);
+							var os = "";
+							if(dataStr.title) {
+								if(dataStr.orgName) {
+									os = dataStr.title + "，" + dataStr.orgName;
+								} else {
+									os = dataStr.title;
+								}
+							} else {
+								if(dataStr.office) {
+									if(dataStr.orgName) {
+										os = dataStr.office + "，" + dataStr.orgName;
+									} else {
+										os = dataStr.office;
+									}
+								} else {
+									if(dataStr.orgName) {
+										os = dataStr.orgName;
+									}
+								}
+							}
+							var styStr='<em class="authiconNew ' + userType.sty + '" title="' + userType.title + '"></em>'
+							if(userType.sty=="e"){
+								styStr=""
+							}
+							var str = '<div class="owner-head useHead" style="background-image:url(' + baImg + ')"></div>' +
+								'<div class="owner-info">' +
+								'<div class="owner-name"><span class="h1Font">' + dataStr.name + '</span>'+styStr+'</div>' +
+								'<div class="owner-tit ellipsisSty h2Font">' + os + '</div>' +
+								'</div>'
+
+							$str.find(".qa-owner").html(str);
+						});
+					}
+				
+				getConmain();
+				answerList();
+
+				var this_ = "../html/qa-question-show.html?quid=" + questionId;
+				wcFresh(this_);
+				$(".list-main").on("click", "ul.item-btn", function() {
+					isInstalled(this_, true);
+					$(this).addClass("activeThis");
+				})
+
+				$(".list-hold-count>ul").on('click', 'li', function(e) {
+					var sortlist = document.querySelector('.list-hold-count>ul').querySelectorAll("li");
+					for(var i = 0; i < sortlist.length; i++) {
+						sortlist[i].classList.remove('active');
+					}
+					this.classList.add('active');
+					byway = this.getAttribute("data-type");
+					document.getElementById("curAnswers").innerHTML = "";
+					dataO = {
+						time: "",
+						id: "",
+						score: "",
+						agree:""
+					}
+					answerList()
+				});
+
+				$("#curAnswers").on("click", "li", function() {
+					var id = this.getAttribute("data-id");
+					location.href = "http://" + window.location.host + "/e/da.html?id=" + id;
+				})
+
+				/*微信分享*/
+				$.ajax({
+					url: "../ajax/weixin/jsapiTicket",
+					type: 'get',
+					dataType: 'json',
+					contentType: "application/x-www-form-urlencoded; charset=utf-8",
+					data: {
+						'url': location.href.split('#')[0]
+					},
+					success: function(data) {
+						if(data.data) {
+							wx.config({
+								debug: false, //调试模式好犀利
+								appId: data.data.appId,
+								timestamp: data.data.timestamp,
+								nonceStr: data.data.nonceStr,
+								signature: data.data.signature,
+								jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+									"onMenuShareAppMessage",
+									"onMenuShareTimeline",
+									"onMenuShareQQ",
+									"onMenuShareQZone",
+									"scanQRCode",
+								]
+							});
+							wx.ready(function() {
+								// 在这里调用 API
+								wx.onMenuShareAppMessage({ //分享给朋友
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareTimeline({ //分享到朋友圈
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareQQ({ //分享到QQ
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+								wx.onMenuShareQZone({ //分享到QQ空间
+									title: shareTitle, // 分享标题
+									desc: descContent, // 分享描述
+									link: lineLink, // 分享链接
+									imgUrl: imgUrl, // 分享图标
+									success: share_success_callback,
+									cancel: share_cancel_callback
+								});
+							});
+							//分享成功后的回调函数	
+							function share_success_callback() {}
+							//用户取消分享后执行的回调函数	
+							function share_cancel_callback() {}
+						}
+					}
+				});
+
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">密码找回</p>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--找回密码成功-->
+						<ul class="cmpAllUl cmpCoverUl displayNone" id="VerificationOk">
+							<li class="successImg"></li>
+							<li class="alignCenter">
+								<p class="importTip">密码找回成功，快去登录吧！</p>
+							</li>
+							<!--验证激活成功-已登录时隐藏按钮-->
+							<li>
+								<a href="login.html"><button type="button" class="frmtype frmtypeW btnModel headRadius save-block" id="logon">登录</button></a>
+							</li>
+						</ul>
+						<!--邮箱链接失效-->
+						<ul class="cmpAllUl cmpCoverUl displayNone" id="VerificationNo">
+							<li class="failImg"></li>
+							<li class="alignCenter">
+								<p class="importTip">很抱歉，当前的链接已失效</p>
+								<p class="smalltip alignCenter" id="smalltip">小提醒：邮件内的链接有效时长为10分钟。</p>
+							</li>
+							<li>
+								<a href="pwdFindNew.html"><button type="button" class="frmtype frmtypeW btnModel headRadius save-block" id="resetPassword">重新找回密码</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+					
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var num = GetQueryString('num');
+		if(num==1){
+			$("#VerificationOk").removeClass("displayNone");
+		}else{
+			$("#VerificationNo").removeClass("displayNone");
+		}
+		
+	})
+	$("#logon").click(function(){
+		location.href="login.html";
+	});
+	$("#resetPassword").click(function(){
+		location.href="pwdFindNew.html";
+	})
+</script>
+</body>
+</html>

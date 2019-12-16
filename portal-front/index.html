@@ -1,0 +1,313 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="keywords" content="科袖 专家 科研 研发 技术 资源 咨询" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description"
+		content="科袖，一个创新的研发资源共享及科技成果转化平台，帮助企业在研发过程中，找到能解决问题的专家；让专家的知识、技能、经验、成果和身边的仪器设备，更有效地帮助企业进行研发，让专家的科研价值变现。">
+	<title>科袖网-搭建企业与专家的桥梁</title>
+	<link rel="shortcut icon" href="images/favicon.png" />
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/reset.css" />
+	<link type="text/css" href="css/common.css" rel="stylesheet">
+	<link type="text/css" href="css/genindex.css" rel="stylesheet">
+	<link type="text/css" href="css/index.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<style type="text/css">
+		#header {
+			top: 30px;
+		}
+
+		.searchblock {
+			display: none;
+		}
+
+		header .navheader {
+			background: transparent;
+			border-color: transparent;
+		}
+
+		header .navheader li a {
+			color: #FFFFFF;
+		}
+	</style>
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?d3db502c8cee2d618c01fe7aa6518602";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+	<!--定时发布弹框-->
+	<div class="blackcover2"></div>
+	<div class="setTimeBlock modelContain">
+		<span class="mb_tit">提示</span>
+		<a class="mb_close"></a>
+		<div class="mb_msg" id="promotTh">
+			<input type="hidden" id="oldName" />
+		</div>
+		<div class="mb_btnbox" id="promotGt">
+			<input class="mb_btn mb_btnNo" type="button" value="取消">
+		</div>
+	</div>
+	<div class="container-fulid topheader">
+		<div class="containerCon">
+			<a class="downicon" href="download.html">科袖app</a>
+			<a id="gocmp" href="javascript:;">进入企业版</a>
+		</div>
+	</div>
+	<!--头部-->
+	<header id="header">
+		<script src="js/header.js"></script>
+	</header>
+	<div id="container">
+		<!--banner部分-->
+		<div id="banner">
+			<div class="banner"></div>
+			<div class="theme">
+				<h1>让企业没有难搞的研发</h1>
+				<h2>科袖，搭建企业与专家的桥梁</h2>
+				<div class="main-search bgRadius">
+					<input type="text" placeholder="搜索专家、服务、资源" class="sear-txt" id="searchContent">
+					<div class="sear-btn" id="search">搜索</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fulid">
+			<div class="containerCon">
+				<div class="link-btn-box clearfix">
+					<div class="col-w-4">
+						<div class="link-btn-block">
+							<div class="link-btn">
+								<div class="link-btn-icon link-btn-icon-fabu bgProColor">
+								</div>
+							</div>
+							<div class="link-btn-tip">
+								<h2 class="link-tip-tit">发布需求</h2>
+								<p>获得专家回复，解决研发难题<br />研发成本合理化</p>
+								<button type="button" class="btn btn-pro" id="postNow">立即发布</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-w-4">
+						<div class="link-btn-block">
+							<div class="link-btn">
+								<div class="link-btn-icon link-btn-icon-pro bgProColor">
+								</div>
+							</div>
+							<div class="link-btn-tip">
+								<h2 class="link-tip-tit">我是专家</h2>
+								<p>开通个人主页，提升学术声誉<br />发现横向课题合作机会，将科研价值变现</p>
+								<button type="button" class="btn btn-pro" id="JoinKeXiu">加入科袖</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-w-4">
+						<div class="link-btn-block">
+							<div class="link-btn">
+								<div class="link-btn-icon link-btn-icon-ruzhu bgProColor">
+								</div>
+							</div>
+							<div class="link-btn-tip">
+								<h2 class="link-tip-tit">企业入驻</h2>
+								<p>开通企业主页，提升企业知名度<br />让专家更好地了解企业，解决研发难题</p>
+								<button type="button" class="btn btn-pro" id="cmpSettled">入驻科袖</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-fulid">
+			<div class="containerCon">
+				<div class="con-tit">
+					<h4 class="hh4"><span class="homeicon-pro">专家对接</span></h4>
+					<p class="showtip">来自高校和研究机构的教授、研究员、工程师，覆盖各个领域，专业、可靠、高效</p>
+				</div>
+				<ul class="con-ultab clearfix" id="hotArea">
+
+				</ul>
+				<ul class="con-ulList con-ulListO clearfix" id="proShow">
+
+				</ul>
+			</div>
+		</div>
+
+		<!-- <div class="container-fulid">
+			<div class="containerCon">
+				<div class="con-tit">
+					<h4 class="hh4"><span class="homeicon-pro">专家团队对接</span></h4>
+					<p class="showtip">来自高校和研究机构的专业专家团队，覆盖各个领域，专业、可靠、高效</p>
+				</div>
+				<ul class="con-ultab clearfix" id="hotArea2">
+
+				</ul>
+				<ul class="con-ulList con-ulListO clearfix" id="teamShow">
+
+				</ul>
+			</div>
+		</div> -->
+
+		<div class="container-fulid">
+			<div class="containerCon">
+				<div class="con-tit">
+					<h4 class="hh4"><span class="homeicon-area">资源共享</span></h4>
+					<p class="showtip">与高校和检测机构共享实验仪器、检测设备</p>
+				</div>
+				<ul class="con-ulList con-ulListF clearfix" id="resShare">
+
+				</ul>
+			</div>
+		</div>
+		<div class="container-fulid">
+			<div class="containerCon">
+				<div class="con-tit">
+					<h4 class="hh4"><span class="homeicon-hezuo">入驻企业</span></h4>
+				</div>
+				<ul class="con-ulList clearfix" id="ruZhuCmp">
+
+				</ul>
+			</div>
+		</div>
+		<div class="container-fulid hot-professor">
+			<div class="con-tit">
+				<h4 class="hh4"><span class="homeicon-fangtan">科袖访谈</span></h4>
+			</div>
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<!--<ol class="carousel-indicators">
+				    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			    </ol>-->
+
+				<!-- Wrapper for slides -->
+				<div class="carousel-inner" role="listbox" id="carouselThis">
+					<div class="item active">
+						<a class="aitemLink"
+							href="http://www.ekexiu.com/articalShow.html?articleId=F8B2FF4CAA654D7593586E5117C0B1CF"
+							style="background-image: url(images/talks/talk_01.jpg);">
+							<div class="carousel-caption">
+								<div class="homeinfo">
+									<p class="h1Font ellipsisSty-2">赵振业院士：发展抗疲劳制造，成就制造强国</p>
+									<div class="homebrief">
+										<p class="h2Font">
+											赵振业，中国工程院院士，金属材料科学家，抗疲劳制造的缔造者。1937年生，1961年毕业于西北工业大学。北京航空材料研究院研究员、博士生导师。</p>
+										<p class="h2Font">
+											50多年来一直从事航空超高强度钢应用基础理论、合金设计和应用技术专业研究。主持超高强度钢300M应用研究，研究成功中国第一个VIM+VAR高纯净超高强度钢300M，提出“应用研究”概念，建立应用技术体系；提出“材料研制”和“材料应用研究”“两个全过程”概念，引领材料科学与工程进入了一个新时代。
+										</p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a class="aitemLink"
+							href="http://www.ekexiu.com/articalShow.html?articleId=8E342B6F432744288B172CFB9708D811"
+							style="background-image: url(images/talks/talk_02.jpg);">
+							<div class="carousel-caption">
+								<div class="homeinfo">
+									<p class="h1Font ellipsisSty-2">李晓刚：开创深海腐蚀数据先河 实现海洋强国梦</p>
+									<div class="homebrief">
+										<p class="h2Font">
+											李晓刚，北京科技大学教授、博导；国家材料环境腐蚀平台主任；中国腐蚀与防护学会副理事长兼秘书长；教育部腐蚀与防护重点实验室主任。“海洋腐蚀973项目”首席科学家；国际腐蚀理事会理事。
+										</p>
+										<p class="h2Font">
+											我国材料环境腐蚀与防护领域主要学术带头人之一。长期坚持材料环境腐蚀机理应用基础研究，获得了钢铁、高分子等材料在大气、土壤、海洋环境的腐蚀规律；领导创建了国内最大的材料环境腐蚀试验与共享的规范化平台和数据量最大的腐蚀数据库；发展了环境腐蚀试验系列化新技术，为解决航天、海洋、石油等国家重大工程的材料腐蚀难题提供了技术支撑。
+										</p>
+									</div>
+								</div>
+							</div>
+						</a>
+					</div>
+					<div class="item">
+						<a class="aitemLink"
+							href="http://www.ekexiu.com/articalShow.html?articleId=F5CC29B71DDD44318D68A8FE388276DA"
+							style="background-image: url(images/talks/talk_03.jpg);">
+							<div class="carousel-caption">
+								<div class="homeinfo">
+									<p class="h1Font ellipsisSty-2">侯保荣院士：“腐蚀调查”为防腐新技术推广应用打响第一炮</p>
+									<div class="homebrief">
+										<p class="h2Font">侯保荣，中国工程院院士，海洋腐蚀与防护专家。1942 年出生于山东省曹县。1967 年毕业于复旦大学化学系，1994
+											年在日本东京工业大学获博士学位。曾任中国科学院海洋研究所副所长，现任中国科学院海洋研究所研究员、博士生导师，“国家海洋腐蚀防护工程技术研究中心”主任。
+										</p>
+										<p class="h2Font">
+											主要从事海洋腐蚀与防护技术研究，主持了我国近海腐蚀环境调查与研究，明确提出“海洋腐蚀环境”概念，建立了海洋腐蚀环境的理论体系。致力于海洋浪花飞溅区防腐技术的研究与推广，研发具有自主知识产权的复层矿脂包覆防腐体系。
+										</p>
+									</div>
+									<!--<p class="h2Font">出版专著 7 本，主编论文集 6 本，发表论文 360 余篇（其中 SCI/EI 收录200 余篇），授权专利 70 余项，其中发明专利 30 余项。</p>-->
+								</div>
+							</div>
+						</a>
+					</div>
+				</div>
+
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+			</div>
+		</div>
+
+		<div class="container-fulid urlLinkBox">
+			<div class="containerCon">
+				<h3 class="tit-M col-w-1" style="margin-bottom: 0;">友情链接</h3>
+				<div class="link-box col-w-11" style="margin-top:2px;">
+					<ul>
+						<li><a href="http://www.ecorr.org/" target="_blank">中国腐蚀与防护网</a></li>
+						<li><a href="http://www.zhaowoce.com" target="_blank">第三方检测</a></li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<a href="/shtml/index.html" class="displayNone"></a>
+	<footer>
+		<script type="text/javascript" src="js/footer.js"></script>
+	</footer>
+
+	<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+	<script type="text/javascript" src="js/public/baseUtil.js"></script>
+	<script type="text/javascript" src="js/public/genCom.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript">
+		$(document).scroll(function () {
+			var topMo = $(document).scrollTop();
+			if (topMo == 0) {
+				$("#header").css("top", "30px");
+			} else {
+				$("#header").css("top", "0");
+			}
+			if (topMo >= 350) {
+				$(".searchblock").stop(true, false).fadeIn();
+			} else {
+				$(".searchblock").stop(true, false).fadeOut();
+			}
+		})
+		//Model模态框打开关闭
+		$(".mb_close,.mb_btnNo").click(function () {
+			$(".modelContain").hide();
+			$(".blackcover2").fadeOut();
+			$("body").removeClass("modelOpen");
+		})
+	</script>
+	<script src="https://s4.cnzz.com/z_stat.php?id=1261924710&web_id=1261924710" language="JavaScript"></script>
+</body>
+
+</html>

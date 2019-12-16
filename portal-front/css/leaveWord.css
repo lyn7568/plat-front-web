@@ -1,0 +1,38 @@
+.ifLogin{margin-top:30px;}
+.showDetail .ifLogin{margin-bottom: 30px;}
+.ifLogin .ifLoginUn{background: #fff7e7;border:1px solid #E5E5E5;line-height:18px;padding:25px;color:#7b4b2b;font-size:14px;}
+.ifLogin .ifLoginUn>ul>li{float: right;padding:0 6px;}
+.ifLogin .ifLoginUn>ul>li.loginGo{cursor:pointer;}
+.ifLogin .ifLoginUn a{color:#666;}
+.ifLogin .ifLoginOn .btnModel{margin:12px 0;width: 80px;height: 34px;line-height:24px;border-radius:4px;cursor: pointer;}
+.list-hold .ifLogin .msgContbox textarea{min-height:150px;margin: 0;}
+
+.commentsArea{margin-top:0;}
+.commentsArea .btnCancel{height:auto;border-radius:0;color: #ff9900;}
+.commentList .madiaHead.useHeadMsg{top:15px;margin-top:0;}
+.commentList>li p .huifu{margin:0 6px 0 12px;font-size:15px;color:#888}
+.commentList>li{position:relative;padding:10px 0 12px;min-height: 110px;}
+.commentList>li:after{background: #E5E5E5;height:1px;content:"";position:absolute;bottom:0;left:60px;right:0;}
+.commentList>li:last-child:after{content:none;}
+.commentList>li .h2Font{font-size: 15px;color: #1a1a1a;line-height: 26px;}
+.commentList>li p{margin-bottom:8px;}
+.commentList>li .messageContent{line-height: 22px;word-break: break-word;}
+.commentList>li .commenttime{font-size: 14px;color: #999;margin-left:18px;}
+.commentList>li .operateSpan{margin:12px 0 0;color:#9d9ea8;font-size:14px;}
+.commentList>li .operateSpan span{margin-right:20px;position:relative;cursor:pointer;}
+.commentList>li .operateSpan em{font-style:normal;font-size: 14px;}
+.callBack:after{position:absolute;content:url(../images/g_article_button_huifu_nor.png);top:50%;margin-left: 4px;margin-top:-8px;}
+.messageDel:after{position:absolute;content:url(../images/g_article_button_del_nor.png);top:50%;margin-left: 4px;margin-top:-9px;}
+.txtArea{width: 100%; outline: none; margin: 0px; height:38px;resize:none;border: 1px solid #E5E5E5;overflow:hidden;}
+.pTxt{text-align: right;margin-top: 10px;font-size:15px;}
+.qCancel{color: #8590a6;cursor: pointer;}
+.hReply{padding: 5px 10px;background-color: #ff9900;color: #fff;margin-left: 10px;cursor: pointer;outline:none;border:none;}
+.replyLeword {margin-top:10px;}
+.commentList>li .operateSpan .dzthumb{position: relative;top: -1px;display: inline-block;padding: 5px 10px 5px 10px;font-size: 16px;background-color: #ffe9c8;border-radius: 5px;border-radius: 5px;cursor: auto;}
+.commentList>li .operateSpan .dzthumbCan{cursor: pointer;}
+.commentList>li .operateSpan .dzthumb.dzthumbed{color: #FFFFFF;background: #ff9900;cursor: auto;}
+.commentList>li .operateSpan .dzthumbed .icon-zan{background-position: 0 -1px;}
+.replyLeword textarea {  font-size: 15px;line-height:30px;padding:4px 10px;}
+.replyLeword textarea:focus{border-color:#ff9900;}
+.js-load-more:before{content:"查看更多留言"};
+

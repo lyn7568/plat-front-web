@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>员工邀请</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+
+<div class="containerCon">
+	<a href="../index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<div class="cmp-info-box alignCenter">
+					<div class="cmp-img-box">
+						<div class="boxBlock">
+							<img class="boxBlockimg" src="" id="orgHeadLogo" />
+						</div>
+					</div>
+					<div class="cmp-base-box">
+						<span class="cmpName cmpOrgName"></span><br />
+						<span class="h2Font">邀请您加入「科袖网」 ，成为企业认证员工</span>
+					</div>
+				</div>
+				<ul class="cmpAllUl cmpCoverUl" id="cmpSettledul">
+					<li>
+						<input type="text" class="frmtype frmtypeW" placeholder="请输入您的真实姓名" id="companyName"/>
+					    <div class="frmmsg msgCmp01"><span></span></div>
+					</li>
+					<li>
+						<input type="tel" class="frmtype frmtypeW" placeholder="请输入您的手机号码" id="companyPhone"/>
+					    <div class="frmmsg msgCmp02"><span></span></div>
+					</li>
+					<li>
+						<div class="col-w-7">
+							<input type="text" class="frmtype frmtypeW" style="width: 98%;" placeholder="请输入图形验证码" id="imgCode"/>
+						    <div class="frmmsg msgImage"><span></span></div>
+					    </div>
+					    <div class="col-w-5">
+					    	<img src="/ajax/PictureVC" alt="" class="frmtypeW" id="changImage"/>
+					    </div>
+					</li>
+					<li>
+						<div class="col-w-7">
+							<input type="tel" class="frmtype frmtypeW" style="width: 98%;" placeholder="请输入短信验证码" id="companysc"/>
+						    <div class="frmmsg msgCmp03"><span></span></div>
+					    </div>
+					    <div class="col-w-5">
+					    	<button type="button" disabled class="frmtype frmtypeW btnModel headRadius" id="getcode">获取验证码</button>
+					    </div>
+					</li>
+					<li>
+						<input type="password" class="frmtype frmtypeW" placeholder="请设置您的登录密码" id="companyPsw1"/>
+					    <div class="frmmsg msgCmp04"><span></span></div>
+					</li>
+					<li>
+						<img class="cmpAgree ifxuanze" src="images/business_button_xuanze_hig.png" />
+						<span>我已阅读并同意<a href="privacy.html" class="mainColor" target="_blank">《科袖网用户协议》</a></span>
+					</li>
+					<li>
+						<button type="button" class="frmtype frmtypeW btnModel save-block" disabled id="companyRet">接受并注册</button>
+					</li>
+					<li class="login-block">
+						<a style="cursor: pointer;" class="frmtype frmtypeW" id="goLogin">已有账号，直接登录</a>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-staff-invite.js"></script>
+</body>
+</html>

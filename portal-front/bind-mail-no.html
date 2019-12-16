@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>邮箱验证-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css" />
+<link type="text/css" href="css/login.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style type="text/css">
+.maillink{margin:4px 10px;}
+.smallTip{color:#888888;padding:0 0 0 140px;line-height:28px;font-weight:normal;text-align: left;font-size:13px}
+	#header.Nosear {
+    position: static;
+}
+#header {
+    width: 100%;
+    min-width: 1100px;
+    height: 60px;
+    background: #FFFFFF;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+}
+</style>
+</head>
+
+<body>
+<header id="header" class="Nosear">
+	<div class="containerCon">
+		<div class="headlogo">
+			<a href="index.html"><h1></h1></a>
+		</div>
+	</div>
+</header>
+<div class="containerFrm" id="container">
+	<div class="contentmid">
+    	<!--/*邮箱验证提示*/-->
+        <dl class="mailsection">
+            <dt class="statelable">
+                <h2>邮箱验证失败</h2>
+            </dt>
+            <dd class="msgnotice nodatabox">
+            	<div class="currword" style="color: #FF2222;">
+            		抱歉！邮箱验证失败！可能原因如下：<br />
+            		<p class="smallTip">
+            			1. 您的邮箱验证超时，请在10分钟内激活邮箱验证链接。<br />
+            			2. 您已点击过此链接，此链接已失效。
+            		</p>
+            	
+            	</div>
+            	<div class="picbox"><span class="defpic" style="background-position:  -440px -1140px;"></span></div>
+                <div class="clearfix" style=" display: inline-block;">
+                	<a href="register.html" class="maillink floatL" style="background: #E40505;" target="_blank">重新注册</a>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+</body>
+</html>

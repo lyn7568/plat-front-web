@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>需求-我的工作台-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />	
+<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/reset.css" rel="stylesheet" />
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body>
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+
+<!--中间-->
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+	        <div class="workmenu">
+	        	<script src="js/workMenu.js"></script>
+	        </div>
+ 			<div class="workcon workconG">
+		    	<div class="workcontit">
+					<a class="worksamlltit" href="myDemand.html">我的需求</a>
+					<a class="worksamlltit worksamlltitnow">需求搜索</a>
+					<a class="worksamlltit worksamlltitnowR" href="platform.html">查看来自合作平台的需求</a>
+				</div>
+				<div class="itemListBolck needinfobox">
+					<div class="topOperaBlock clearfix">
+						<div class="searchAbout col-w-8">
+							<input class="frmcontype" type="search" placeholder="请输入关键词" id="needKey">
+							<span class="searchSpan"></span>
+						</div>
+					</div>
+					<div class="form-item itemListCon needList">
+						<div class="form-result aboutRes">
+							<ul class="form-need" id="demandList">
+							</ul>
+						
+							<!--无搜索结果-->
+							<div class="nodatabox displayNone">
+						        <div class="nodata">
+						            <div class="picbox picNull"></div>
+						            <div class="txtbox">
+						            	<p class="noContip">暂时没有符合该搜索条件的内容</p>
+						            </div>
+						        </div>
+						    </div>
+							<div class="tcdPageCode"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/needList.js"></script>
+</body>
+</html>
+

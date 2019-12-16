@@ -1,0 +1,169 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览论文-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<link type="text/css" href="css/leaveWord.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+					<div class="h1Font" id="paperName"></div>
+					<div class="operateBlock bottomShow" style="margin-top:10px;">
+                		<ul class="clearfix">
+                			<li><span>阅读量</span> <span id="pageView"></span></li>
+                			<li><span>收藏</span> <em class="operateicon operateicon2 icon-collect" id="collectBtn"></em></li>
+							<li>
+								<span>分享到</span>
+								<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+								<em class="operateicon operateicon2 icon-wechat shareWeixin">
+									<div class="shareCode clearfix">
+										<div class="floatL" id="qrcode"></div>
+										<div class="shareWord floatR">
+											<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+										</div>
+									</div>
+								</em>
+							</li>
+                		</ul>
+                	</div>
+                	
+					<!--资源详情区-->
+					<div class="showMain showMainP">
+						<ul>
+							<li>
+								<div class="showTit">期刊：<span class="showCon" id="paperJournal"></span></div>
+							</li>
+							<li>
+								<div class="showTit">期卷：<span class="showCon" id="paperVolume"></span></div>
+							</li>
+							<li>
+								<div class="showTit">摘要：</div>
+								<div class="showCon" id="paperAbstract">
+								</div>
+							</li>
+						</ul>
+					</div>
+					<!--标签模块-->
+					<ul class="tagList">
+					</ul>
+					<!--作者-->
+					<div class="form-item aboutPa">
+						<div class="aboutTit">作者</div>
+						<div class="form-result">
+							<ul class="authorBox clearfix" id="aboutAuthors">
+								<!--<li class="flexCenter">
+									<div class="madiaHead useHead" id="userimg"></div>
+									<div class="madiaInfo">
+										<p class="ellipsisSty">
+											<span class="h1Font" id="name">vbszfd</span><em class="authiconNew authicon-staff-ok" title="企业认证员工"></em>
+										</p>
+										<p class="h2Font ellipsisSty">vzds</p>
+									</div>
+									<div class="goSpan">
+										<span class="yaoqing">邀请
+											<div class="shareCode clearfix">
+												<div class="floatL" id="qrcodeUser"></div>
+												<div class="shareWord floatR">
+													<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+												</div>
+											</div>
+										</span>
+									</div>
+								</li>-->
+								<li class="lastBtn">
+									<div>查看全部作者（<span></span>）</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="ifLogin" id="messagego">
+					    <!--未登录-->
+					    <div class="thumbBlock">
+							<span class="thumbBtn thunbgo">赞 <span>0</span></span>
+						</div>
+					    <div class="ifLoginUn displayNone">
+					    	<span class="floaL">大牛，别默默的看了，快登录给我留言吧！</span>
+					    	<ul class="floatR">
+					    		<li><a href="register.html">注册</a></li>
+					    		<li><a>|</a></li>
+					    		<li class="loginGo"><a>登录</a></li>
+					    	</ul>
+					    </div>
+					    <!--登录可留言-->
+					    <form class="ifLoginOn clearfix displayNone">
+					    	<div class="msgContbox">
+					    		<textarea class="msgCont" placeholder="请输入您的留言内容..."></textarea>
+					    		<span class="msgconNum"><em>0</em>/200</span>
+					    	</div>
+					    	<input type="button" class="frmconbtn btnModel floatR" disabled id="meSendtt" value="留言" />
+					    </form>
+					</div>
+					<div class="form-item commentsArea">
+						<ul class="commentList">
+						</ul>
+						<button class="frmconbtn btnCancel displayNone" id="moreArtical">查看更多留言</button>
+					</div>
+					<div class="form-item otherShow displayNone" id="interPaper">
+						<div class="aboutTit">您可能感兴趣的论文</div>
+						<div class="form-result aboutRes pointOk">
+							<ul id="paperList">
+								
+							</ul>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem advertBox advertItem" ></div>
+				<div class="conItem displayNone" id="patentrelate">
+					<div class="form-item otherBlock currentBlock">
+						<div class="aboutTit">相关专利</div>
+						<div class="form-result currentArt" style="margin-top:0px;margin-bottom:0px;">
+							<ul class="recentlyList">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--反馈建议-->
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/leaveWord.js"></script>
+<script type="text/javascript" src="js/paperShow.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+<script type="text/javascript">
+	$(function () {	
+		addscript("ad_common");
+	});
+</script>
+</body>
+</html>

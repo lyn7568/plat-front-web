@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>修改个人信息-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="cmp-portal/css/bootstrap-datetimepicker.min.css">
+<link type="text/css" rel="stylesheet" href="cmp-portal/css/glyIcon.css">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style>
+.updateLeft .coninfobox:after{
+	content: none;
+}
+</style>
+</head>
+
+<body>
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="headconBox flexCenter">
+				<ul class="cmpFrmList" style="width: 56%">
+					<li>
+						<span class="col-w-2 lableSpan"><em class="requiredcon">*</em> 团队名称：</span>
+						<div class="col-w-4">
+							<input type="text" class="frmcontype" placeholder="请填团队名称" id="name" />
+						</div>
+					</li>
+					<li>
+						<span class="col-w-2 lableSpan"><em class="requiredcon">*</em> 所属机构：</span>
+						<div class="col-w-8">
+							<input type="text" class="frmcontype" placeholder="请填写当前就职的机构" id="orgName" />
+						</div>
+					</li>
+					<li>
+						<span class="col-w-2 lableSpan"><em class="requiredcon">*</em> 所在城市：</span>
+						<div class="col-w-8">
+							<form action="" class="col-w-12" name="form1">
+								<div class="col-w-6 citybox2">
+									<span class="frmcontype" id="Province">
+										<em class="mr_sj"></em>
+										<i class="mr_show" id="oprovince">请选择省/直辖市</i>
+										<ul>
+											<li><a href="javascript:void(0)" alt="请选择省/直辖市">请选择省/直辖市</a></li>
+										</ul>
+										<input type="hidden" name="cho_Province" value="请选择省/直辖市">
+									</span>
+								</div>
+								<div class="col-w-6 citybox2">
+									<span class="frmcontype floatR" id="City" >
+										<em class="mr_sj"></em>
+										<i class="mr_show" id="ocity">请选择城市</i>
+										<ul>
+											<li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+										</ul>
+										<input type="hidden" name="cho_City" value="请选择城市 ">
+									</span>
+								</div>
+							</form> 
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="leftconBox updateLeft floatL" style="padding-bottom: 40px;">
+				<!--个人简介-->
+				<div class="coninfobox">
+					<div class="coninfotit">团队简介</div>
+					<div class="coninfocon">
+						<div class="msgContbox">
+				    		<textarea class="msgCont frmcontype" id="descp" placeholder="请填写一个简单的介绍，让大家更好地了解您"></textarea>
+				    		<span class="msgconNum"><em class="limitNum">0</em>/2000</span>
+						</div>
+					</div>
+				</div>
+				<!--学术领域-->
+				<div class="coninfobox xslyshow">
+					<div class="coninfotit"><span>学术领域</span></div>
+					<div class="coninfocon listArea form-item">
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写您研究的学科，如：腐蚀防护、石墨烯、纳米材料" data-pro="学术领域不得超过15个字"  data-num="20" data-fontSizeN="15" id="subject"/>
+							<button type="button" class="frmcontype btnModel frmaddG addButton" id="subjectAdd">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="subjectList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- 行业领域 -->
+				<div class="coninfobox">
+					<div class="coninfotit">行业领域</div>
+					<div class="coninfocon listArea form-item">
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写企业所属的行业，如：制造业、互联网、服务业" data-pro="行业领域不得超过15个字" data-num="20" data-fontSizeN="15" id="industry"/>
+							<button type="button" class="frmcontype btnModel frmaddG addButton" id="industryAdd">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="industryList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="coninfobox">
+					<div class="saveBtn">
+						<div style="width:120px;margin: auto">
+							<button type="button" class="frmcontype btnModel" id="saveTeam">保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem statisticsBox alignCenter clearfix" style="cursor:pointer;">
+					<div class="col-w-12">
+						<a class="goarrow" target="_blank" id="showMyself">查看团队主页<em></em></a>
+					</div>
+				</div>
+				<div class="conItem statisticsBox alignCenter clearfix">
+					<div class="col-w-12">
+						<a id="deleteTeam" style="color:#ee0000;cursor: pointer;">删除团队<em></em></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="cmp-portal/js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="cmp-portal/js/public/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/city.min.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/updateTeam.js"></script>
+</body>
+</html>

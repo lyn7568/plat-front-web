@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>企业认证</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body>
+
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+
+<!--中间-->
+<div id="container">
+	<div class="containerCon con-center">
+        <div class="workmenu" style="background: #fff;">
+            <a class="workmenutit accouttit">账户设置</a>
+            <a href="cmp-setPwd.html" class="worksubmenu">密码修改</a>
+            <a href="cmp-setBind.html" class="worksubmenu">账号绑定</a>
+            <a href="javascript:;" class="worksubmenu cmpBg">企业认证</a>
+        </div>
+        <div class="workcon">
+			<div class="workconitem">
+			    <div class="workcontit">企业认证</div>
+			    <div class="worksubcon">
+			    	<div class="workblock displayNone authup">
+						<form name="cmpAllFrm">
+				        	<ul class="cmpAllUl">
+				        		<li>
+				        			<div class="col-w-12 uploadFile">
+				        				<div class="uploadlogo">
+				        					<div class="upFront">
+					        					<p>请上传《企业法人营业执照》</p>
+					        					<p class="smalltip">支持jpg、jpeg、png格式，文件不超过10M</p>
+						            			<input type="file"  name= "file" value="上传企业logo" class="uploadInp uploadFileHidden" id="fileone1" data-id="" onchange="uploadFun(this,1)" accept="image/png,image/jpg,image/jpeg"/>
+					            			</div>
+					            			<div class="upBack displayNone">
+					        					已上传《 <span></span> 》       <a href="javascript:;" class="delupload"  onclick="deluploadFun(this,1)">删除</a>
+					            			</div>
+					            		</div>
+				        			</div>
+				        		</li>
+				        		<li>
+				        			<div class="col-w-12 uploadFile">
+				        				<div class="uploadlogo">
+				        					<div class="upFront">
+					        					<p>请上传加盖公章的《入驻科袖授权证明》</p>
+					        					<p class="smalltip">支持jpg、jpeg、png格式，文件不超过10M</p>
+						            			<input type="file" value="上传企业logo" name= "file" class="uploadInp uploadFileHidden" id="fileone2" data-id="" onchange="uploadFun(this,2)" accept="image/png,image/jpg,image/jpeg"/>
+					            			</div>
+					            			<div class="upBack displayNone">
+					        					已上传《 <span></span> 》       <a href="javascript:;" class="delupload" onclick="deluploadFun(this,2)">删除</a>
+					            			</div>
+					            		</div>
+				        			</div>
+				        		</li>
+				        		<li>
+								    <a href="../data/kexiuFiles/kexiu_authorization.docx?_dl=入驻科袖授权证明.docx" class="cmpColor">点击下载 《入驻科袖授权证明》模板</a>
+								</li>
+				        		<li class="alignCenter">
+									<button type="button" class="frmtype btnModel headRadius save-block" id="authsubmet">提交</button>
+								</li>
+				        	</ul>
+				       </form>
+					</div>
+			    	<div class="workblock identityState displayNone authks">
+						<div class="nowState">
+						   <p><span class="identProcess" >成为【科袖认证企业】，您的员工可以在科袖网发布企业需求，<br />让专家帮助您解决研发难题。</span><span class="identts" id="identts"></span></p>
+						   <button type="button" class="frmtype btnModel headRadius identBtn" id="authks">开始认证</button>
+						</div>
+					</div>
+					<div class="workblock identityState displayNone authtj">
+						<div class="nowState">
+						   <p><span class="identProcess" >认证信息提交成功！<br /></span><span class="identts" >我们将尽快对您的企业信息进行认证，通过后您的企业将成为【科袖认证企业】，获得更多功能权限！</span></p>
+						</div>
+					</div>
+					<div class="workblock identityState displayNone authz">
+						<div class="nowState">
+						   <p><span class="identProcess" >我们正在对您的企业信息进行认证，<br />请稍等片刻。</span><span class="identts" ></span></p>
+						</div>
+					</div>
+					<div class="workblock identityState displayNone authok">
+						<div class="nowState">
+						   <p><span class="identProcess" >恭喜您的企业已成为【科袖认证企业】！<br /></span><span class="identts">在【企业工作台】邀请或认证您的企业员工，员工可以发布企业需求，让专家帮助您解决研发难题。</span></p>
+						   <a href="cmp-needList.html"><button type="button" class="frmtype btnModel headRadius identBtn" >进入【企业工作台】</button></a>
+						</div>
+					</div>
+					<div class="workblock identityState displayNone authsb">
+						<div class="nowState">
+						   <p><span class="identProcess" id="identProcess">很遗憾，您提交的材料没有通过认证，<br />请更换符合要求的认证信息再试试。</span><span class="identts" id="identts">审核通过后您的企业将成为【科袖认证企业】，获得更多功能权限！</span></p>
+						   <button type="button" class="frmtype btnModel headRadius identBtn" id="authsb">重新认证</button>
+						</div>
+					</div>
+					
+			    </div>
+			
+			</div>
+        </div>
+	</div>
+</div>
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-setAuth-imgup.js"></script>
+<script type="text/javascript" src="js/cmp-setAuth.js"></script>
+
+</body>
+</html>

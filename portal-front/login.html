@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>登录 - 科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">登录科袖</p>
+				<ul class="loginWaySort">
+					<li class="col-w-4 liactive">密码登录</li>
+					<li class="col-w-4">短信登录</li>
+					<li class="col-w-4">邀请码登录</li>
+				</ul>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--密码登录-->
+						<ul class="cmpAllUl cmpCoverUl">
+							<li>
+								<input type="text" class="frmtype frmtypeW username" placeholder="请输入手机或邮箱" onBlur="nameVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"  />
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<input type="password" class="frmtype frmtypeW passwd" placeholder="请输入密码" onBlur="passwordVal(this)" onfocus="getFocus(this)"  onkeyup="checkLoginButtn(this)"/>
+							    <div class="frmmsg msgLog2"><span></span></div>
+							</li>
+							<li>
+								<button type="button" class="frmtype frmtypeW btnModel save-block loginSubmit" disabled onclick="login(this,1)" >登录</button>
+								 <div class="frmmsg"><span></span></div>
+							</li>
+						</ul>
+						<!--短信登录-->
+						<ul class="cmpAllUl cmpCoverUl displayNone">
+							<li>
+								<input type="phone" class="frmtype frmtypeW username phoneuser" placeholder="请输入手机号码" onBlur="phoneVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)" />
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<div class="col-w-8">
+									<input type="tel" class="frmtype frmtypeW passwd" style="width: 98%;" placeholder="请输入短信验证码" onblur="codeVerification(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)" />
+								    <div class="frmmsg msgCmp03"><span></span></div>
+							    </div>
+							    <div class="col-w-4">
+							    	<button type="button"  class="frmtype frmtypeW btnModel" id="getcode"   onclick="phoneSend(this)">获取验证码</button>
+							    </div>
+							</li>
+							<li>
+								<button type="button" disabled class="frmtype frmtypeW btnModel save-block loginSubmit"  disabled  onclick="login(this,3)">登录</button>
+							</li>
+						</ul>
+						<!--邀请码登录-->
+						<ul class="cmpAllUl cmpCoverUl displayNone">
+							<li>
+								<input type="text" class="frmtype frmtypeW username" placeholder="请输入手机或邮箱" onBlur="nameVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<input type="text" class="frmtype frmtypeW passwd" placeholder="请输入邀请码" onblur="codeVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)" />
+							    <div class="frmmsg msgLog2"><span></span></div>
+							</li>
+							<li>
+								<button type="button" disabled class="frmtype frmtypeW btnModel save-block loginSubmit"  disabled onclick="login(this,2)">登录</button>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix" style="margin-top:-15px;">
+						<a href="pwdFindNew.html" class="fontLink floatL">忘记密码？</a>
+						<span class="floatR" style="color:#999">没有账号？<a href="register.html" class="fontLink">立即注册</a></span>
+					</div>	
+				</div>
+				
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/loginNew.js"></script>
+</body>
+</html>

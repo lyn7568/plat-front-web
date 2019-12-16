@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>员工邀请-登录</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/cmpindex.css">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+
+<div class="containerCon">
+	<a href="../index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm cmp-invite-block" data-step="1">
+				<div class="cmp-info-box alignCenter">
+					<div class="cmp-img-box">
+						<div class="boxBlock">
+							<img class="boxBlockimg" src="" id="orgHeadLogo" />
+						</div>
+					</div>
+					<div class="cmp-base-box">
+						<span class="cmpName cmpOrgName"></span><br />
+						<span class="h2Font">邀请您加入「科袖网」 ，成为企业认证员工</span>
+					</div>
+				</div>
+				<div class="waysBlock loginBl">
+					<div class="loginWays">
+						<ul class="cmpAllUl cmpCoverUl">
+							<li>
+								<input type="text" class="frmtype frmtypeW username" placeholder="请输入手机或邮箱" onBlur="nameVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"  />
+			    				<div class="frmmsg msgLog1"><span></span></div>
+							</li>
+							<li>
+								<input type="password" class="frmtype frmtypeW passwd" placeholder="请输入密码" onBlur="passwordVal(this)" onfocus="getFocus(this)"  onkeyup="checkLoginButtn(this)"/>
+							    <div class="frmmsg msgLog2"><span></span></div>
+							</li>
+							<li>
+								<button type="button" class="frmtype frmtypeW btnModel save-block loginSubmit" disabled onclick="login(this)" >登录</button>
+								 <div class="frmmsg"><span></span></div>
+							</li>
+						</ul>
+					</div>
+					<div class="clearfix" style="margin-top:-15px;">
+						<a href="cmp-pwdReset01.html" target="_blank" class="fontLink floatL">忘记密码？</a>
+						<span class="floatR" style="color:#999">没有账号？<a style="cursor: pointer;" id="soonReg" class="fontLink">立即注册</a></span>
+					</div>	
+				</div>
+				<div class="waysBlock sureIBl displayNone">
+					<div class="cmp-info-box">
+						<div class="cmp-base-box">
+							<div class="h2Font">系统检测到您当前为 <span class="cmpName cmpOrgName2"></span> 的认证员工，请确认是否要变更您的认证信息？</div>
+							<span class="h4Font">若确认，我们将修改您的所在机构信息，并取消之前的相关联系人身份。</span>
+						</div>
+						<div class="clearfix" style="margin-top:20px">
+							<button type="button" class="frmtype frmtypeW btnModel sureUpData" style="margin:10px 0">确认变更</button>
+							<div class="fontLink alignCenter"><span class="reject-btn">拒绝并退出</span></div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<form class="cmpAllFrm cmp-success-block" data-step="2">
+				<ul class="cmpAllUl" style="width: 100%;">
+					<li class="successImg"></li>
+					<li class="importBlock cmp-base-box">
+						<p class="importTip">恭喜您已成为<br><span class="cmpName cmpOrgName"></span><br>企业认证员工！</p>
+					</li>
+					<li>
+						<button type="button" class="frmtype frmtypeW btnModel btnModelBig login-kexiu">登录科袖网</button>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/ajaxfileupload.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmp-staff-invite-log.js"></script>
+</body>
+</html>

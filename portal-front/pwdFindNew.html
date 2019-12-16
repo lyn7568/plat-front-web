@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>科袖网-搭建企业与专家的桥梁</title>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/reset.css">
+<link type="text/css" rel="stylesheet" href="css/common.css">
+<link type="text/css" rel="stylesheet" href="css/genindex.css">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body class="covbodyBg">
+<div class="containerCon">
+	<a href="index.html" class="headlogo signLogo"></a>
+</div>
+<!--中间-->
+<input type="hidden" name="" id="pstate" value="" />
+<input type="hidden" name="" id="pmobilePhone" value="" />
+<input type="hidden" name="" id="pvc" value="" />
+<div id="container">
+	<div class="containerCon contConP">
+		<div class="covFrmblock">
+			<form class="cmpAllFrm">
+				<p class="h1Font alignCenter mainColor">密码找回</p>
+				<ul class="loginWaySort">
+					<li class="col-w-6 liactive">通过邮箱找回</li>
+					<li class="col-w-6" id="gophone">通过手机找回</li>
+				</ul>
+				<div class="waysBlock">
+					<div class="loginWays">
+						<!--通过邮箱找回-->
+						<div class="waysThis emailmain">
+							<!--邮箱找回第一步-->
+							<ul class="cmpAllUl cmpCoverUl emailOne" >
+								<li>
+									<ul class="form_head clearfix">
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step1"></span>
+											输入邮箱
+										</li>
+										<li class="col-w-4">
+											<span class="icon_step step2"></span>
+											接收密码找回邮件
+										</li>
+										<li class="col-w-4">
+											<span class="icon_step step3"></span>
+											重置密码
+										</li>
+									</ul>
+								</li>
+								<li>
+									<input type="email" class="frmtype frmtypeW companyEmail" id="email" placeholder="请输入邮箱地址" onBlur="emailVal(this)" onfocus="getFocus(this)" onkeyup="checkEmailButtn(this)"/>
+				    				<div class="frmmsg msgLog1"><span></span></div>
+								</li>
+								<li>
+									<button type="button" class="frmtype frmtypeW btnModel headRadius save-block loginSubmit" disabled onclick="backPassword(this,1)">下一步</button>
+								</li>
+								<li>
+									<a href="login.html" class="fontLink">又想起来了</a>
+								</li>
+							</ul>
+							<!--邮箱找回第二步-->
+							<ul class="cmpAllUl cmpCoverUl displayNone emailTow">
+								<li>
+									<ul class="form_head clearfix">
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step1"></span>
+											输入邮箱
+										</li>
+										<li class="col-w-4 stepActive">
+											<span class="icon_step step2g"></span>
+											接收密码找回邮件
+										</li>
+										<li class="col-w-4">
+											<span class="icon_step step3"></span>
+											重置密码
+										</li>
+									</ul>
+								</li>
+								<li class="alignCenter">
+									<p class="importTip">密码找回邮件已发送至：<br />
+										<span class="mainColor" id="emailShow"></span>
+									</p>
+									<p class="smalltip">请您在10分钟内登录您的企业邮箱，接收邮件，<br />点击链接后即可重置密码。</p>
+								</li>
+								<li>
+									<button type="button" class="frmtype frmtypeW btnModel headRadius save-block" id="emailGo" onclick="backPassword(this,2)">登录邮箱</button>
+								</li>
+							</ul>
+							
+						</div>
+						
+						<!--通过手机找回-->
+						<div class="waysThis displayNone phonemain">
+							<!--手机找回第一步-->
+							<ul class="cmpAllUl cmpCoverUl phoneOne">
+								<li>
+									<ul class="form_head clearfix">
+										<li class="col-w-6 stepActive">
+											<span class="icon_step step1"></span>
+											验证手机
+										</li>
+										<li class="col-w-6">
+											<span class="icon_step step2"></span>
+											重置密码
+										</li>
+									</ul>
+								</li>
+								<li>
+									<input type="phone" class="frmtype frmtypeW username" placeholder="请输入手机号码" onBlur="phoneVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+				    				<div class="frmmsg msgLog1"><span></span></div>
+								</li>
+								<li>
+									<div class="col-w-8">
+										<input type="tel" class="frmtype frmtypeW companysc" style="width: 98%;" placeholder="请输入短信验证码" id="companysc" onblur="codeVerification(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+									    <div class="frmmsg msgCmp03"><span></span></div>
+								    </div>
+								    <div class="col-w-4">
+								    	<button type="button"  class="frmtype frmtypeW btnModel headRadius" id="getcode" onclick="phoneSend(this)">获取验证码</button>
+								    </div>
+								</li>
+								<li>
+									<button type="button" disabled class="frmtype frmtypeW btnModel save-block headRadius loginSubmit" onclick="backPassword(this,3)">下一步</button>
+								</li>
+								<li>
+									<a href="login.html" class="fontLink">又想起来了</a>
+								</li>
+							</ul>
+							<!--手机找回第二步-->
+							<ul class="cmpAllUl cmpCoverUl displayNone phoneTwo">
+								<li>
+									<ul class="form_head clearfix">
+										<li class="col-w-6 stepActive">
+											<span class="icon_step step1"></span>
+											验证手机
+										</li>
+										<li class="col-w-6 stepActive">
+											<span class="icon_step step2g"></span>
+											重置密码
+										</li>
+									</ul>
+								</li>
+								<li>
+									<input type="password" class="frmtype frmtypeW username" placeholder="请设置登录密码" id="newPassword" onBlur="passwordVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)"/>
+				    				<div class="frmmsg msgLog3"><span></span></div>
+								</li>
+								<li>
+									<input type="password" class="frmtype frmtypeW companysc" placeholder="请再次输入密码确认" id="newPasswordok" onBlur="passwordVal(this)" onfocus="getFocus(this)" onkeyup="checkLoginButtn(this)" />
+				    				<div class="frmmsg msgLog3"><span></span></div>
+								</li>
+								<li>
+									<button type="button" disabled class="frmtype frmtypeW btnModel save-block headRadius loginSubmit" onclick="backPassword(this,4)">重置密码</button>
+									<div class="frmmsg msgCmp4"><span></span></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+					
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/pwdFindNew.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>企业主页-科袖网</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="../css/genindex.css" rel="stylesheet">
+<link type="text/css" href="css/cmpindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+<style type="text/css">
+	.form-result>ul>li{padding:12px 30px}
+	.establishments{display: none;}
+	.productions{display: none;}
+</style>
+</head>
+
+<body>
+
+<!--头部-->
+<header>
+	<script type="text/javascript" src="js/public/cmpHeader.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon">
+			<div class="headconBox productions" style="border:2px #ddd dotted;background: #f6fdff;">
+				<div class="headLeadtit">如何打造精美的企业主页？如何让专家和客户快速了解您的企业？</div>
+				<ul class="headLead">
+					<li>
+						<span>1</span>
+						<p>完善企业资料<br>让人一目了然</p>
+					</li>
+					<li></li>
+					<li>
+						<span>2</span>
+						<p>发布企业新闻<br>增加企业知名度</p>
+					</li>
+					<li></li>
+					<li>
+						<span>3</span>
+						<p>进行企业认证<br>开启全部功能</p>
+					</li>
+					<li></li>
+					<li>
+						<span>4</span>
+						<p>发布企业需求<br>让专家解决研发难题</p>
+					</li>
+					<li></li>
+					<li>
+						<span>5</span>
+						<p>发布企业产品<br>让更多客户发现您</p>
+					</li>
+				</ul>
+			</div>
+			<div class="headconBox flexCenter">
+				<div class="headimgBox cmpimgBox">
+					<div class="boxBlock">
+						<img class="boxBlockimg" src="" id="proHead" />
+					</div>
+				</div>
+                <div class="reInfoBlock" style="padding-left: 230px;">
+                	<div class="h1Font"><span id="proName"></span><em class="authicon" id="proAuth"></em></div>
+                	<div class="h2Font ellipsisSty"><span id="proTit"></span> <span id="proOther"></span></div>
+                	<div class="operateBlock bottomShow">
+                		<ul class="clearfix">
+                			<li><span id="proAddress"></span></li>
+							<li>
+								<span>分享到</span>
+								<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+								<em class="operateicon operateicon2 icon-wechat shareWeixin">
+									<div class="shareCode clearfix">
+										<div class="floatL" id="qrcode"></div>
+										<div class="shareWord floatR">
+											<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+										</div>
+									</div>
+								</em>
+							</li>
+                		</ul>
+                	</div>
+                </div>
+                <a class="goSpanTo" href="cmp-updateinfo.html">修改资料</a>
+			</div>
+			<div class="leftconBox floatL" style="padding-bottom: 40px;">
+				<div class="navconBox">
+					<ul class="mainNavUl clearfix">
+						<li rel="item1user" class="liNow" rel="item1user">主页</li>
+						<li class="productions" rel="item10user" id="tab10user">产品 <span class="counts" id="productCount"></span></li>
+						<li class="establishments" rel="item9user">服务 <span class="counts" id="serCount"></span></li>
+						<li class="establishments" rel="item2user">资源 <span class="counts" id="resCount"></span></li>
+						<li rel="item3user">文章 <span class="counts" id="artCount"></span></li>
+						<li rel="item6user">资料</li>
+						<li rel="item8user" tmp="item8more" class="rightbtn">更多<em class="foldtr"></em></li>
+					</ul>
+					<div class="moreNav" id="item8more">
+						<ul class="moreNavUl clearfix">
+							<li data-num="0" rel="item8drop1" class="attendMy liNow">关注该企业的人</li>
+						</ul>	
+					</div>
+				</div>
+				<div class="itremconBox">
+					<div id="item1user" class="leftconItem"style="background: #f4f6f8;">
+						<div class="coninfobox needinfobox displayNone">
+							<div class="coninfocon form-item needList">
+								<ul class="form-need" id="showDemand">
+									
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox splitBlock clearfix displayNone">
+							<div class="form-item otherShow">
+								<div class="coninfotit">我们的产品<span class="seeMore" id="seeMorePd">查看全部<em></em></span></div>
+								<div class="coninfocon form-result aboutRes">
+									<ul id="showProduct">
+										
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="coninfobox splitBlock clearfix displayNone">
+							<div class="form-item otherShow displayNone">
+								<div class="coninfotit">可提供服务<span class="seeMore" id="seeMoreS">查看全部<em></em></span></div>
+								<div class="coninfocon form-result aboutRes">
+									<ul id="showService">
+										
+									</ul>
+								</div>
+							</div>
+							<div class="form-item otherShow displayNone">
+								<div class="coninfotit">可共享资源<span class="seeMore" id="seeMoreR">查看全部<em></em></span></div>
+								<div class="coninfocon form-result aboutRes">
+									<ul id="showResource">
+										
+									</ul>
+								</div>
+							</div>	
+						</div>
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">企业简介</div>
+							<div class="coninfocon" id="descpS">
+								
+							</div>
+						</div>
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">专注领域</div>
+							<div class="coninfocon listArea">
+								<ul id="subjectShow">
+									
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox form-item otherShow displayNone"> 
+							<div class="coninfotit">文章<span class="seeMore" id="seeMoreA">查看全部<em></em></span></div>
+							<div class="coninfocon form-result aboutRes">
+								<ul id="showArticle">
+									
+								</ul>
+							</div>
+						</div>
+						<!--无搜索结果-->
+						<div class="nodatabox" style="background: #FFFFFF;">
+					        <div class="nodata">
+					            <div class="picbox picNull"></div>
+					            <div class="txtbox">
+					            	<p class="noContip">企业尚未发布任何内容</p>
+					            </div>
+					        </div>
+					    </div>
+					</div>
+					<div id="item2user" class="leftconItem">
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proResource">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+						</div>
+					</div>
+					<div id="item3user" class="leftconItem">
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proArticel">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+						</div>
+					</div>
+					<div id="item6user" class="leftconItem">
+						<div class="coninfobox">
+							<div class="coninfotit">企业详情</div>
+							<div class="coninfocon cmpdetail">
+								<ul class="clearfix">
+									<li>企业名称：<span id="orgName"></span></li>
+									<li>企业规模：<span id="orgSize"></span></li>
+									<li>所属行业：<span id="orgIndustry"></span></li>
+									<li>所在城市：<span id="orgCity"></span></li>
+									<li>企业类型：<span id="orgType"></span></li>
+									<li>企业地址：<span id="cmpAddress"></span></li>
+									<li>创立时间：<span id="foundTime"></span></li>
+									<li>企业官网：<span id="orgUrl"></span></li>
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox">
+							<div class="coninfotit">企业资质</div>
+							<div class="coninfocon listSector">
+								<ul id="qualification">
+									
+								</ul>
+							</div>
+						</div>
+						<div class="coninfobox displayNone">
+							<div class="coninfotit">工商信息</div>
+							<div class="coninfocon">
+								<ul id="comMes">
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div id="item8user" class="leftconItem">
+						<div id="item8drop1" class="coninfobox form-item dropconItem">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="attendMy">
+									
+								</ul>
+								<div class="nodatabox displayNone">
+							        <div class="nodata">
+							            <div class="picbox picNull"></div>
+							            <div class="txtbox">
+							            	<p class="noContip">用户暂时还没被其他任何人关注</p>
+							            </div>
+							        </div>
+							    </div>
+							</div>
+						</div>
+					</div>
+					<div id="item9user" class="leftconItem">
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proService">
+									
+								</ul>
+								<!--无搜索结果-->
+								<div class="nodatabox displayNone">
+							        <div class="nodata">
+							            <div class="picbox picNull"></div>
+							            <div class="txtbox">
+							            	<p class="noContip"></p>
+							            </div>
+							        </div>
+							    </div>
+								<button class="js-load-more"></button>
+							</div>
+						</div>
+					</div>
+					<div id="item10user" class="leftconItem">
+						<div class="coninfobox form-item otherShow">
+							<div class="coninfocon form-result aboutRes">
+								<ul id="proProduct">
+									
+								</ul>
+								<button class="js-load-more"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem statisticsBox alignCenter clearfix" style="cursor: pointer;" id="attendmyGo">
+					<div class="col-w-12">
+						<p>关注者</p>
+						<span id="attenNum"></span>
+					</div>
+				</div>
+				<div class="myoneself">
+					<div class="conItem statisticsBox alignCenter clearfix" style="padding:30px 10px">
+						<div class="col-w-12">
+							<p class="goworkspaceSpan"></p>
+							<a class="goarrow" target="_blank" href="cmp-needList.html">进入企业工作台<em></em></a>
+						</div>
+					</div>
+					<div class="statisticsBox" style="margin-bottom: 40px;">
+						<p>企业主页已被浏览 <em id="viewNums"></em> 次</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--尾部-->
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+
+<script type="text/javascript" src="../js/tabCom.js"></script>
+<script type="text/javascript" src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/cmpInformation.js"></script>
+<script>
+	//微信分享
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width: 100,
+		height: 100
+	});
+
+	function makeCode() {
+		var hurl = window.location.host;
+		var orgId = GetQueryString("orgId");
+		var elurl = "http://" + hurl + "/e/c.html?id=" + orgId;
+		qrcode.makeCode(elurl);
+	}
+	makeCode();
+
+	//分享关注按钮
+	$('.shareWeixin').hover(function(){$('.shareCode').stop(true,false).fadeToggle();});
+
+	
+</script>
+</body>
+
+</html>

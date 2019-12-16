@@ -1,0 +1,99 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>实名认证-账户设置-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/reset.css" />
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/webuploader/webuploader2.css" rel="stylesheet">
+<link type="text/css" href="css/index.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style>
+	.identProcess{ display: block; margin:0 auto;}
+</style>
+</head>
+<body>
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<!--内容-->
+<div id="container">
+	<div class="containerCon">
+	<div class="account">
+		<div class="account-set">
+			<div class="account-title">账号设置</div>
+			<!-- <a href="#"  class="leftsidebar">个人信息</a> -->
+			<a href="account-set.html" class="leftsidebar">修改密码</a>
+			<a href="account-binding.html" class="leftsidebar">账号绑定</a>
+			<!--<a href="javascript:;" class="leftsidebar" id="sfnav">身份认证</a>-->
+			<a href="realname-authentication.html   " class="leftsidebar">实名认证</a>
+			<a href="javascript:;" class="leftsidebar bgcolor">专家认证</a>
+		</div>
+		<div class="contentbox">
+			<div class="content-set">
+				<div class="content-title">专家认证</div>
+				<div class="content-main"> 
+					<!-- 身份认证状态 -->
+					<div class="IdentityState">
+						<div class="nowState">
+						   <p><span class="identProcess" id="identProcess"></span><span class="identts" id="identts"></span></p>
+						   <p><span class="identBtn" id="identBtn" style="display:none;"></span></p>
+						</div>
+					</div>
+					<!-- 身份证件上传 -->
+					<div class="IdentityUp clearfix" style="display:none ;"><!-- style="display:none"-->
+						<div class="note">
+							<p>科袖郑重承诺不对外提供您的个人信息</p>
+						</div>
+						
+		            	<div class="webupArea realname">
+			            	<p class="littip">请上传您身份证的正反面：</p>
+							<div class="webuploadMut">
+								 <div id="uploader-dome">
+								    <!--用来存放item-->
+								    <div id="fileList" class="uploader-list">
+								    	 <div id="filePicker"></div>
+								    </div>
+								   
+								 </div>
+							</div>
+						</div>
+						<div class="webupArea expert">
+			            	<p class="littip">请上传能够证明您身份的相关证件，如工作证、在职证明、学生证、在读证明等：</p>
+							<div class="webuploadMut">
+								 <div id="uploader-dome">
+								    <!--用来存放item-->
+								    <div id="fileList2" class="uploader-list">
+								    	 <div id="filePicker2"></div>
+								    </div>
+								   
+								 </div>
+							</div>
+							<div class="subUp">提交上传</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	</div>
+</div>
+
+<!--底部-->
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="js/settings/expert-authentication.js"></script> 
+
+</body>
+</html>

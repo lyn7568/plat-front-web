@@ -1,0 +1,202 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>团队-我的工作台-科袖网</title>
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link type="text/css" href="css/common.css" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="./css/webuploader/webuploader2.css">
+	<link type="text/css" href="css/genindex.css" rel="stylesheet">
+
+	<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	<style>
+		.queStep .artAbout>li>dl {
+			height: 220px;
+		}
+
+		.queStep .artAbout>li>dl>dd {
+			width: 46.8%;
+			height: 200px;
+		}
+		.queStep .artAbout>li>dl>dd .imgItem img{
+			max-width: 278px;
+			max-height: 200px;
+		}
+		.queStep ul.artAbout .uploadFile .uploadblock {
+			height: 200px;
+		}
+
+		.noTeam {
+			margin: 20px;
+			text-align: center;
+			overflow: hidden;
+			color: #999;
+		}
+
+		.noTeam .createTeam {
+			border-radius: 40px;
+			margin: 20px auto 40px;
+			display: inline-block;
+			padding: 10px 20px;
+			text-align: center;
+			background: #ff9900;
+			color: #ffffff;
+			cursor: pointer;
+		}
+		.itemListBolck .itemListCon .madiaInfo{
+			padding-left:0;
+		}
+		.itemListCon .form-result>ul>li .madiaEdit span{
+			width: 80px;
+		}
+		.itemListCon .form-result>ul>li .madiaEdit span.closeThis{
+			background: rgba(255, 153, 0, 0.4);
+		}
+	</style>
+</head>
+
+<body>
+	<div class="blackcover questionCover displayNone">
+		<div class="resAreaBox putquestion">
+			<div class="queStep queStep01">
+				<div class="steptit">创建团队</div>
+				<div class="banTheme clearfix postUl">
+					<p class="floatL aboutTit">团队名称<em class="requiredcon">*</em><span class="frmconmsg" style="display:none">不可超过50个字</span></p>
+					<input type="text" style="width: 100%;" class="frmcontype" placeholder="请填写团队名称，如XXX团队"
+						maxlength="50" id="teamName" />
+				</div>
+				<div class="clearfix postUl">
+					<p class="floatL aboutTit">所属机构<em class="requiredcon">*</em><span class="frmconmsg"
+						style="display:none">不可超过50个字</span></p>
+					<input type="text" style="width: 100%;" class="frmcontype" placeholder="请填写所属机构" maxlength="50"
+						id="teamOrgName" />
+				</div>
+				<ul class="clearfix postUl">
+					<p class="aboutTit">所在城市<em class="requiredcon">*</em><span class="frmconmsg"
+						style="display:none">请选择所在城市</span></p>
+					<form action="" name="form1">
+						<div class="col-w-6 citybox2">
+							<span class="frmcontype" id="Province">
+								<em class="mr_sj"></em>
+								<i class="mr_show" id="oprovince">请选择省/直辖市</i>
+								<ul>
+									<li><a href="javascript:void(0)" alt="请选择省/直辖市">请选择省/直辖市</a></li>
+								</ul>
+								<input type="hidden" name="cho_Province" value="请选择省/直辖市">
+							</span>
+						</div>
+						<div class="col-w-6 citybox2">
+							<span class="frmcontype floatR" id="City">
+								<em class="mr_sj"></em>
+								<i class="mr_show" id="ocity">请选择城市</i>
+								<ul>
+									<li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+								</ul>
+								<input type="hidden" name="cho_City" value="请选择城市 ">
+							</span>
+						</div>
+					</form>
+				</ul>
+				<ul class="clearfix postUl artAbout">
+					<li>
+						<div class="aboutTit">上传团队材料<em class="requiredcon">*</em><span class="frmconmsg"
+							></span></div>
+						<dl class="clearfix" id="fileList">
+							<dd class="uploadD" id="uploadDd">
+								<div class="uploadFile">
+									<div class="uploadblock">
+										<span class="" id="filePicker">上传团队相关材料</span>
+										<!--未上传图片时-->
+										<div class="upFront" style="top:74px;" id="uploader">
+											<p>上传团队相关材料</p>
+											<p class="uploadtip">JPG/JPEG/PNG格式<br />大小2M以内</p>
+										</div>
+									</div>
+								</div>
+							</dd>
+							<dd></dd>
+						</dl>
+					</li>
+					<li class="saveBtn">
+						<button type="button" class="frmcontype btnModel" id="pubSte">申请创建团队</button>
+					</li>
+				</ul>
+
+			</div>
+			<span class="workclose" id="workclose"></span>
+		</div>
+	</div>
+
+	<header id="header">
+		<script src="js/header.js"></script>
+	</header>
+
+	<!--中间-->
+	<div id="container">
+		<div class="containerCon">
+			<div class="contentCon clearfix conBlock">
+				<div class="workmenu">
+					<script src="js/workMenu.js"></script>
+				</div>
+				<div class="workcon workconG">
+					<div class="workcontit">
+						<a class="worksamlltit worksamlltitnow" data-status="3">我的团队</a>
+						<a class="worksamlltit" data-status="1">待审核团队</a>
+						<a class="worksamlltit" data-status="2">未通过团队</a>
+					</div>
+					<div class="itemListBolck">
+						<div class="topOperaBlock clearfix">
+							<div class="searchAbout col-w-8" style="visibility: hidden">
+								<input class="frmcontype" type="search" id="articleSearch" name=""
+									placeholder="">
+								<span class="searchSpan"></span>
+							</div>
+							<div class="issueSpanBlock col-w-4">
+								<a class="issueSpan createTeam">创建团队</a>
+							</div>
+						</div>
+						<div class="form-item itemListCon">
+							<div class="form-result aboutRes">
+								<ul id="articalList">
+									
+								</ul>
+								<!--无搜索结果-->
+								<div class="nodatabox displayNone" id="noartical">
+									<div class="nodata">
+										<div class="picbox picNull"></div>
+										<div class="txtbox">
+											<p class="noContip"></p>
+										</div>
+									</div>
+								</div>
+								<div class="tcdPageCode"></div>
+							</div>
+							<!-- <div class="noTeam">
+								<h4>暂无专家团队是否创建团队</h4>
+								<div class="createTeam">申请创建团队</div>
+							</div> -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<script type="text/javascript" src="js/footer.js"></script>
+	</footer>
+
+	<script type="text/javascript" src="js/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+	<script type="text/javascript" src="js/jquery.page.js"></script>
+	<script type="text/javascript" src="./js/webuploader/webuploader.js"></script>
+	<script type="text/javascript" src="js/public/baseUtil.js"></script>
+	<script type="text/javascript" src="js/public/genCom.js"></script>
+	<script type="text/javascript" src="js/teamList.js"></script>
+	<script src="js/city.min.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
+</html>

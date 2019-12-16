@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>文章分享-科袖网</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/swiper.min.css" />
+<link rel="stylesheet" href="../css/share.css" />
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/public/swiper.min.js"></script>	
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/shareLeaveWord.js"></script>	
+<script type="text/javascript" src="../js/public/openApp.js"></script>	
+<script type="text/javascript">
+	addscript("ad_article_h5_a");
+	addscript("ad_article_h5_b");
+	addscript("ad_article_h5_c");
+</script>
+<style>
+	html,body {background: #FFFFFF;}
+</style>
+</head>
+
+<body>
+<div class="contentBody2">
+	<div class="topFu clearfix">
+		<div class="topLogo floatL"></div>
+		<div class="goSpan floatR">
+			<span class="openSpan">打开</span>
+		</div>
+	</div>
+	<div class="showDetail" style="padding-top:56px;">
+		<div class="h1Font hWeight" id="articleName"></div>
+		<div class="madiaBlock">
+			<ul class="mui-table-view noactiveTab">
+				<li class="plat">
+					<div class="flexCenter clearfix">
+						<a id="personAL">
+							<div class="madiaHead useHead" id="messImg"></div>
+							<div class="madiaInfo">
+								<p><span class="h1Font ellipsisSty" id="name"></span><em class="authiconNew" title="" id="auth"></em></p>
+								<p class="h3Font" id="oTime"></p>
+							</div>
+						</a>
+						<div class="goSpan">
+							<span class="attenSpan">关注</span>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<!--广告模块-->
+		<div class="madiaBlock advertItem advertItem-A"></div>
+		<!--文章内容区-->
+		<div class="showMain" id="articleContent">
+		</div>
+		<!--附件模块-->
+		<div class="atachList displayNone">
+			本文章包含的附件内容需登录PC端科袖网进行下载
+		</div>
+		<!--标签模块-->
+		<ul class="tagList displayNone">
+			<!--<li>
+				<span class="h2Font">金属材料工程与腐</span>
+			</li>-->
+		</ul>
+		<div class="madiaBlock displayNone" id="correlationExpert">
+			<div class="madiaTit">相关专家</div>
+			<ul class="mui-table-view" id="expertList">
+		       
+		    </ul>
+		</div>
+		<div class="madiaBlock displayNone" id="correlationProduct">
+			<div class="madiaTit">相关产品</div>
+			<ul class="mui-table-view" id="productList">
+		       
+		    </ul>
+		</div>
+		<div class="madiaBlock displayNone" id="correlationService">
+			<div class="madiaTit">相关服务</div>
+			<ul class="mui-table-view" id="serviceList">
+		       
+		    </ul>
+		</div>
+		<div class="madiaBlock displayNone" id="resource">
+			<div class="madiaTit">相关资源</div>
+			<ul class="mui-table-view" id="resourceList">
+		        
+		    </ul>
+		</div>
+		<div class="madiaBlock displayNone" id="correlationCompany">
+			<div class="madiaTit">相关企业</div>
+			<ul class="mui-table-view" id="companyList">
+		       
+		    </ul>
+		</div>
+		<!--点赞模块-->
+		<div class="thumbBlock">
+			<span class="thumbBtn">赞 <span id="snum"></span></span>
+		</div>
+		<!--广告模块-->
+		<div class="madiaBlock swiper-container advertItem advertItem-B" style="margin:30px 0 10px"></div>
+		<!--您可能感兴趣的文章-->
+		<div class="madiaBlock displayNone" id="article">
+			<div class="madiaTit">您可能感兴趣的文章</div>
+			<ul class="mui-table-view" id="articleList">
+		        
+		    </ul>
+		</div>
+		<!--您可能感兴趣的文章-->
+		<div class="madiaBlock displayNone" id="newarticle">
+			<div class="madiaTit">最新文章</div>
+			<ul class="mui-table-view" id="newarticleList">
+		        
+		    </ul>
+		</div>
+		<!--留言-->
+		<div class="madiaBlock displayNone">
+			<div class="madiaTit" id="olisten">留言</div>
+			<ul class="mui-table-view commentBlock commentsArea">
+		     
+		   </ul>
+		</div>
+	</div>
+	
+	<div class="shareEcode">
+		<!--广告模块-->
+		<div class="madiaBlock swiper-container advertItem advertItem-C" style="margin:0 9px"></div>
+		<img class="Ecodecon" src="../images/ecordCard.jpg" />
+	</div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		var imgUrl ="http://www.ekexiu.com/images/logo180.png";
+		var lineLink = document.location.href;
+		var descContent="";
+		var shareTitle;
+		var appid = '';
+		var articleId = GetQueryString("id");
+		module.lWord(articleId,1);
+		pageViewLog(articleId,3)
+		wlog("article", articleId, '3')
+		//进入发布者详情页面
+		$("#personAL").on("click", function() {
+			var reType = this.getAttribute("data-type");
+			if(reType=="1"){
+				var proId=this.getAttribute("data-id");
+				location.href="http://" + window.location.host + "/e/p.html?id=" + proId;
+			}else if(reType=="2"){
+				var cmpId=this.getAttribute("data-id");
+				location.href="http://" + window.location.host + "/e/c.html?id=" + cmpId;
+			}
+		})
+		var this_="../html/professorArticle.html?articleId="+articleId;
+		wcFresh(this_);
+		$("body").on("click",".goSpan,.thumbBtn",function(){
+			isInstalled(this_,true);
+			$(this).addClass("activeThis");
+		})
+		
+		$("#articleList,#newarticleList").on("click","li", function() {
+			var OdataId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/a.html?id=" + OdataId;
+		})
+		$("#resourceList").on("click","li", function() {
+			var OdataId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/r.html?id=" + OdataId;
+		})
+		$("#expertList").on("click","li", function() {
+			var OdataId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/p.html?id=" + OdataId;
+		})
+		$("#companyList").on("click","li", function() {
+			var OdataId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/c.html?id=" + OdataId;
+			
+		})
+		$("#productList").on("click","li", function() {
+			var OdataId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/pr.html?id=" + OdataId;
+			
+		})
+		$(".tagList").on("click", "li", function() {
+			var keyCon=$(this).find(".h2Font").text();
+			location.href="http://" + window.location.host + "/e/search.html?flag=3&key=" + keyCon;
+		})
+	
+		
+		var oArticleModule = {
+			articleId: GetQueryString("id"),
+			oAjaxGet: function(url, obj, oType, oFun) {
+				$.ajax(url,{
+					data: obj,
+					dataType: 'json', //服务器返回json格式数据
+					type: oType, //HTTP请求类型
+					timeout: 10000, //超时时间设置为10秒；
+					traditional: true,
+					success: function(data) {
+						if(data.success) {
+							oFun(data.data);
+						}
+					},
+					error: function(e) {
+						return;
+					}
+				});
+			},
+			queryFileAtach:function(){
+				oArticleModule.oAjaxGet("/ajax/article/files/byArticleId",{
+					"id":oArticleModule.articleId
+				}, "get", function(data){
+					if(data){
+						if(data.length>0){
+							document.getElementsByClassName('atachList')[0].style.display='block';
+						}
+					}
+				});
+			},
+			articleMess: function($data) {
+				document.getElementById("articleName").innerHTML = $data.articleTitle;
+				shareTitle=$data.articleTitle;
+				document.title=$data.articleTitle;
+				stt = $data.articleImg.substring(0, 9);
+				imgUrl="http://www.ekexiu.com/data/article/" + stt + $data.articleId + "_s.jpg";
+				if($data.articleContent) {
+					document.getElementById("articleContent").innerHTML = $data.articleContent;
+					
+					descContent=document.getElementById("articleContent").innerText.substr(0,70);
+				}
+				if($data.subject) {
+					document.getElementsByClassName("tagList")[0].style.display = "block";
+					var arr = $data.subject.split(",");
+					for(var i in arr) {
+						var oLi = document.createElement("li");
+						oLi.innerHTML = '<span class="h2Font">' + arr[i] + '</span>'
+						document.getElementsByClassName("tagList")[0].appendChild(oLi);
+					}
+				}
+				document.getElementById("snum").innerHTML = $data.articleAgree;
+				document.getElementById("oTime").innerHTML = commenTime($data.publishTime);
+				document.getElementById("personAL").setAttribute("data-type",$data.articleType);
+				if($data.articleType == 1) {
+					oArticleModule.oAjaxGet("../ajax/article/ralateArticles", {
+						"keys": arr,
+						"professorId": oArticleModule.oWner,
+						"articleId": oArticleModule.articleId,
+						"rows": 5
+					}, "get", oArticleModule.correlationArticle);
+					document.getElementById("personAL").setAttribute("data-id",$data.ownerId);
+					oArticleModule.oAjaxGet("../ajax/professor/editBaseInfo/" + $data.ownerId, "", "get", oArticleModule.professorMess);
+				} else if($data.articleType == 2){
+					oArticleModule.oAjaxGet("../ajax/article/ralateArticles", {
+						"keys": arr,
+						"orgId": oArticleModule.oWner,
+						"articleId": oArticleModule.articleId,
+						"rows": 5
+					}, "get", oArticleModule.correlationArticle);
+					document.getElementById("personAL").setAttribute("data-id",$data.ownerId);
+					oArticleModule.oAjaxGet("../ajax/org/" + $data.ownerId, "", "get", oArticleModule.business);
+				}else if($data.articleType == 3){
+					oArticleModule.oAjaxGet("../ajax/article/ralateArticles", {
+						"keys": arr,
+						"orgId": oArticleModule.oWner,
+						"articleId": oArticleModule.articleId,
+						"rows": 5
+					}, "get", oArticleModule.correlationArticle);
+					document.getElementById("personAL").setAttribute("data-id",$data.ownerId);
+					oArticleModule.oAjaxGet("../ajax/platform/info", {id:$data.ownerId}, "get", oArticleModule.platform);
+				}
+				
+			},
+			professorMess: function($data) {
+				document.getElementById('name').innerHTML = $data.name;
+				if($data.hasHeadImage == 1) {
+					document.getElementById("messImg").style.backgroundImage = "url(../images/head/" + $data.id + "_l.jpg" + ")";
+				}
+				var userType = autho($data.authType, $data.orgAuth, $data.authStatus);
+				document.getElementById("auth").classList.add(userType.sty);
+				
+			},
+			business: function($data) {
+				if($data.forShort) {
+					document.getElementById('name').innerHTML = $data.forShort;
+				}else{
+					document.getElementById('name').innerHTML = $data.name;
+				}
+				var mgimg="../images/default-icon.jpg";
+				if($data.hasOrgLogo) {
+					mgimg="/images/org/" + $data.id + ".jpg";
+				}
+				document.getElementById("messImg").classList.add("cmpHead2");
+				document.getElementById("messImg").innerHTML='<div class="boxBlock"><img class="boxBlockimg" id="companyImg" src="'+ mgimg+'"></div>'
+				if($data.authStatus == 3) {
+					document.getElementById("auth").classList.add("authicon-com-ok");
+				}
+				if(!$data.colMgr && !$data.resMgr) {
+					oArticleModule.correlationProduct();
+				}
+				if($data.colMgr) {
+					oArticleModule.queryFileAtach();
+				}
+			},
+			platform: function($data) {
+				document.getElementById('name').innerHTML = $data.name;
+				var mgimg="../images/default-icon.jpg";
+				if($data.logo!=null) {
+					mgimg="/data/platform" + $data.logo;
+				}
+                $(".plat").css("cursor","default");
+                $(".goSpan").hide();
+				document.getElementById("messImg").classList.add("cmpHead2");
+				document.getElementById("messImg").innerHTML='<div class="boxBlock"><img class="boxBlockimg" id="companyImg" src="'+ mgimg+'"></div>'
+			},
+			correlationExpert: function($data) {
+				if($data.length == 0) {
+					return;
+				}
+				document.getElementById("correlationExpert").classList.remove("displayNone");
+				for(var i = 0; i < $data.length; i++) {
+					(function(n) {
+						oArticleModule.oAjaxGet("../ajax/professor/editBaseInfo/" + $data[n].professorId, "", "get", oArticleModule.expertList);
+					})(i)
+	
+				}
+	
+			},
+			expertList: function($data) {
+				var os = "";
+				if($data.title) {
+					if($data.orgName) {
+						os = $data.title + "，" + $data.orgName;
+					} else {
+						os = $data.title;
+					}
+				} else {
+					if($data.office) {
+						if($data.orgName) {
+							os = $data.office + "，" + $data.orgName;
+						} else {
+							os = $data.office;
+						}
+					} else {
+						if($data.orgName) {
+							os = $data.orgName;
+						}
+					}
+				}
+				var baImg = "../images/default-photo.jpg";
+				if($data.hasHeadImage == 1) {
+					baImg = "/images/head/" + $data.id + "_l.jpg";
+				}
+				var userType = autho($data.authType, $data.orgAuth, $data.authStatus);
+				var li = document.createElement("li");
+				li.setAttribute("data-id", $data.id);
+				li.innerHTML = '<div class="flexCenter clearfix">' +
+					'<div class="madiaHead useHead" style="background-image:url(' + baImg + ')"></div>' +
+					'<div class="madiaInfo">' +
+					'<p><span class="h1Font">' + $data.name + '</span><em class="authiconNew ' + userType.sty + '"></em></p>' +
+					'<p class="ellipsisSty h2Font">' + os + '</p>' +
+					'</div>' +
+					'</div>'
+				document.getElementById("expertList").appendChild(li);
+			},
+			correlationResource: function($data) {
+				if($data.length == 0) {
+					return;
+				}
+				document.getElementById("resource").classList.remove("displayNone");
+				for(var i = 0; i < $data.length; i++) {
+					oArticleModule.oAjaxGet( "../ajax/resource/queryOne", {
+						"resourceId": $data[i].resourceId
+					}, "get", oArticleModule.rsourceList);
+				}
+	
+			},
+			rsourceList: function($data) {
+				var namepo, userType;
+				if($data.resourceType == 1) {
+					namepo = $data.editProfessor.name;
+					userType = autho($data.editProfessor.authType, $data.editProfessor.orgAuth, $data.editProfessor.authStatus);
+				} else {
+					userType = {};
+					if($data.organization.forShort){
+						namepo = $data.organization.forShort;
+					}else{
+						namepo = $data.organization.name;
+					}
+					if($data.organization.authStatus == 3) {
+						userType.sty = "authicon-com-ok"
+					} 
+				}
+				var rImg = "../images/default-resource.jpg";
+				if($data.images.length>0){
+					rImg = "/data/resource/" + $data.images[0].imageSrc;
+				}
+				var li = document.createElement("li");
+				li.setAttribute("data-id", $data.resourceId);
+				li.innerHTML = '<div class="flexCenter OflexCenter clearfix">' +
+					' <div class="madiaHead resouseHead" style="background-image:url(' + rImg + ')"></div>' +
+					'<div class="madiaInfo OmadiaInfo">' +
+					'<p class="ellipsisSty h1Font">' + $data.resourceName + '</p>' +
+					'<p><span class="h2Font">' + namepo + '</span><em class="authiconNew ' + userType.sty + '" title="科袖认证专家"></em></p>' +
+					//'<p class="ellipsisSty-2 h2Font">用途：' + $data.supportedServices + '</p>' +
+					'</div>' +
+					'</div>'
+				document.getElementById("resourceList").appendChild(li);
+			},
+			correlationService: function() {
+				oArticleModule.oAjaxGet("/ajax/ware/byArticle",{
+					"id": oArticleModule.articleId,
+					"rows":5
+				}, "get", function(res){
+					var $data=res
+					if($data.length == 0) {
+						return;
+					}
+					document.getElementById("correlationService").style.display = "block";
+					for(var i = 0; i < $data.length; i++) {
+						var cnt="", rImg="../images/default-service.jpg"
+						if($data[i].images) {
+							var subs = strToAry($data[i].images)
+							if(subs.length > 0) {
+								rImg="/data/ware" + subs[0]
+							}
+						}
+						if($data.cnt){
+							cnt="内容："+$data.cnt
+						}
+						var li = document.createElement("li");
+						li.setAttribute("data-id",$data[i].id);
+						li.className = "mui-table-view-cell";
+						li.innerHTML = '<div class="flexCenter OflexCenter mui-clearfix">' +
+							' <div class="madiaHead resouseHead" style="background-image:url(' + rImg + ')"></div>' +
+							'<div class="madiaInfo OmadiaInfo">' +
+							'<p class="ellipsisSty-2 h1Font">' + $data[i].name + '</p>' +
+							'<p><span class="h2Font ownerName"></span><em class="authiconNew ownerSty"></em></p>' +
+							//'<p class="ellipsisSty h2Font">' + cnt + '</p>' +
+							'</div>' +
+							'</div>'
+						document.getElementById("serviceList").appendChild(li);
+						var $li=$(li)
+						if($data[i].category==1){
+							oArticleModule.proSigInfo($data[i].owner,$li)
+						}else{
+							oArticleModule.orgSigInfo($data[i].owner,$li)
+						}
+					}
+				});
+			},
+			correlationArticle: function($data) {
+				if($data.total) {
+					if($data.data.length == 0) {
+						return;
+					}
+				}else{
+					if($data.length == 0) {
+						return;
+					}
+				}
+				var oo=1;
+			if($data.total) {
+				var $data=$data.data;
+				
+				document.getElementById('newarticle').style.display = "block";
+				oo=0;
+			}else{
+				document.getElementById('article').style.display = "block";
+				
+			}
+				for(var i = 0; i < $data.length; i++) {
+					var ourl, of ;
+					if($data[i].articleType == 1) {
+						ourl = "/ajax/professor/editBaseInfo/" + $data[i].ownerId; of = 1;
+					} else if($data[i].articleType == 2) {
+						ourl = "/ajax/org/" + $data[i].ownerId; of = 2;
+					} else if($data[i].articleType == 3) {
+						ourl = "/ajax/platform/info"; of = 3;
+					}
+					var arImg = "../images/default-artical.jpg";
+					if($data[i].articleImg) {
+						arImg = "/data/article/" + $data[i].articleImg
+					}
+					var title = $data[i].articleTitle;
+					$.ajax({
+						url:ourl,
+						data:{id:$data[i].ownerId},
+						dataType: 'json', //服务器返回json格式数据
+						type: "get", //HTTP请求类型
+						timeout: 10000, //超时时间设置为10秒；
+						async: false,
+						traditional: true,
+						success: function(data) {
+							if(data.success) {
+								var namepo=""
+								var li = document.createElement("li");
+								if( of == 1) {
+									namepo = data.data.name;
+									var userType = autho(data.data.authType, data.data.orgAuth, data.data.authStatus);
+									li.setAttribute("owner-id", data.data.id);
+									li.setAttribute("data-type", 1);
+								} else if( of == 2){
+									if(data.data.forShort){
+										namepo = data.data.forShort;
+									}else{
+										namepo = data.data.name;
+									}
+									var userType = {};
+									if(data.data.authStatus == 3) {
+										userType.sty = 'authicon-com-ok'
+									} else {
+										userType.sty = "e"
+									}
+									li.setAttribute("owner-id", data.data.id);
+									li.setAttribute("data-type", 2);
+								}else if( of == 3){
+									namepo = data.data.name;
+									li.setAttribute("owner-id", data.data.id);
+									li.setAttribute("data-type", 3);
+								}
+								li.setAttribute("data-id", $data[i].articleId);
+								li.className = "mui-table-view-cell";
+								li.innerHTML = '<div class="flexCenter OflexCenter clearfix">' +
+									'<div class="madiaHead artHead" style="background-image:url(' + arImg + ')"></div>' +
+									'<div class="madiaInfo OmadiaInfo">' +
+									'<p class="ellipsisSty-2 h1Font">' + title + '</p>' +
+									'<p><span class="h2Font" style="margin-right:10px">'+namepo+'</span><span class="time">'+commenTime($data[i].publishTime)+'</span></p>'+
+									'</div>' +
+									'</div>'
+								
+								if(oo==0){
+									document.getElementById("newarticleList").appendChild(li)
+								}else{
+									document.getElementById("articleList").appendChild(li);
+								}
+							}
+						},
+						error: function() {
+						}
+					});
+				}
+			},
+			correlationCompany: function($data) {
+				if($data.length == 0) {
+					return;
+				}
+				document.getElementById("correlationCompany").classList.remove("displayNone");
+				for(var i = 0; i < $data.length; i++) {
+					oArticleModule.oAjaxGet( "../ajax/org/"+ $data[i].orgId, {
+						
+					}, "get", oArticleModule.companyList);
+				}
+	
+			},
+			companyList: function($data) {
+				var baImg = "../images/default-icon.jpg";
+				if($data.hasHeadImage == 1) {
+					baImg = "/images/org/" + $data.id + "_l.jpg";
+				}
+				var namepo,userType=""
+				if($data.authStatus == 3){
+					userType= "authicon-com-ok"
+				}
+				if($data.forShort){
+					namepo = $data.forShort;
+				}else{
+					namepo = $data.name;
+				}
+				/*应用行业*/
+				var proOther = "";
+				if($data.industry) {
+					proOther = $data.industry.replace(/,/gi, " | ");
+				}
+				var li = document.createElement("li");
+				li.setAttribute("data-id", $data.id);
+				li.innerHTML = '<div class="flexCenter OflexCenter clearfix">' +
+					'<div class="madiaHead cmpHead">'+
+						'<div class="boxBlock"><img class="boxBlockimg companyImg" id="oimg" src="'+ baImg +'"></div>'+
+					'</div>' +
+					'<div class="madiaInfo OmadiaInfo">' +
+					'<p><span class="h1Font">' + namepo + '</span><em class="authiconNew ' + userType + '"></em></p>' +
+					'<p class="ellipsisSty h2Font">' + proOther + '</p>' +
+					'</div>' +
+					'</div>'
+				document.getElementById("companyList").appendChild(li);
+			},
+			correlationProduct: function() {
+				oArticleModule.oAjaxGet("/ajax/article/product",{
+					"id": oArticleModule.articleId,
+					"rows":5
+				}, "get", function(res){
+					var $data=res
+					if($data.length == 0) {
+						return;
+					}
+					document.getElementById("correlationProduct").style.display = "block";
+					for(var i = 0; i < $data.length; i++) {
+						oArticleModule.oAjaxGet("/ajax/product/qo", {
+							"id": $data[i].product
+						}, "get", oArticleModule.productList);
+					}
+				});
+			},
+			productList: function($data) {
+				var cnt="", rImg="../images/default-product.jpg"
+				if($data.images) {
+					var subs = strToAry($data.images)
+					if(subs.length > 0) {
+						rImg="/data/product" + subs[0]
+					}
+				}
+				if($data.cnt){
+					cnt="简介："+$data.cnt
+				}
+				var li = document.createElement("li");
+				li.setAttribute("data-id",$data.id);
+				li.className = "mui-table-view-cell";
+				li.innerHTML = '<div class="flexCenter OflexCenter mui-clearfix">' +
+					' <div class="madiaHead resouseHead" style="background-image:url(' + rImg + ')"></div>' +
+					'<div class="madiaInfo OmadiaInfo">' +
+					'<p class="mui-ellipsis-2 h1Font">' + $data.name + '</p>' +
+					'<p><span class="h2Font ownerName"></span><em class="authicon ownerSty"></em></p>' +
+					'</div>' +
+					'</div>'
+				document.getElementById("productList").appendChild(li);
+				var $li=$(li)
+				oArticleModule.orgSigInfo($data.owner,$li)
+			},
+			proSigInfo:function(id,$list){
+				oArticleModule.oAjaxGet( "/ajax/professor/baseInfo/"+id,{
+				}, "get", function(data){
+					var datas=data
+					var userType = autho(datas.authType, datas.orgAuth, datas.authStatus);
+					$list.find(".ownerName").html(datas.name)
+					$list.find(".ownerSty").addClass(userType.sty)
+				});
+			},
+			orgSigInfo:function(id,$list){
+				oArticleModule.oAjaxGet( "/ajax/org/" + id,{
+				}, "get", function(data){
+					var datas=data
+					var name=datas.name;
+					if(datas.forShort){
+						name=datas.forShort
+					}
+					$list.find(".ownerName").html(name)
+					if(datas.authStatus == 3){
+						$list.find(".ownerSty").addClass("authicon-com-ok")
+					}
+				});
+			}
+			
+		}
+		/*文章详细内容*/
+		oArticleModule.oAjaxGet("../ajax/article/query", {
+			articleId: oArticleModule.articleId
+		}, "get", oArticleModule.articleMess);
+		oArticleModule.oAjaxGet("../ajax/article/ralatePro", {
+			"articleId": oArticleModule.articleId
+		}, "get", oArticleModule.correlationExpert);
+		oArticleModule.oAjaxGet("../ajax/article/ralateRes", {
+			"articleId": oArticleModule.articleId
+		}, "get", oArticleModule.correlationResource);
+		oArticleModule.oAjaxGet("../ajax/article/ralateOrg", {
+			"articleId": oArticleModule.articleId
+		}, "get", oArticleModule.correlationCompany);
+		oArticleModule.oAjaxGet("/ajax/article/find", {
+			"pageSize":5,
+			"exclude":oArticleModule.articleId
+		}, "get", oArticleModule.correlationArticle);
+		oArticleModule.correlationService()
+		oArticleModule.correlationProduct()
+		/*微信分享*/
+		$.ajax({
+			url: "../ajax/weixin/jsapiTicket",
+			type: 'get',
+			dataType: 'json',
+			contentType: "application/x-www-form-urlencoded; charset=utf-8",
+			data: {
+				'url': location.href.split('#')[0]
+			},
+			success: function(data) {
+				if(data.data) {
+					wx.config({
+						debug: false, //调试模式好犀利
+						appId: data.data.appId,
+						timestamp: data.data.timestamp,
+						nonceStr: data.data.nonceStr,
+						signature: data.data.signature,
+						jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+							"onMenuShareAppMessage",
+							"onMenuShareTimeline",
+							"onMenuShareQQ",
+							"onMenuShareQZone",
+							"scanQRCode",
+						]
+					});
+					wx.ready(function() {
+						// 在这里调用 API
+						wx.onMenuShareAppMessage({ //分享给朋友
+							title: shareTitle, // 分享标题
+							desc: descContent, // 分享描述
+							link: lineLink, // 分享链接
+							imgUrl: imgUrl, // 分享图标
+							success: share_success_callback,
+							cancel: share_cancel_callback
+						});
+						wx.onMenuShareTimeline({ //分享到朋友圈
+							title: shareTitle, // 分享标题
+							desc: descContent, // 分享描述
+							link: lineLink, // 分享链接
+							imgUrl: imgUrl, // 分享图标
+							success: share_success_callback,
+							cancel: share_cancel_callback
+						});
+						wx.onMenuShareQQ({ //分享到QQ
+							title: shareTitle, // 分享标题
+							desc: descContent, // 分享描述
+							link: lineLink, // 分享链接
+							imgUrl: imgUrl, // 分享图标
+							success: share_success_callback,
+							cancel: share_cancel_callback
+						});
+						wx.onMenuShareQZone({ //分享到QQ空间
+							title: shareTitle, // 分享标题
+							desc: descContent, // 分享描述
+							link: lineLink, // 分享链接
+							imgUrl: imgUrl, // 分享图标
+							success: share_success_callback,
+							cancel: share_cancel_callback
+						});
+					});
+					//分享成功后的回调函数	
+					function share_success_callback() {}
+					//用户取消分享后执行的回调函数	
+					function share_cancel_callback() {}
+	    		}
+			}
+		});
+	})
+</script>
+
+</body>
+
+</html>

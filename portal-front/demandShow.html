@@ -1,0 +1,116 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览需求-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+					<div class="h1Font" id="demandTit"></div>
+					<div class="operateBlock bottomShow" style="margin-top:10px;">
+                		<ul class="clearfix" id="demandNum">
+                			<li><span>收藏</span> <em class="operateicon operateicon2 icon-collect" id="collectBtn"></em></li>
+							<li>
+								<span>分享到</span>
+								<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+								<em class="operateicon operateicon2 icon-wechat shareWeixin">
+									<div class="shareCode clearfix">
+										<div class="floatL" id="qrcode"></div>
+										<div class="shareWord floatR">
+											<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+										</div>
+									</div>
+								</em>
+							</li>
+                		</ul>
+                	</div>
+					<!--详情区-->
+					<div class="showMain">
+						<div class="showCon" style="min-height: 60px;" id="demandDesp"></div>
+						<ul class="showli clearfix h3Font" id="demandInf">
+							
+						</ul>
+						<div class="showStatus">
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem conItemG alignCenter" style="border:none;">
+					<a class="madiaHead cmpHead">
+						<div class="boxBlock">
+							<img class="boxBlockimg" src="" id="companyImg">
+						</div>
+					</a>
+					<div class="proInfo h3Font clearfix">
+						<a class="h1Font qiyego" id="Qname"></a>
+						<span class="authiconNew" id="QauthFlag"></span>
+					</div>
+					<div class="proInfo h2Font clearfix" id="industry">
+						
+					</div>
+					<div class="goSpan displayNone">
+						<span class="attenSpan">关注</span>
+					</div>
+					<div class="form-item otherBlock currentBlock">
+						<div class="aboutTit">联系人</div>
+						<div class="form-result addexpertRe" style="margin-top:0">
+							<ul class="addexpert" id="expertli">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--反馈建议-->
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/demandShow.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+<script type="text/javascript">
+	//分享关注按钮
+	$('.shareWeixin').hover(function(){$(this).find('.shareCode').stop(true,false).fadeToggle();});
+	$('.goSpan').hover(function(){$(this).find('.shareCode').stop(true,false).fadeToggle();});
+	
+	//微信分享
+	var qrcode = new QRCode(document.getElementById("qrcode"), {
+		width : 100,
+		height : 100
+	});
+	function makeCode(){
+		var hurl = window.location.host;
+		var demandId =  GetQueryString("demandId");
+		var elurl = "http://" + hurl + "/e/d.html?id=" + demandId ; 
+		qrcode.makeCode(elurl);
+	}
+	makeCode();
+</script>
+</body>
+</html>

@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>论文分享-科袖网</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/share.css" />
+
+<style>
+	html,body{background: #FFFFFF;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/shareLeaveWord.js"></script>
+<script type="text/javascript" src="../js/public/openApp.js"></script>	
+</head>
+
+<body>
+	<div class="contentBody2">
+	    <div class="showDetail">
+    		<div class="h1Font hWeight" id="paperName"></div>
+	    	<!--内容区-->
+			<div class="showMain showMainP">
+				<ul>
+					<li>
+						<div class="showTit">期刊：<span class="showCon" id="paperJournal"></span></div>
+					</li>
+					<li>
+						<div class="showTit">期卷：<span class="showCon" id="paperVolume"></span></div>
+					</li>
+					<li>
+						<div class="showTit">摘要：</div>
+						<div class="showCon" id="paperAbstract">
+							
+						</div>
+					</li>
+				</ul>
+			</div>
+    		<!--标签模块-->
+			<ul class="tagList">
+				
+			</ul>
+			<div class="madiaBlock">
+				<div class="madiaTit">作者</div>
+				<ul class="mui-table-view" id="aboutAuthors">
+			        
+			    </ul>
+			</div>
+			<div class="madiaBlock displayNone" id="patentModule">
+						<div class="madiaTit">相关专利</div>
+						<ul class="mui-table-view" id="patentList">
+					      <!-- <li class="mui-table-view-cell">
+						       	<div class="flexCenter OflexCenter mui-clearfix">
+									<div class="madiaHead patentHead"></div>
+									<div class="madiaInfo OmadiaInfo">
+										<p class="ellipsisSty h1Font">CdS/CdSSe轴向异质结纳米线的非对称光波导及双波长激射</p>
+										<p class="ellipsisSty h2Font">作者：李丹,梁君武,刘华伟,张学红,万强,张清林,潘安练</p>
+									</div>
+								</div>
+					       </li>-->
+					    </ul>
+				</div>
+				<div class="thumbBlock">
+					<span class="thumbBtn">赞 <span id="snum"></span></span><!-- thumbedBtn 已赞 201-->
+				</div>
+				<div class="madiaBlock displayNone" id="paperModule">
+						<div class="madiaTit">您可能感兴趣的论文</div>
+						<ul class="mui-table-view" id="paperList">
+					    </ul>
+				</div>
+				<div class="madiaBlock displayNone" style="padding-bottom:50px;" id="leword">
+						<div class="madiaTit" id="olisten">留言</div>
+						<ul class="mui-table-view commentBlock noactiveTab">
+					     
+					   </ul>
+				</div>
+	    </div>
+	    <div class="shareEcode">
+			<img class="Ecodecon" src="../images/ecordCard.jpg" />
+			<div class="Ecodeinfo">
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app"><button class="frmbtn frmactive">下载移动客户端</button></a>
+			</div>
+	    </div>
+	</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	var imgUrl = "http://www.ekexiu.com/images/logo180.png";
+	var lineLink = document.location.href;
+	var descContent;
+	var shareTitle;
+	var appid = '';
+	
+	var paperId = GetQueryString("id");
+	module.lWord(paperId,2);
+	pageViewLog(paperId,5)
+	
+	isAgreeNum()
+	function isAgreeNum() {
+		var data = {"id": paperId}
+		$.ajax({		
+			url:"/ajax/ppaper/agreeCount",
+			data:data,
+			dataType: 'json', //数据格式类型
+			type: 'get', //http请求类型
+			timeout: 10000,
+			async: true,
+			success: function(data) {
+				if(data.success){		
+						$(".thumbBtn").html("赞 <span>" + data.data + "</span>");
+				}
+			},
+			error: function() {
+				//$.MsgBox.Alert('提示',"服务器链接超时");
+			}
+		});
+	}
+	
+	var this_="../html/paperShow.html?paperId="+paperId;
+	wcFresh(this_);
+	$("body").on("click",".goSpan,.thumbBtn",function(){
+		isInstalled(this_,true);
+		$(this).addClass("activeThis");
+	})
+	paperInterestingList()
+	function paperInterestingList(){
+		$.ajax({
+			"url" : "/ajax/ppaper/ralatePapers",
+			"type" :  "GET" ,
+			"dataType" : "json",
+			"data" :{
+				"paperId":paperId
+			},
+			//"async":false,
+			"traditional": true, //传数组必须加这个
+			"success" : function(data) {
+				if(data.success) {
+					console.log(data);
+					var dataStr=data.data;
+					var lengthT;
+					if(dataStr.length>5){
+						lengthT=5;
+					}else{
+						lengthT=dataStr.length
+					}
+					if(dataStr.length > 0){
+						$("#paperModule").show();
+						var itemlist = '';
+						for(var i = 0; i < lengthT; i++) {
+							var itemlist = '<li class="mui-table-view-cell" data-id="'+dataStr[i].id+'">';
+							itemlist += '<div class="flexCenter OflexCenter mui-clearfix"><div class="madiaHead paperHead"></div>';
+							itemlist += '<div class="madiaInfo OmadiaInfo">';
+							itemlist += '<p class="ellipsisSty-2 h1Font">'+ dataStr[i].name +'</p>';
+							itemlist += '<p class="ellipsisSty h2Font">作者：'+ dataStr[i].authors.substring(0, dataStr[i].authors.length - 1) +'</p>';
+							itemlist += '</div></div></li>';
+							$itemlist = $(itemlist);
+							$("#paperList").append($itemlist);
+						}
+					}
+				}
+			},
+			"error":function(){
+				//$.MsgBox.Alert('提示','链接服务器超时')
+			}
+		});
+	}
+	$("#paperList").on("click","li",function(){
+		location.href="http://" + window.location.host + "/e/l.html?id=" + $(this).attr("data-id");
+	});
+	$("#patentList").on("click","li",function(){
+		location.href="http://" + window.location.host + "/e/z.html?id=" + $(this).attr("data-id");
+	});
+	getRecourceMe();/*获取信息*/
+	
+	$("#aboutAuthors").on("click","li",function(){
+		var oDataId = $(this).attr("data-id");
+		if(oDataId.substring(0,1)!="#"){
+			location.href="http://" + window.location.host + "/e/p.html?id=" + oDataId;
+			$(this).addClass("activeThis");
+		}
+	})
+	$(".tagList").on("click", "li", function() {
+		var keyCon=$(this).find(".h2Font").text();
+		location.href="http://" + window.location.host + "/e/search.html?flag=5&key=" + keyCon;
+	})
+	
+	function getRecourceMe() {
+		$.ajax({
+			url:'../ajax/ppaper/qo',
+			data: {
+				'id': paperId,
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'get', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒；
+			success: function(data) {
+				if(data.success) {
+					var mydata = data.data;
+					paperHtml(data.data);
+					getPaperAuthors(data.data.id)
+				}
+			},
+			error: function(e) {
+				return;
+			}
+		});
+	}
+	function paperHtml($da) {
+		//微信再次分享配置
+		shareTitle = $da.name;
+		descContent = $da.summary.substring(0,70);
+		
+		document.title = $da.name; 
+		document.getElementById("paperName").innerHTML = $da.name; //名字
+		document.getElementById("paperAbstract").innerHTML = $da.summary; //摘要内容
+		if(!$da.cn4periodical){
+			$da.cn4periodical=""
+		}
+		if(!$da.en4periodical){
+			$da.en4periodical=""
+		}
+		if(!$da.cn4periodical && !$da.en4periodical){
+			document.getElementById("paperJournal").parentNode.parentNode.style.display="none";
+		}else{
+			document.getElementById("paperJournal").innerHTML = $da.cn4periodical +" " + $da.en4periodical;
+		}
+
+		if(!$da.pubDay){
+			document.getElementById("paperVolume").parentNode.parentNode.style.display="none";
+		}else{
+			document.getElementById("paperVolume").innerHTML = $da.pubDay;
+		}
+		if($da.keywords != undefined && $da.keywords.length != 0 ){
+			var subs=strToAry($da.keywords)
+			var pstr=""
+			if(subs.length>0){
+				patentRelatedList(subs)
+				for (var i = 0; i < subs.length; i++) 
+				{
+					pstr+='<li><span class="h2Font">'+ subs[i] +'</span></li>'
+				};
+				$(".tagList").html(pstr);
+			}else{
+				$(".tagList").hide();
+			}
+		}		
+	}
+	/*获取论文作者信息*/
+	function getPaperAuthors(stritrm) {
+		$.ajax({
+			"url":"../ajax/ppaper/authors",
+			"type": "GET",
+			"success": function(data) {
+				if(data.success) {
+					if(data.data.length>0){
+						for(var i=0;i<data.data.length;i++){
+							var authTy="",authTit="",baseInfo="",imgbg="../images/default-photo.jpg";
+							if(data.data[i].professorId.substring(0, 1) != "#"){
+								$.ajax({
+									url:"../ajax/professor/editBaseInfo/" + data.data[i].professorId,
+									type:"get",
+									async:true,
+									success:function($proData){
+										if($proData.success){
+											var showPro = $proData.data;
+											if(showPro.hasHeadImage == 1) {
+												imgbg = "/images/head/" + showPro.id + "_l.jpg";
+											} else {
+												imgbg = "../images/default-photo.jpg";
+											}
+											//认证
+											var oSty = autho(showPro.authType,showPro.orgAuth,showPro.authStatus);
+											authTy = oSty.sty;
+											authTit = oSty.title;
+											
+											var title = showPro.title || "";
+											var orgName = showPro.orgName || "";
+											var office = showPro.office || "";
+											if(orgName!=""){
+												if(title != "") {
+													baseInfo = title + "，" + orgName;
+												}else{
+													if(office!=""){
+														baseInfo = office  + "，" + orgName;	
+													}else{
+														baseInfo = orgName;	
+													}
+												}
+											}else{
+												if(title != "") {
+													baseInfo = title;
+												}else{
+													if(office!=""){
+														baseInfo = office;	
+													}else{
+														baseInfo = "";	
+													}
+												}
+											}
+											var liItem = document.createElement("li");
+											liItem.setAttribute("data-id",showPro.id);
+											liItem.className = "mui-table-view-cell"
+											var oString = '<div class="flexCenter mui-clearfix">'
+											oString += '<div class="madiaHead useHead" style="background-image:url('+ imgbg +')"></div>'
+											oString += '<div class="madiaInfo"><p><span class="h1Font">'+ showPro.name +'</span><em class="authiconNew '+ authTy +'" title="'+ authTit +'"></em></p>'
+											oString += '<p class="ellipsisSty h2Font">'+ baseInfo +'</p>'
+											oString += '</div><div class="goSpan"><span class="attenSpan" data-id="'+showPro.id+'">关注</span></div></div>'
+											liItem.innerHTML = oString;
+											document.getElementById("aboutAuthors").appendChild(liItem);
+										}
+									}
+								})
+							}else{
+								var liItem = document.createElement("li");
+								liItem.setAttribute("data-id",data.data[i].professorId);
+								liItem.className = "mui-table-view-cell"
+								var oString = '<div class="flexCenter mui-clearfix">'
+								oString += '<div class="madiaHead useHead" style="background-image:url('+ imgbg +')"></div>'
+								oString += '<div class="madiaInfo"><p><span class="h1Font">'+ data.data[i].name  +'</span></p>'
+								oString += '</div></div>'
+								liItem.innerHTML = oString;
+								document.getElementById("aboutAuthors").appendChild(liItem);
+							}
+							
+						}
+					}
+				}
+			},
+			"data": {
+				"id": stritrm
+			},
+			dataType: "json",
+			'error':function() {
+				//$.MsgBox.Alert('提示', '链接服务器超时')
+			}
+		});
+	}
+	/*微信分享*/
+	$.ajax({
+		url: "../ajax/weixin/jsapiTicket",
+		type: 'get',
+		dataType: 'json',
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		data: {
+			'url': location.href.split('#')[0]
+		},
+		success: function(data) {
+			if(data.data) {
+				wx.config({
+					debug: false, //调试模式好犀利
+					appId: data.data.appId,
+					timestamp: data.data.timestamp,
+					nonceStr: data.data.nonceStr,
+					signature: data.data.signature,
+					jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+						"onMenuShareAppMessage",
+						"onMenuShareTimeline",
+						"onMenuShareQQ",
+						"onMenuShareQZone",
+						"scanQRCode",
+					]
+				});
+				wx.ready(function() {
+					// 在这里调用 API
+					wx.onMenuShareAppMessage({ //分享给朋友
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareTimeline({ //分享到朋友圈
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQQ({ //分享到QQ
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQZone({ //分享到QQ空间
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+				});
+				//分享成功后的回调函数	
+				function share_success_callback() {}
+				//用户取消分享后执行的回调函数	
+				function share_cancel_callback() {}
+    		}
+		}
+	});
+    function patentRelatedList(array){
+		$.ajax({
+			"url":"/ajax/ppatent/assPatents",
+			"type" :  "GET" ,
+			"dataType" : "json",
+			"data" :{
+				"kws":array
+			},
+			"traditional": true, //传数组必须加这个
+			"success" : function(data) {
+				if(data.success) {
+					var $data = data.data;
+					var lengthT;
+					if($data.length>5){
+						lengthT=5;
+					}else{
+						lengthT=$data.length
+					}
+					if($data.length > 0){
+						document.getElementById("patentModule").style.display="block";
+						for(var i = 0; i < lengthT; i++) {
+							var li = document.createElement("li");
+							li.setAttribute("data-id", $data[i].id);
+							li.className = "mui-table-view-cell";
+							li.innerHTML = '<div class="flexCenter OflexCenter mui-clearfix">' +
+								'<div class="madiaHead patentHead"></div>' +
+								'<div class="madiaInfo OmadiaInfo">' +
+								'<p class="ellipsisSty-2 h1Font">' + $data[i].name + '</p>' +
+								'<p class="ellipsisSty h2Font">作者:' + $data[i].authors.substring(0, $data[i].authors.length - 1) + '</p>' +
+								'</div>' +
+								'</div>'
+							document.getElementById("patentList").appendChild(li);
+						}
+					}
+				}
+			},
+			"error":function(){
+				plus.nativeUI.toast("服务器链接超时", toastStyle);
+			}
+		});
+	}
+})
+</script>
+</body>
+
+</html>

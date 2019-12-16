@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html style="max-width: 640px;margin: auto;">
+
+<head>
+<meta charset="UTF-8">
+<title>搜索-科袖网</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/bootstrap.min.css" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/swiper.min.css" />
+<link rel="stylesheet" href="../css/mmenu.css" />
+<link rel="stylesheet" href="../css/share.css" />
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/public/swiper.min.js"></script>
+<script type="text/javascript" src="../js/public/jquery.mmenu.js"></script>	
+<script type="text/javascript">
+	$(function() {
+		$("nav#menu").mmenu();
+		var myscrollFil;
+	    function loaded(){
+	        setTimeout(function(){
+	            myscrollFil=new iScroll("wrapper",{
+	            	mouseWheel: true,
+					onScrollMove:function(){
+						myscrollFil.refresh()
+					}
+	            });
+	            
+	        },100 );
+	    }
+	    window.addEventListener("load",loaded,false);
+		document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+	});
+	
+</script>
+
+</head>
+
+<body>
+<div class="bomb-box"></div>
+<div class="contentBody2" id="page">
+	<div class="fixedBlock">
+		<div class="searchBox">
+			<form action="" onsubmit="return false;" id="searB" class="searchboxNewT">
+	      		<input type="search" class="form-control" placeholder="请输入关键词" id="searchval" />
+	      	</form>
+	        <a href="#menu" class="rightnav" id="sele">
+				<div class="serchicon icon-filter"><span class="badge" id="seler"></span></div>筛选
+			</a>
+	    </div>
+	    <div class="tabBox">
+			<div class="swiper-container-tab">
+				<div class="swiper-wrapper swiper-wrapper-tab tr">
+					<div class="swiper-slide swiper-slide-tab active-tab" data-tab="1">找专家</div>
+					<div class="swiper-slide swiper-slide-tab" data-tab="7">找服务</div>
+					<div class="swiper-slide swiper-slide-tab" data-tab="2">找资源</div>
+					<div class="swiper-slide swiper-slide-tab" data-tab="4">找专利</div>
+					<div class="swiper-slide swiper-slide-tab" data-tab="5">找论文</div>
+					<!-- <div class="swiper-slide swiper-slide-tab" data-tab="3">找文章</div> -->
+					<div class="swiper-slide swiper-slide-tab" data-tab="6">找企业</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="swiper-container madiaBlock swiper-container-main">
+		<!--<div class="refreshtip">下拉可以刷新</div>-->
+		<div class="swiper-wrapper swiper-wrapper-main w">
+			<div class="swiper-slide d">
+				<!--<div class="init-loading list-group-item" style="display: none;">下拉可以刷新</div>-->
+				<div class="swiper-container2">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="proList">
+	
+							</ul>
+						</div>
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="serviceList">
+	
+							</ul>
+						</div>
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="resourceList">
+	
+							</ul>
+						</div>
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="patentList">
+	
+							</ul>
+						</div>
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="paperList">
+	
+							</ul>
+						</div>
+						<!-- <div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="articleList">
+	
+							</ul>
+						</div> -->
+						<div class="swiper-slide list-group">
+							<ul class="mui-table-view" id="companyList">
+	
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="loadtip">上拉加载更多</div>
+		<div class="swiper-scrollbar"></div>
+	</div>
+	<nav id="menu">
+		<div class="filterCon">
+			<h1 class="toptit">“找专家”</h1>
+			<div id="wrapper">
+				<div class="midCon" id="scroller">
+					<div class="filterListNew">
+						<div class="rightbtn">所在城市<span class="spantext">不限</span><em class="foldtr"></em></div>
+						<ul class="filterUl fourUl" id="address">
+							
+				       	</ul>
+					</div>
+					<div class="filterListNew">
+						<div class="rightbtn">学术领域<span class="spantext">不限</span><em class="foldtr"></em></div>
+						<ul class="filterUl threeUl" id="subject">
+							
+				       	</ul>
+					</div>
+					<div class="filterListNew">
+						<div class="rightbtn">行业领域<span class="spantext">不限</span><em class="foldtr"></em></div>
+						<ul class="filterUl threeUl" id="industry">
+							
+				       	</ul>
+					</div>
+				</div>
+			</div>
+			<div class="submitBtn clearfix">
+				<span class="floatL topWord" id="oRes">重置</span>
+				<span class="floatR topWord" id="com">完成</span>
+			</div>
+		</div>
+	</nav>
+</div>
+
+
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/cacheUtil.js"></script>
+<script type="text/javascript" src="../js/public/iscroll.js"></script>	
+<script src="../js/search_h5.js" type="text/javascript" charset="utf-8"></script>
+
+</body>
+
+<html>

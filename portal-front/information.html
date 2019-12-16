@@ -1,0 +1,469 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>修改个人信息-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="cmp-portal/css/bootstrap-datetimepicker.min.css">
+<link type="text/css" rel="stylesheet" href="cmp-portal/css/glyIcon.css">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<!--头部-->
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="headconBox flexCenter">
+				<div class="headimgBox head-left floatL" id="proHead"><a href="photo-set.html" class="replace-photo">上传头像</a></div>
+				<div class="reInfoBlock head-center floatL">
+					<div class="coninfocon">
+						<div class="h1Font"><span id="proName"></span><em class="authiconNew" id="proAuth"></em></div>
+                		<div class="h2Font ellipsisSty"><span id="proTit"></span> <span id="proOther"></span></div>
+						<a class="btnClick edit proEdit">编辑</a>
+	                    <div class="h3Font" id="proAddress"></div>
+	                    <ul class="clearfix h3Font" style="margin-top: 4px;">
+	                    	<li class="col-w-4"><span id="phone"></span></li>
+	                    	<li class="col-w-4"><span id="mail"></span></li>
+	                    	<li class="col-w-4"> <p style="color:#FC7443;font-size:12px;">未征得您的同意之前，我们不会公开您的联系方式。</p></li>
+	                    </ul>
+	                </div>
+	                <!--个人信息修改-->
+	                <div class="modifybox" style="margin:0;">
+	               		<ul class="cmpFrmList">
+							<li>
+								<span class="col-w-2 lableSpan">姓名：</span>
+								<div class="col-w-4">
+									<span class="lableSpan" id="name"></span>
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">性别：</span>
+								<div class="col-w-4">
+									<label class="radiolabel">
+										<input type="radio" name="sex" value="1" />男
+									</label>
+									<label class="radiolabel">
+										<input type="radio" name="sex" value="2" />女
+									</label>
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">出生日期：</span>
+								<div class="col-w-4" style="position: relative;">
+									<div class="input-append date form_date dateBtn" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+										<em class="mr_sj"></em>
+										<input size="16" type="text" value="" readonly class="frmtype frmcontype fColor" placeholder="请选择出生日期" id="birthTime" style="background:#ffffff;color:#666">
+										<span class="dateIcon"><i class="icon-calendar displayNone"></i></span>
+										<span class="add-on"><i class="icon-th displayNone"></i></span>
+									</div>
+									<input type="hidden" id="dtp_input2" value="" />
+									<span></span>
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">职称：</span>
+								<div class="col-w-4">
+									<input type="text" class="frmcontype" placeholder="请填写最高职称" id="title" />
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">职位：</span>
+								<div class="col-w-4">
+									<input type="text" class="frmcontype" placeholder="请填写当前担任的职位" id="officeRevise" />
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">所在机构：</span>
+								<div class="col-w-8">
+									<input type="text" class="frmcontype" placeholder="请填写当前就职的机构" id="orgName" />
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">所在部门：</span>
+								<div class="col-w-8">
+									<input type="text" class="frmcontype" placeholder="请填写当前就职的部门" id="department" />
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">所在城市：</span>
+								<div class="col-w-8">
+									<form action="" class="col-w-12" name="form1">
+										<div class="col-w-6 citybox2">
+											<span class="frmcontype" id="Province">
+	                                        	<em class="mr_sj"></em>
+	                                            <i class="mr_show" id="oprovince">请选择省/直辖市</i>
+	                                            <ul>
+	                                                <li><a href="javascript:void(0)" alt="请选择省/直辖市">请选择省/直辖市</a></li>
+	                                            </ul>
+	                                            <input type="hidden" name="cho_Province" value="请选择省/直辖市">
+	                                        </span>
+										</div>
+										<div class="col-w-6 citybox2">
+											<span class="frmcontype floatR" id="City" >
+	                                       		<em class="mr_sj"></em>
+	                                            <i class="mr_show" id="ocity">请选择城市</i>
+	                                            <ul>
+	                                                <li><a href="javascript:void(0)" alt="请选择城市">请选择城市</a></li>
+	                                            </ul>
+	                                            <input type="hidden" name="cho_City" value="请选择城市 ">
+	                                        </span>
+										</div>
+									</form> 
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">联系电话：</span>
+								<div class="col-w-4">
+									<input type="tel" class="frmcontype" placeholder="请填写手机/办公电话" id="mobilePhone" />
+								</div>
+							</li>
+							<li>
+								<span class="col-w-2 lableSpan">联系邮箱：</span>
+								<div class="col-w-8">
+									<input type="email" class="frmcontype" placeholder="请填写电子邮箱" id="moileMail" />
+								</div>
+							</li>
+							<li class="saveBtn">
+								<span class="col-w-2">&nbsp;</span>
+								<div class="col-w-10">
+									<button type="button" class="frmcontype btnModel" id="saveProfessor">保存</button>
+									<button type="button" class="frmcontype btnModel btnCancel">取消</button>
+								</div>
+							</li>
+						</ul>	
+					</div>
+				</div>
+			</div>
+			<div class="leftconBox updateLeft floatL" style="padding-bottom: 40px;">
+				<!--个人简介-->
+				<div class="coninfobox">
+					<div class="coninfotit">个人简介<a class="btnClick edit">编辑</a></div>
+					<div class="coninfocon">
+						<div id="descpS">
+
+						</div>
+					</div>
+					<div class="modifybox cmpFrmList">
+						<div class="msgContbox">
+				    		<textarea class="msgCont frmcontype" id="descp" placeholder="请填写一个简单的介绍，让大家更好地了解您"></textarea>
+				    		<span class="msgconNum"><em class="limitNum">0</em>/500</span>
+						</div>
+						<div class="saveBtn clearfix">
+							<div class="col-w-12">
+								<button type="button" class="frmcontype btnModel" id="saveDescp">保存</button>
+								<button type="button" class="frmcontype btnModel btnCancel">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--学术领域-->
+				<div class="coninfobox xslyshow">
+					<div class="coninfotit"><span>学术领域</span><a class="btnClick edit">编辑</a></div>
+					<div class="coninfocon listArea">
+						<ul id="subjectShow">
+							
+						</ul>
+					</div>
+					<div class="modifybox form-item">
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写您研究的学科，如：腐蚀防护、石墨烯、纳米材料" data-pro="学术领域不得超过15个字"  data-num="20" data-fontSizeN="15" id="subject"/>
+							<button type="button" class="frmcontype btnModel frmaddG addButton" id="subjectAdd">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="subjectList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+						<div class="saveBtn clearfix">
+							<div class="col-w-12">
+								<button type="button" class="frmcontype btnModel" id="subjectSave">保存</button>
+								<button type="button" class="frmcontype btnModel btnCancel">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--研究方向-->
+				<div class="coninfobox">
+					<div class="coninfotit"><span>研究方向</span><a class="btnClick edit">编辑</a></div>
+					<div class="coninfocon listResearch">
+						<ul class="clearfix" id="researchAreaShow">
+							
+						</ul>
+					</div>
+					<div class="modifybox form-item">
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinputM" placeholder="请用一句话描述您的研究方向，如：微生物腐蚀的机理研究、防治与检测" id="researchArea"/>
+							<button type="button" class="frmcontype btnModel frmaddG" id="researchAreaAdd">添加</button>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlistC clearfix" id="researchAreaList">
+								
+							</ul>
+						</div>
+						<div class="saveBtn clearfix">
+							<div class="col-w-12">
+								<button type="button" class="frmcontype btnModel" id="researchAreaSave">保存</button>
+								<button type="button" class="frmcontype btnModel btnCancel">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- 行业领域 -->
+				<div class="coninfobox">
+					<div class="coninfotit">行业领域<a class="btnClick edit">编辑</a></div>
+					<div class="coninfocon listArea">
+						<ul id="industryShow">
+
+						</ul>
+					</div>
+					<div class="modifybox form-item">
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写企业所属的行业，如：制造业、互联网、服务业" data-pro="行业领域不得超过15个字" data-num="20" data-fontSizeN="15" id="industry"/>
+							<button type="button" class="frmcontype btnModel frmaddG addButton" id="industryAdd">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="industryList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+						<div class="saveBtn clearfix">
+							<div class="col-w-12">
+								<button type="button" class="frmcontype btnModel" id="industrySave">保存</button>
+								<button type="button" class="frmcontype btnModel btnCancel">取消</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--项目经历-->
+				<div class="coninfobox">
+					<div class="coninfotit">项目经历<a class="btnClick addedit" id="projectAdd">添加</a></div>
+					<div class="coninfocon listSector">
+						<ul id="projectShow">
+
+						</ul>
+					</div>
+				</div>
+				<!--荣誉及奖项-->
+				<div class="coninfobox">
+					<div class="coninfotit">荣誉奖项<a class="btnClick addedit" id="honorAdd">添加</a></div>
+					<div class="coninfocon listSector">
+						<ul id="honorShow">
+
+						</ul>
+					</div>
+				</div>
+				<!--工作经历-->
+				<div class="coninfobox">
+					<div class="coninfotit">工作经历<a class="btnClick addedit" id="timeJobAdd">添加</a></div>
+					<div class="coninfocon listSector">
+						<ul id="timeJobShow">
+
+						</ul>
+					</div>
+				</div>
+				<!-- 教育背景 -->
+				<div class="coninfobox">
+					<div class="coninfotit">教育背景<a class="btnClick addedit" id="addEdu">添加</a></div>
+					<div class="coninfocon listSector">
+						<ul id="eduUl">
+							<!--<li>航空航天大学－计科系－信管－硕士－2016<em class="exitlist"></em></li>-->
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem statisticsBox alignCenter clearfix" style="cursor:pointer;">
+					<div class="col-w-12">
+						<a class="goarrow" target="_blank" id="showMyself">查看我的主页<em></em></a>
+					</div>
+				</div>
+				<div class="conItem statisticsBox alignCenter clearfix">
+					<div class="col-w-12">
+						<a class="goarrow" id="downResume" href="">下载我的简历<em></em></a>
+					</div>
+				</div>
+				<div class="conItem statisticsBox alignCenter clearfix" style="padding:30px 10px">
+					<div class="col-w-12">
+						<p>发布需求、资源、文章、专利、论文 </p>
+						<a class="goarrow" target="_blank" href="myConsult.html">进入我的工作台<em></em></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="cmp-portal/js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="cmp-portal/js/public/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/city.min.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/information.js"></script>
+<script>
+	$("body").on("click", ".date-btn", function() {
+		$(".mr_calendar_ym:visible").hide();
+		var flag = $(this).attr("flag");				
+		var c = $(this).val();
+		if(flag == 1) {
+			console.log("年插件位置")
+			if(c) {
+				if (c == "至今") {
+					$(this).siblings(".mr_calendar_ym").show();
+					$(this).siblings(".mr_calendar_ym").find(".yearli:contains('" + c + "')").addClass("active").siblings().removeClass("active");
+					return false;
+				} else{
+					var ye = new Date().getFullYear();
+					var sroTop = (ye - parseInt(c)) * 32;
+					$(this).siblings(".mr_calendar_ym").show();
+					$(this).siblings(".mr_calendar_ym").find(".full_year").scrollTop(sroTop);
+					$(this).siblings(".mr_calendar_ym").find(".yearli:contains('" + c + "')").addClass("active").siblings().removeClass("active");
+					return false;
+				}
+				
+			} else {
+				var ye = new Date().getFullYear();
+				$(this).siblings(".mr_calendar_ym").show();
+				$(this).siblings(".mr_calendar_ym").find(".yearli:contains('" + ye + "')").addClass("active").siblings().removeClass("active");
+				return false;
+			}
+		} else if(flag == 2) {
+			console.log("月插件位置")
+			if(c) {
+				if(c == "至今") {
+					$(this).siblings(".mr_calendar_ym").show();
+					$(this).siblings(".mr_calendar_ym").find(".mli").removeClass("active");
+					$(this).siblings(".mr_calendar_ym").find(".ymli:contains('" + c + "')").addClass("active").siblings().removeClass("active");
+					return false;
+				} else {
+					$(this).siblings(".mr_calendar_ym").find(".ymli:contains('" + c.substr(0, 4) + "')").addClass("active");
+					$(this).siblings(".mr_calendar_ym").find(".ymli:contains('" + c.substr(0, 4) + "')").siblings().removeClass("active");
+					if(c.substr(5, 1) == 0) {
+
+						if(c.substr(6, 1) == 1) {
+							$(this).siblings(".mr_calendar_ym").find(".mli:first").addClass("active").siblings().removeClass("active");;
+						} else if(c.substr(6, 1) == 2) {
+							$(this).siblings(".mr_calendar_ym").find(".mli:eq(1)").addClass("active").siblings().removeClass("active");;
+						} else {
+							$(this).siblings(".mr_calendar_ym").find(".mli:contains('" + c.substr(6, 1) + "')").addClass("active").siblings().removeClass("active");;
+						}
+
+					} else {
+
+						$(this).siblings(".mr_calendar_ym").find(".mli:contains('" + c.substr(5, 2) + "')").addClass("active");
+						$(this).siblings(".mr_calendar_ym").find(".mli:contains('" + c.substr(5, 2) + "')").siblings().removeClass("active");
+					}
+					$(this).siblings(".mr_calendar_ym").show();
+					var ya = $(this).siblings(".mr_calendar_ym").find(".mr_year .ymli").length;
+					var ye = new Date().getFullYear();
+					if(ya == 61) {
+						ye = ye + 1;
+					}
+					var sroTop = (ye - parseInt(c.substr(0, 4))) * 32;
+					$(this).siblings(".mr_calendar_ym").find(".mr_year").scrollTop(sroTop);
+					return false;
+				}
+			} else {
+				var ye = new Date().getFullYear();
+				$(this).siblings(".mr_calendar_ym").show();
+				$(this).siblings(".mr_calendar_ym").find(".ymli:contains('" + ye + "')").addClass("active");
+				$(this).siblings(".mr_calendar_ym").find(".ymli:contains('" + ye + "')").siblings().removeClass("active");
+				return false;
+			}
+
+		}
+	})
+	$("body").on("click", ".yearli", function() {
+		$(this).addClass("active").siblings().removeClass("active");
+		$(this).parents(".mr_calendar_ym ").siblings().val($(this).text());
+		$(this).parents(".mr_calendar_ym ").hide();
+		return false;
+	})
+	$("body").on("click", ".ymli", function() {
+		$(this).addClass("active").siblings().removeClass("active");
+		var year = $(this).text();
+		if(year == "至今") {
+			$(this).parents(".mr_calendar_ym ").siblings().val($(this).text())
+			$(this).parents(".mr_calendar_ym ").hide();
+		}
+		return false;
+	})
+	$("body").on("click", ".mli", function() {
+		var yearli = $(this).parents(".mr_month").siblings(".mr_year").children(".active").text();
+		console.log(yearli);
+		if($(this).text() < 10) {
+			var month = "0" + $(this).text();
+		} else {
+			var month = $(this).text();
+		}
+		if(yearli == "至今") {
+			var valueM = yearli;
+			$(this).parents(".mr_calendar_ym ").siblings().val(valueM);
+			$(this).parents(".mr_calendar_ym ").hide();
+		} else {
+			$(this).addClass("active").siblings().removeClass("active");
+			var valueM = yearli + "-" + month
+			$(this).parents(".mr_calendar_ym ").siblings().val(valueM);
+			$(this).parents(".mr_calendar_ym ").hide();
+		}
+			return false;
+	})
+	$("body").click(function(){
+		$(".mr_calendar_ym:visible").hide();
+	})
+	function yearAdd() {
+		//先给年下拉框赋内容   			
+		var y = new Date().getFullYear();
+		$(".full_year").empty();
+		$(".mr_year").empty();
+		for(var i = y; i > y - 60; i--) { //以今年为准，前60年，后10年   
+			$(".mr_year").append('<li class="ymli">' + i + '</li>');
+			$(".full_year").append('<li class="yearli">' + i + '</li>');
+			if(i == y) {
+				$(".mr_year>li:contains(" + i + ")").addClass("active");
+				$(".full_year>li:contains(" + i + ")").addClass("active");
+			}
+		}
+			//$(".mr_year li:first-child").before('<li class="ymli">至今</li>');
+			//$(".full_year li:first-child").before('<li class="ymli">至今</li>');
+		
+	}
+
+	function month() {
+		//赋月份的下拉框   
+		$(".mr_month").empty();
+		for(var i = 1; i < 13; i++) {
+			$(".mr_month").append('<li class="mli" style="text-align:center">' + i + '</li>');
+		}
+	}
+</script>
+</body>
+
+</html>

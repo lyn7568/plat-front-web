@@ -1,0 +1,110 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>资源-我的工作台-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<!--中间-->
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+	        <div class="workmenu">
+	        	<script src="js/workMenu.js"></script>
+	        </div>
+	        <div class="workcon workconG">
+				<div class="workcontit">
+					<a class="worksamlltit" href="resourceList.html">我的资源</a>
+					<a class="worksamlltit worksamlltitnow">资源导入</a>
+				</div>
+				<div class="tipShow">
+			    	<span class="floatL">导入与您相关的资源，企业可以通过它们找到您，与您开展合作！</span>
+			    	<span class="floatR tipClose"></span>
+			    </div>
+				<div class="itemListBolck">
+					<div class="topOperaBlock clearfix">
+						<div class="searchAbout col-w-8">
+							<input class="frmcontype" type="search" name="" placeholder="请输入资源名称、用途、关键词" id="resouceName">
+							<span class="searchSpan"></span>
+						</div>
+					</div>
+					<div class="form-item itemListCon">
+						<div class="form-result aboutRes">
+							<ul class="importUl">
+								<!--<li>
+									<a class="flexCenter" href="">
+										<div class="madiaHead resouseHead"></div>
+										<div class="madiaInfo">
+											<p class="h1Font ellipsisSty">材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护材料腐蚀防护</p>
+											<p class="h2Font ellipsisSty">厂商型号：北京金恒博远JHBY-GX</p>
+											<p class="h2Font ellipsisSty">所属机构：北京科技大学</p>
+											<p class="h2Font ellipsisSty">关键词：新材料</p>
+										</div>
+									</a>
+									<div class="importBtn">
+										<span class="importSpan-1">导入</span>
+										<span class="importSpan-2">重新导入</span>
+										<span class="importSpan-3">已导入</span>
+									</div>
+								</li>
+								<li>
+									<a class="flexCenter" href="">
+										<div class="madiaHead resouseHead"></div>
+										<div class="madiaInfo">
+											<p class="h1Font ellipsisSty">材料腐蚀防护材料腐蚀防护材料腐蚀防护</p>
+											<p class="h2Font ellipsisSty">厂商型号：北京金恒博远JHBY-GX</p>
+											
+										</div>
+									</a>
+									<div class="importBtn">
+										<span class="importSpan-2">重新导入</span>
+									</div>
+								</li>-->
+							</ul>
+							<!--无搜索结果-->
+							<div class="nodatabox displayNone" id="noresource">
+						        <div class="nodata">
+						            <div class="picbox picNull"></div>
+						            <div class="txtbox">
+						            	<p class="noContip"></p>
+						            </div>
+						        </div>
+						    </div>
+							<div class="tcdPageCode"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+	    </div>
+    </div>
+</div>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript">
+	$(".tipClose").click(function(){
+		$(this).parents(".tipShow").slideUp();
+	})
+</script>
+<script type="text/javascript" src="js/resourceImport.js"></script>
+</body>
+</html>

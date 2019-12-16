@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>通知-科袖网</title>
+		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link type="text/css" href="css/common.css" rel="stylesheet">
+		<link type="text/css" href="css/genindex.css" rel="stylesheet">
+		<link type="text/css" href="css/leaveWord.css" rel="stylesheet">
+		<style type="text/css">
+			.creTime {
+				position: absolute;
+				right: 0;
+				font-size: 14px;
+				color: #888888;
+			}
+			
+			#curAnswers .reWidth {
+				width: 80%;
+				padding-right: 0px;
+			}
+			
+			.coninfotit {
+				padding:10px 20px;
+				font-size: 18px;
+				color: #666;
+				background-color: #fff;
+			}
+			
+			.owner-tit span {
+				color: #ff9900;
+			}
+			
+			.js-load-more:before {
+				content: "查看更多通知"
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+	</head>
+
+	<body>
+		<header id="header">
+			<script src="js/header.js"></script>
+		</header>
+		<div id="container">
+			<div class="containerCon">
+				<div class="contentCon clearfix">
+					<div class="leftconBox leftconBoxbg floatL">
+						<div class="list-main scroll-view">
+							<section class="list-hold">
+								<div class="coninfotit">全部通知</div>
+								<ul class="myAllneeds partLine" id="curAnswers">
+									
+								</ul>
+								<!--加载更多按钮-->
+								<div class="js-load-more displayNone"></div>
+							</section>
+						</div>
+					</div>
+					<div class="rightconBox floatR">
+						<div class="conItem advertBox advertItem"></div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<!--反馈建议-->
+		<script type="text/javascript" src="js/correctBack.js"></script>
+		<footer>
+			<script type="text/javascript" src="js/footer.js"></script>
+		</footer>
+		<script type="text/javascript" src="js/jquery.cookie.js"></script>
+		<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+		<script type="text/javascript" src="js/public/baseUtil.js"></script>
+		<script type="text/javascript" src="js/public/genCom.js"></script>
+		<script type="text/javascript" src="js/quickLogin.js"></script>
+		<script type="text/javascript" src="js/informLeaveW.js"></script>
+		<script type="text/javascript" src="js/inform.js"></script>
+		<script type="text/javascript">
+			$(function () {	
+				addscript("ad_common");
+			});
+		</script>
+	</body>
+
+</html>

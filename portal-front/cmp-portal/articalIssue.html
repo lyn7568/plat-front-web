@@ -1,0 +1,299 @@
+﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>发布文章-科袖网</title>
+<link rel="shortcut icon" href="images/favicon.ico "/>
+<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+<link type="text/css" rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+<link type="text/css" href="../css/webuploader/webuploader.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/glyIcon.css">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/cmpindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/public/jquery-1.11.1.js"></script>
+<style type="text/css">
+	.rightconBox .conItem{display: none;}
+	.rightconBox .conItem:first-child{display: block;}
+</style>
+</head>
+<body>
+<header id="header">
+	<script src="js/public/cmpHeader.js"></script>
+</header>
+<!--定时发布弹框-->
+<div class="blackcover2"></div>
+<div class="setTimeBlock modelContain">
+	<span class="mb_tit">提示</span>
+	<a class="mb_close"></a>
+	<div class="mb_msg" id="promotTh">
+
+	</div>
+	<div class="mb_btnbox" id="promotGt">
+		<input class="mb_btn mb_btnNo" type="button" value="取消">
+	</div>
+</div>
+
+
+<input type="hidden" id="hidearticleId" value="" />
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<ul class="artAbout">
+					<li>
+						<div class="uploadFile">
+	        				<div class="uploadblock" id="uploader" data-id>
+       							<span class="" id="filePicker">上传图片</span>
+	        					<!--未上传图片时-->
+	        					<div class="upFront">
+		        					<p>文章封面图片<em class="requiredcon">*</em></p>
+		        					<p class="uploadtip">JPG/JPEG/PNG格式，2M以内</p>
+		        					<span class="upbtn">上传图片</span>
+	        					</div>
+	        					<!--已上传图片时-->
+	        					<span class="upbtn upBackbtn">更换图片</span>
+		            		</div>
+	        			</div>
+	        			<span class="frmconmsg imgtis" style="margin-left:0"></span>
+					</li>
+					<li>
+						<div class="aboutTit" id="aboutTit">标题<em class="requiredcon">*</em><span class="frmconmsg"></span></div>
+					    <input type="text" class="frmtype frmcontype" value="" placeholder="请输入标题" id="newstitle"/>
+					</li>
+					<li class="form-item">
+						<div class="aboutTit">关键词<span class="frmconmsg" id="keyPrompt"></span></div>
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写相关的关键词，如：腐蚀防护、石墨烯、纳米材料" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" id="KeyWord" />
+							<button type="button" class="frmcontype btnModel frmadd addButton">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult" style="margin-top: -10px;">
+							<ul class="ulspace editUlist clearfix" id="keyWordlist">
+								<!--<li>dd<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</li>
+					<li>
+						<div class="aboutTit">文章内容<span class="frmconmsg"></span></div>
+						<!--这块还是使用编辑框插件-->
+						<div class="editBlock">
+							<script id="editor" name="content" type="text/plain" style="height:500px;"></script>
+						</div>
+					</li>
+				</ul>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem">
+					<ul class="operateBlock">
+						<li class="goFabu" id="release">
+							<em class="operateicon icon-issue"></em>
+							<p>发布</p>
+						</li>
+						<li id="setTimeIssue">
+							<em class="operateicon icon-timeissue"></em>
+							<p>定时发布</p>
+						</li>
+						<li class="articalPreview" id="preview">
+							<em class="operateicon icon-preview"></em>
+							<p>预览</p>
+						</li>
+						<li id="draft">
+							<em class="operateicon icon-draft"></em>
+							<p>存草稿</p>
+						</li>
+						<li class="disableLi" id="delete">
+							<em class="operateicon icon-delete"></em>
+							<p>删除</p>
+						</li>
+						
+					</ul>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">相关专家<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入专家姓名" id="checkZj" value="" />
+						<div class="form-drop displayNone">
+							<ul class="expertlist" id="expertlist">
+							
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="expertli">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">本文相关服务<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入服务名称" id="sevrice" value="">
+						<div class="form-drop">
+							<ul class="expertlist" id="sevricelist">
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="sevriceli">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">本文相关资源<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入资源名称" id="checkZy" value="">
+						<div class="form-drop">
+							<ul class="expertlist" id="resouselist">
+								<!--<li id="usid" class="flexCenter" data-id="4558F24B922E4FF9A5062AA9869808F8"><p class="h1Font ellipsisSty-2 childElement" style="width:95%;"id="resourceName">但渐渐地就的解决的记得记得就到家但渐渐地就但渐渐地就的解决的记得记得就到家但渐渐地就</p><div class="deleteThis"></div></li>-->
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="resources">
+								
+							<!--<li id="usid" class="flexCenter" data-id="4558F24B922E4FF9A5062AA9869808F8"><p class="h1Font ellipsisSty-2 childElement" style="width:78%;"id="resourceName">但渐渐地就的解决的记得记得就到家但渐渐地就但渐渐地就的解决的记得记得就到家但渐渐地就</p><div class="deleteThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">本文相关企业<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入企业名称" id="company" value="" />
+						<div class="form-drop displayNone">
+							<ul class="expertlist" id="companylist">
+								
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="companys">
+								
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">本文相关产品<span class="frmconmsg"></span></div>
+						<input type="text" class="frmtype frmcontype" placeholder="请输入产品名称" id="product" value="">
+						<div class="form-drop">
+							<ul class="expertlist" id="productlist">
+							</ul>
+						</div>
+						<div class="form-result">
+							<ul class="addexpert" id="productli">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="conItem">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">上传附件</div>
+						<div id="upAttachPicker" class="upAttech">点击这里上传附件</div>
+						<div class="form-result" style="margin-top:0">
+							<ul class="addexpert" id="fileAttachList">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="footer_tools">
+  <a id="scrollUp" href="javascript:;" title="返回顶部"></a>
+</div>
+<footer>
+	<script type="text/javascript" src="js/public/cmpFooter.js"></script>
+</footer>
+<script type="text/javascript" src="js/public/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/public/bootstrap-datetimepicker.js"></script>
+<script type="text/javascript" src="../js/ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="../js/ueditor/ueditor.all.js"> </script>
+<script type="text/javascript" src="../js/webuploader/webuploader.js"></script>
+<script type="text/javascript"src="js/public/jquery.cookie.js"></script>
+<script type="text/javascript"src="js/public/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script> 
+<script type="text/javascript" src="js/public/cmpCom.js"></script>   
+<script type="text/javascript" src="js/articalIssue.js"></script>
+
+<script type="text/javascript">
+$(function () {
+	//回到顶部
+	var $body = $(document.body);;
+	var $bottomTools = $('.footer_tools');
+	$(window).scroll(function () {
+		var scrollHeight = $(document).height();
+		var scrollTop = $(window).scrollTop();
+		var $footerHeight = $('footer').outerHeight(true);
+		var $windowHeight = $(window).innerHeight();
+		scrollTop > 50 ? $("#scrollUp").fadeIn(200).css("display","block") : $("#scrollUp").fadeOut(200);			
+		$bottomTools.css("bottom", scrollHeight - scrollTop - $footerHeight > $windowHeight ? 20 : $windowHeight + scrollTop + $footerHeight + 20 - scrollHeight);
+	});
+	$('#scrollUp').click(function (e) {
+		e.preventDefault();
+		$('html,body').animate({ scrollTop:0});
+	});
+	
+});
+//Model模态框打开关闭
+
+$(".mb_close,.mb_btnNo").click(function() {
+	$(".modelContain").hide();
+	$(".blackcover2").fadeOut();
+	$("body").removeClass("modelOpen");
+})
+//初始引用编辑器
+ue = UE.getEditor('editor', {});
+// 上传图片
+var uploader = WebUploader.create({
+	    auto: true,
+	    swf: '../js/webuploader/Uploader.swf',
+	    server: '../ajax/cachedFileUpload',
+	    fileSingleSizeLimit: 2 * 1024 * 1024,
+	    duplicate:true,
+	    pick : {
+	    	id : "#filePicker",
+	    	multiple: false
+	    	},
+	    accept: {// 只允许选择图片文件。
+	        title: 'Images',
+	        extensions: 'jpg,jpeg,png',
+	        mimeTypes: 'image/jpg,image/jpeg,image/png'
+	    }
+	   
+	});
+	uploader.onError = function(code) {
+		if(code=="F_EXCEED_SIZE"){
+			$.MsgBox.Alert('提示', '请上传jpg、jpeg、png格式的图片，大小不超过2M')	
+		}
+	};
+	// 当有文件添加进来的时候
+	uploader.on( 'fileQueued', function( file ) {
+	    uploader.makeThumb( file, function( error, src ) {
+	        $("#uploader").css("background-image","url("+src+")");
+	        $(".imgtis").text("");
+	        $(".upFront").hide();
+	        $(".upBackbtn").show();
+	    }, 1, 1 );
+	    
+	});
+	cacheImageKey="";
+	uploader.on( 'uploadSuccess', function(file,data) {
+		if(data.success) {
+			cacheImageKey =data.data[0].cacheKey;
+			$("#uploader").attr("data-id",cacheImageKey);
+		}else{
+			$.MsgBox.Alert('提示', '只支持jpeg/jpg/png格式的图片');
+			$("#uploader").css("background-image","url('')");
+		}
+	});
+</script>
+
+</body>
+</html>

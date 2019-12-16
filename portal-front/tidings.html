@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>消息-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./css/main.html_aio_eb0d518.css">
+<style>
+		.list_title a{
+			width: 50%;
+			text-align: center;
+			display: inline-block;
+			color:#333;
+			font-size: 16px;
+		}
+		.list_title a.active {
+			background-color: #d7d7d7;
+		}
+	</style>
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+</head>
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+	<div id="main-content-wrapper">
+        <div class="chat_box clearfix" id="chatBox" >
+            <div class="chat_list">
+              	<div class="list_title"><a class="active">科袖消息<span class="kexiuTotal"></span></a><a href="platTiding.html">来自平台<span class="mesTotal"></span></a></div>
+				<div class="list_body" tabindex="0" style="overflow: hidden; outline: none;">
+				</div>
+			</div>
+			<!-- 聊天右侧显示区域 -->
+			<div class="chat_content" style="display:none;">
+				<div class="chat_content_head">
+					<div class="head_info">
+							<span class="left">
+								
+							</span>
+							<span class="center">
+								<span class="usepro">
+									<span class="user_name"></span>
+									<em class="authiconNew " ></em>
+								</span>
+								<span class="chating_resume_status ellipsisSty" style="display:block;margin-top:6px;font-size:14px;">
+									
+								</span>
+							</span>
+							<span class="right">
+								<a id="cUserPage" target="_blank" title="查看对方资料">查看对方资料</a><a class="repoMore" href="javascript:void(0)" id="repo"></a>
+								<span id="report" style=" line-height: 35px;">举报</span>
+							</span>
+					</div>
+				</div>
+				<div class="chat_body clearfix" tabindex="1" style="overflow: hidden; outline: none;">
+					<div class="chat_body_list">
+						
+					</div>
+				</div>
+				<div class="chat_content_bottom">
+					<div class="blocked-mask" style="display: none;"></div>
+					<div class="tool_bar clearfix"></div>
+					<div class="edit_area">
+						<div class="input_area"  id="editeBox">
+							<textarea class="messContent" maxlength="1000"></textarea>
+							<div><input type="button" class="btnModel " value="发送" disabled /></div>
+						</div>
+							
+					</div>
+				</div>
+				
+			</div>
+		<div class="chat_content_nodata">
+					<p>点击左侧列表，查看对话记录</p>
+				</div>
+        </div>
+    </div>
+<script type="text/javascript" src="js/correctBack.js"></script>	
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script src="js/jquery.nicescroll.min.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/tidings.js"></script>
+</body>
+</html>

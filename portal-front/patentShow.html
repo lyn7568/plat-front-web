@@ -1,0 +1,219 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>浏览专利-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<link type="text/css" href="css/leaveWord.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+
+</head>
+
+<body>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+					<div class="h1Font" id="paperName">打开网页后点击屏幕右上角“分享”按钮打开网页后点击屏幕右上角“分享”按钮打开网页后点击屏幕右上角“分享”按钮</div>
+					<div class="operateBlock bottomShow" style="margin-top:10px;">
+                		<ul class="clearfix">
+                			<li><span>阅读量</span> <span id="pageview">1000</span></li>
+                			<li id="attention"><span>收藏</span> <em class="operateicon operateicon2 icon-collect" id="collectBtn"></em></li>
+							<li>
+								<span>分享到</span>
+								<a href="" id="weibo" target="_blank"><em class="operateicon operateicon2 icon-sina"></em></a>
+								<em class="operateicon operateicon2 icon-wechat shareWeixin">
+									<div class="shareCode clearfix">
+										<div class="floatL" id="qrcode"></div>
+										<div class="shareWord floatR">
+											<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+										</div>
+									</div>
+								</em>
+							</li>
+                		</ul>
+                	</div>
+                	
+					<!--资源详情区-->
+					<div class="showMain showMainP">
+						<ul>
+							<li>
+								<div class="col-w-6">
+									<div class="showTit">申请号：<span class="showCon"></span></div>
+								</div>
+								<div class="col-w-6">
+									<div class="showTit">专利号：<span class="showCon"></span></div>
+								</div>	
+								
+							</li>
+							<li>
+								<div class="col-w-6">
+									<div class="showTit">申请日：<span class="showCon"></span></div>
+								</div>
+								<div class="col-w-6">
+									<div class="showTit">公开日：<span class="showCon"></span></div>
+								</div>
+							</li>
+							<li>
+								<div class="showTit">申请人：<span class="showCon"></span></div>
+							</li>
+							<li>
+								<div class="showTit">摘要：</div>
+								<div class="showCon">
+									
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="form-show">
+						<!--备注模块-->
+						<div class="showMain showMainP displayNone" style="margin:0;">
+							<div class="showTit">合作备注</div>
+							<div class="showCon" id="noteCo"></div>
+						</div>
+						<!--标签模块-->
+						<ul class="tagList">
+							
+						</ul>
+					</div>
+					<!--修改模块-->
+					<div class="form-item">
+						<div class="aboutTit">合作备注</div>
+						<div class="msgContbox">
+				    		<textarea class="msgCont" placeholder="请输入合作备注" id="remarkContent"></textarea>
+				    		<span class="msgconNum"><em>0</em>/1000</span>
+				    	</div>
+						<div class="aboutTit">关键词</div>
+						<div class="col-w-12" style="position: relative;">
+							<input type="text" class="frmcontype oinput" placeholder="请填写相关的关键词，如：腐蚀防护、石墨烯、纳米材料" data-pro="关键词不得超过15个字"  data-num="5" data-fontSizeN="15" />
+							<button type="button" class="frmcontype btnModel frmaddG addButton">添加</button>
+							<div class="form-drop keydrop">
+								<ul>
+									
+								</ul>
+							</div>
+						</div>
+						<div class="form-result keyResult">
+							<ul class="ulspace editUlist clearfix" id="paperSList">
+								<!--<li>XXX<div class="closeThis"></div></li>-->
+							</ul>
+						</div>
+					</div>
+					<!--作者-->
+					<div class="form-item aboutPa">
+						<div class="aboutTit">发明人</div>
+						<div class="form-result">
+							<ul class="authorBox clearfix" id="faM">
+								<li class="lastBtn">
+									<div>查看全部作者（<span>6</span>）</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="ifLogin" id="messagego">
+					    <!--未登录-->
+					    <div class="thumbBlock displayNone">
+							<span class="thumbBtn thunbgo">赞 <span>0</span></span>
+						</div>
+					    <div class="ifLoginUn displayNone">
+					    	<span class="floaL">大牛，别默默的看了，快登录给我留言吧！</span>
+					    	<ul class="floatR">
+					    		<li><a href="register.html">注册</a></li>
+					    		<li><a>|</a></li>
+					    		<li class="loginGo"><a>登录</a></li>
+					    	</ul>
+					    </div>
+					    <!--登录可留言-->
+					    <form class="ifLoginOn clearfix displayNone">
+					    	<div class="msgContbox">
+					    		<textarea class="msgCont" placeholder="请输入您的留言内容..."></textarea>
+					    		<span class="msgconNum"><em>0</em>/200</span>
+					    	</div>
+					    	<input type="button" class="frmconbtn btnModel floatR" disabled id="meSendtt" value="留言" />
+					    </form>
+					</div>
+					<div class="form-item commentsArea">
+						<ul class="commentList">
+						</ul>
+						<button class="frmconbtn btnCancel displayNone" id="moreArtical">查看更多留言</button>
+					</div>
+					<div class="form-item otherShow displayNone" id="interPatent">
+						<div class="aboutTit">您可能感兴趣的专利</div>
+						<div class="form-result aboutRes pointOk">
+							<ul id="patentList">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem conItemFirst">
+					<ul class="operateBlock">
+						<li class="goFabu" id="release">
+							<em class="operateicon icon-issue"></em>
+							<p>发布</p>
+						</li>
+						<li class="feedBack">
+							<em class="operateicon icon-feedback"></em>
+							<p>纠错</p>
+						</li>
+						<li class="disableLi" id="delete" style="cursor:pointer;opacity: 1">
+							<em class="operateicon icon-delete"></em>
+							<p>删除</p>
+						</li>
+					</ul>
+				</div>
+				<div class="correctBlock feedbackBox" id="feedbackBox"> 
+					<div class="cBacktit">
+						<span>纠错反馈</span>
+						<em class="closeFeed"></em>
+					</div>
+					<textarea class="frmcontype correctCon" placeholder="请具体说明您发现的问题，以便我们为您快速解决"></textarea>
+					<button class="frmcontype btnModel correctSubmit" disabled>提交</button>
+				</div>
+				<div class="conItem advertBox advertItem"></div>
+				<div class="conItem displayNone" id="paperList">
+					<div class="form-item otherBlock currentBlock">
+						<div class="aboutTit">相关论文</div>
+						<div class="form-result currentArt" style="margin-top:0px;margin-bottom:0px;">
+							<ul class="recentlyList">
+																
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<!--反馈建议-->
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/leaveWord.js"></script>
+<script type="text/javascript" src="js/patentShow.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+<script type="text/javascript">
+	$(function () {	
+		addscript("ad_common");
+	});
+</script>
+</body>
+</html>

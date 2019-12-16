@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>来自科袖网的邀请</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/common.css">
+<link rel="stylesheet" href="../css/share.css">
+</head>
+<body class="invitebody invitebody2">
+<div class="contentBody2">
+	<div class="topSTit">
+		<img src="../images/share_bg_img_nor@3x.png" />
+		<div class="titSort" id="zuimg"><!--已经注册的用户这块可以不显示-->
+			<img class="biaoti" src="../images/share_bg_zhucechenggong_nor@3x.png"/>
+			<img src="../images/share_bg_huanying_x_nor@3x.png" />
+		</div>
+	</div>
+	<form class="form-inline" role="form">
+	    <!--文档信息-->
+	    <div class="inforbox2">
+	    	<div class="cGbox"><!--成功提示-->
+	    		<div class="topIn"><em class="chenggong"></em><span>该专利已成功认领</span></div>
+	    		<h4>赶快登录查看哪些企业正在等您合作</h4>
+	    	</div>
+	    	<div class="sBbox displayNone"><!--失败提示-->
+	    		<div class="topIn"><em class="shibai"></em><span>该论文的作者信息与您不符</span></div>
+	    		<h4>赶快登录科袖网查看详情</h4>
+	    	</div>
+			<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app" class="btn btn-lg btn-block canPoint">点击下载「科袖」app</a>
+			<span>或使用PC登录科袖网 www.ekexiu.com</span>
+	    </div>
+		<div class="inforbox">
+			<ul>
+				<li>
+					<img class="lefticon" src="../images/share_icon_zhuanjia_nor@3x.png"/>
+					<div class="rightcon">
+						<h2>认证成为「科袖」专家</h2>
+						<p>寻找企业合作，将您的科研价值变现！</p>
+					</div>
+				</li>
+				<li>
+					<img class="lefticon" src="../images/share_icon_fabu_nor@3x.png"/>
+					<div class="rightcon">
+						<h2>发布研发需求</h2>
+						<p>寻找专家帮您解决研发难题！</p>
+					</div>
+				</li>
+				<li>
+					<img class="lefticon" src="../images/share_icon_haoyou_nor@3x.png"/>
+					<div class="rightcon">
+						<h2>邀请好友加入</h2>
+						<p>获取丰厚积分奖励，好礼随意换！</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</form>
+</div>
+
+<div class="bomb-box"></div>
+<script type="text/javascript" src="../js/jquery-1.11.1.js" ></script>
+<script type="text/javascript" src="../js/jquery.cookie.js" ></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>
+<script type="text/javascript" src="../js/public/genCom.js"></script>
+<script type="text/javascript" src="../js/public/shareCom.js"></script>
+<script>
+	$(document).ready(function(){
+		var flag=GetQueryString("flag");
+		var code=GetQueryString("code");
+		if(flag) {
+			if(code==0) {
+				$(".sBbox").show().find("span").text("该论文的作者信息与您不符");//失败该  
+				$(".cGbox").hide();//成功
+				$("#zuimg").hide()
+			}else if(code==1) {
+				$("#zuimg").hide();
+				$(".cGbox").find("span").text("论文已成功认领");
+			}else if(code==10) {
+				$(".sBbox").show().find("span").text("该论文的作者信息与您不符");
+				$(".cGbox").hide();
+			}else if(code==11) {
+				$(".cGbox").find("span").text("论文已成功认领");
+			}
+		}else{
+			if(code==0) {
+				$(".sBbox").show().find("span").text("该专利的作者信息与您不符");//失败该  
+				$(".cGbox").hide();//成功
+				$("#zuimg").hide()
+			}else if(code==1) {
+				$("#zuimg").hide();
+				$(".cGbox").find("span").text("专利已成功认领");
+			}else if(code==10) {
+				$(".sBbox").show().find("span").text("该专利的作者信息与您不符");
+				$(".cGbox").hide();
+			}else if(code==11) {
+				$(".cGbox").find("span").text("专利已成功认领");
+			}
+		}
+	})
+</script>
+</body>
+</html>

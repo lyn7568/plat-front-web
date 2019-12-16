@@ -1,0 +1,248 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>${data.articleTitle}-科袖网</title>
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<link href="/css/swiper.min.css" rel="stylesheet">
+<link type="text/css" href="/css/common.css" rel="stylesheet">
+<link type="text/css" href="/css/genindex.css" rel="stylesheet">
+<link type="text/css" href="/css/leaveWord.css" rel="stylesheet">
+<script type="text/javascript">
+	window.staticPageData =${jsonData};	
+</script>
+<script type="text/javascript" src="/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="/js/public/swiper.min.js"></script>
+<!--${data.articleTitle}    ${data.articleId}-->
+
+</head>
+
+<body>
+<header id="header">
+	<script src="/js/head-staticize.js"></script>
+</header>
+<div id="container">
+	<div class="containerCon">
+		<div class="contentCon clearfix conBlock">
+			<div class="leftconBox floatL">
+				<div class="showDetail">
+					<div class="offmsg">
+						<div style="padding:0 30px;">
+							<div class="h1Font" id="articleTitle">${data.articleTitle}</div>
+							<div class="h2Font"><span id="publishTime"></span> <span class="readNum" id="pageViews"></span></div>
+							<div class="showBigOpen" id="articleImg"></div>
+							<!--文章内容区-->
+							<div class="showMain" id="articleContent"></div>
+							<!--附件模块-->
+							<ul class="atachList" id="atachList">
+							</ul>
+							<!--标签模块-->
+							<ul class="tagList" id="tagList">
+							</ul>
+							<!--相关专家-->
+							<div class="form-item otherShow otherShowFirst displayNone">
+								<div class="aboutTit">相关专家</div>
+								<div class="form-result">
+									<ul id="relevantExperts">
+										
+									</ul>
+								</div>
+							</div>
+							<!--相关服务-->
+							<div class="form-item otherShow displayNone">
+								<div class="aboutTit">相关服务</div>
+								<div class="form-result aboutRes">
+									<ul id="oService">
+									</ul>
+								</div>
+							</div>
+							<!--相关产品-->
+							<div class="form-item otherShow displayNone">
+								<div class="aboutTit">相关产品</div>
+								<div class="form-result aboutRes">
+									<ul id="oProducts">
+										
+									</ul>
+								</div>
+							</div>
+							<!--相关资源-->
+							<div class="form-item otherShow displayNone">
+								<div class="aboutTit">相关资源</div>
+								<div class="form-result aboutRes">
+									<ul id="resources">
+										
+									</ul>
+								</div>
+							</div>
+							<div class="form-item otherShow displayNone">
+								<div class="aboutTit">相关企业</div>
+								<div class="form-result aboutRes">
+									<ul id="busList">
+										
+									</ul>
+								</div>
+							</div>
+							<!--点赞模块-->
+							<div class="thumbBlock">
+								<span class="thumbBtn thunbgo">赞</span>
+							</div>
+						</div>
+						<!--分享操作栏-->
+						<div class="shareBlock clearfix">
+							<div class="form-item shareInfo floatL">
+								<a href="" class="useurl" > 
+									<div class="madiaHead useHead userimg"></div>
+									<div class="madiaInfo">
+										<span class="h1Font ellipsisSty username"></span>
+										<em class="authiconNew labels" id="" title="科袖认证专家"></em>
+									</div>
+								</a>
+							</div>
+							<ul class="shareWays floatR">
+								<li class="wordHave"><em class="operateicon icon-message"></em><span class="message"></span></li>
+								<li id="attention"><em class="operateicon icon-collect"></em></li>
+								<li>
+									<em class="operateicon icon-wechat shareWeixin">
+										<div class="shareCode clearfix">
+											<div class="floatL" id="qrcode"></div>
+											<div class="shareWord floatR">
+												<p>打开微信“扫一扫”，<br/>打开网页后点击屏幕右上角“分享”按钮</p>
+											</div>
+										</div>
+									</em>
+								</li>
+								<li><a href id="weibo" target="_blank"><em class="operateicon icon-sina"></em></a></li>
+								<!--<li><em class="operateicon icon-qq"></em></li>-->
+								<!--<li><em class="operateicon icon-totop upTop"></em></li>-->
+							</ul>
+						</div>
+						<div class="share-bottom"></div>
+					</div>
+					<div class="form-item commentsArea swiper-container advertItem advertItem-C"></div>
+					
+					<div class="ifLogin" id="messagego">
+					    <!--未登录-->
+					    <div class="ifLoginUn displayNone">
+					    	<span class="floaL">大牛，别默默的看了，快登录给我留言吧！</span>
+					    	<ul class="floatR">
+					    		<li><a href="register.html">注册</a></li>
+					    		<li><a>|</a></li>
+					    		<li class="loginGo"><a>登录</a></li>
+					    	</ul>
+					    </div>
+					    <!--登录可留言-->
+					    <form class="ifLoginOn clearfix displayNone">
+					    	<div class="msgContbox">
+					    		<textarea class="msgCont" placeholder="请输入您的留言内容..."></textarea>
+					    		<span class="msgconNum"><em>0</em>/200</span>
+					    	</div>
+					    	<input type="button" class="frmconbtn btnModel floatR" disabled id="meSendtt" value="留言" />
+					    </form>
+					</div>
+					<div class="form-item commentsArea">
+						<ul class="commentList">
+							
+						</ul>
+						<button class="frmconbtn btnCancel displayNone" id="moreArtical">查看更多留言</button>
+					</div>
+					<!--相关文章-->
+					<div class="form-item otherShow displayNone">
+						<div class="aboutTit">您可能感兴趣的文章</div>
+						<div class="form-result aboutRes pointOk">
+							<ul id="abutartical">
+								
+							</ul>
+						</div>
+					</div>
+					<div class="form-item commentsArea swiper-container advertItem advertItem-D"></div>
+				</div>
+			</div>
+			
+			<div class="rightconBox floatR">
+				<div class="privateInfo">
+					<div class="conItem conItemG alignCenter displayNone" id="expert">
+						<a href="" class="hrefgo"><div class="madiaHead useHead" id="Zimg"></div></a>
+						<div class="proInfo">
+							<div class="h3Font clearfix">
+								<a href="" class="h1Font hrefgo" id="Zname"></a>
+								<span class="authiconNew" title="科袖认证专家" id="ZauthFlag"></span>
+							</div>
+							<p class="h2Font" id="Ztitle"></p>
+							<p class="h2Font" id="ZorgName"></p>
+						</div>
+						<div class="goSpan displayNone">
+							<span class="attenSpan">关注</span>
+						</div>
+						<div class="form-item otherBlock currentBlock displayNone">
+							<div class="aboutTit">最近文章</div>
+							<div class="form-result currentArt">
+								<ul class="recentlyList">
+								</ul>
+							</div>
+						</div>	
+					</div>
+					<div class="conItem conItemG alignCenter displayNone" id="enterprise">
+						<a href=""  class="qiyego">
+							<div class="madiaHead cmpHead" id="Qimg">
+								<div class="boxBlock">
+									<img class="boxBlockimg" src="" id="companyImg">
+								</div>
+							</div>
+						</a>
+						<div class="proInfo">
+							<div class="h3Font clearfix">
+								<a href=""  class="h1Font qiyego" id="Qname"></a>
+								<span class="authiconNew" title="科袖认证企业" id="QauthFlag"></span>
+							</div>
+							<p class="h2Font ellipsisSty" id="Qindustry"></p>
+						</div>
+						<div class="goSpan">
+							<span class="attenSpan">关注</span>
+						</div>
+						<div class="form-item otherBlock currentBlock displayNone">
+							<div class="aboutTit">最近文章</div>
+							<div class="form-result currentArt">
+								<ul class="recentlyList">
+								</ul>
+							</div>
+						</div>	
+					</div>
+				</div>
+				
+				<div id="scroll-fixed-ad">
+					<div class="conItem advertBox advertItem advertItem-A"></div>
+					<div class="conItem advertBox advertItem advertItem-B"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--反馈建议-->
+<script type="text/javascript" src="/js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="/js/footer2.js"></script>
+</footer>
+<script type="text/javascript" src="/js/jquery.cookie.js"></script>
+<script type="text/javascript" src="/js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="/js/public/baseUtil.js"></script>
+<script type="text/javascript" src="/js/public/genCom.js"></script>
+<script type="text/javascript" src="/js/public/cacheUtil.js"></script>
+<script type="text/javascript" src="/js/scrollfix.js"></script>
+<script type="text/javascript" src="/js/weixinshare/qrcode.min.js"></script>
+<script type="text/javascript" src="/js/leaveWord.js"></script>
+<script type="text/javascript" src="/js/articalShow2.js"></script>
+<script type="text/javascript" src="/js/quickLogin.js"></script>
+<script type="text/javascript">
+	$(function() {
+		addscript("ad_article_web_a");
+		addscript("ad_article_web_b");
+		addscript("ad_article_web_c");
+		addscript("ad_article_web_d");
+	});
+
+	
+</script>
+</body>
+</html>

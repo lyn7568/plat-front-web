@@ -1,0 +1,250 @@
+﻿﻿ <!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>发现-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link type="text/css" href="css/common.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="./css/webuploader/webuploader2.css">
+<link type="text/css" href="css/genindex.css" rel="stylesheet">
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style type="text/css">
+	ul.artAbout #filePicker{width:187px;height:140px;bottom:0;left:0;margin-left:0;cursor:pointer;}
+	ul.artAbout #filePicker .webuploader-pick{width:187px;height:140px;}
+</style>
+<script>
+	var _hmt = _hmt || [];
+	(function() {
+	  var hm = document.createElement("script");
+	  hm.src = "https://hm.baidu.com/hm.js?d3db502c8cee2d618c01fe7aa6518602";
+	  var s = document.getElementsByTagName("script")[0]; 
+	  s.parentNode.insertBefore(hm, s);
+	})();
+</script>
+</head>
+<body>
+<!--提问问题-->
+<div class="blackcover questionCover displayNone">
+	<div class="resAreaBox putquestion">
+		<div class="queStep queStep01">
+			<div class="steptit">提出您的问题(1/2)</div>
+			<ul class="artAbout">
+				<li>
+					<div class="tipShow">
+						为了营造良好的知识分享环境，所有提问将在审核通过后发布。<br>我们欢迎并鼓励您提出与科研、研发有关的提问。<br>
+						在审核过程中，我们可能会对提问内容进行修改，包括但不限于错误、隐私、违法违规、广告不友善、政治敏感等内容。
+					</div>
+				</li>
+				<li>
+					<div class="aboutTit">问题题目<em class="requiredcon">*</em><span class="frmconmsg"></span></div>
+				    <div class="msgContbox">
+			    		<textarea class="msgCont" id="queTit" placeholder="请提出您的问题并以问号结尾"></textarea>
+			    		<span class="msgconNum"><em>0</em>/50</span>
+				    </div>
+				</li>
+				<li class="form-item">
+					<div class="aboutTit">关键词<em class="requiredcon">*</em><span class="frmconmsg" id="keyPrompt"></span></div>
+					<div class="col-w-12" style="position: relative;">
+						<input type="text" class="frmcontype oinput" placeholder="如：腐蚀防护、石墨烯、纳米材料" data-pro="关键词不得超过15个字" data-num="5" data-fontsizen="15" id="KeyWord">
+						<button type="button" class="frmcontype btnModel frmaddG addButton">添加</button>
+						<div class="form-drop keydrop">
+							<ul>
+								
+							</ul>
+						</div>
+					</div>
+					<div class="form-result keyResult" style="margin-top: -10px;">
+						<ul class="ulspace editUlist clearfix" id="keyWordlist">
+							<!--<li>dd<div class="closeThis"></div></li>-->
+						</ul>
+					</div>	
+				</li>
+				<li class="saveBtn">
+					<button type="button" class="frmcontype btnModel" id="nextSte">下一步</button>
+				</li>
+			</ul>
+		</div>
+		<div class="queStep queStep02 displayNone">
+			<div class="steptit">提出您的问题(2/2)</div>
+			<ul class="artAbout" style="">
+				<li>
+					<div class="aboutTit">问题描述<span class="frmconmsg"></span></div>
+					<div class="msgContbox">
+			    		<textarea class="msgCont" placeholder="添加描述和配图（选填）" id="queCnt"></textarea>
+			    		<span class="msgconNum"><em>0</em>/500</span>
+			    	</div>
+				</li>
+				<li>
+					<div class="aboutTit">上传图片<span class="tips">如果图片可以更好的描述问题，请不要犹豫（最多3张）</span></div>
+					<dl class="clearfix" id="fileList">
+						<dd class="uploadD" id="uploadDd">
+							<div class="uploadFile">
+		        				<div class="uploadblock">
+		        					<span class="" id="filePicker">上传图片</span>
+		        					<!--未上传图片时-->
+		        					<div class="upFront" style="top:40px;" id="uploader">
+			        					<p>上传图片</p>
+			        					<p class="uploadtip">JPG/JPEG/PNG格式<br/>大小2M以内</p>
+		        					</div>
+			            		</div>
+		        			</div>
+						</dd>
+						<dd></dd>
+						<dd></dd>
+					</dl>
+				</li>
+				<li class="saveBtn">
+					<button type="button" class="frmcontype btnModel" id="pubSte">发布</button>
+					<button type="button" class="frmcontype btnModel btnCancel" id="preSte">上一步</button>
+				</li>
+			</ul>
+		
+		</div>
+		<span class="workclose" id="workclose"></span>
+	</div>
+</div>
+<header id="header">
+	<script src="js/header.js"></script>
+</header>
+<div id="container" style="margin-top:-20px;">
+	<div class="containerCon">
+		<div class="contentCon clearfix">
+			<div class="leftconBox floatL" style="background: #f4f6f8;padding-bottom:0">
+				<div class="slide-box clearfix">
+
+				</div>
+				<div class="table-box">
+					<div class="table-tab">
+						<ul class="table-tab-item clearfix">
+							<!--<li class="table-tab-slide table-tab-slide-active" data-col="0">推荐</li>
+							<li class="table-tab-slide" data-col="3">科研</li>
+							<li class="table-tab-slide" data-col="4">智库</li>
+							<li class="table-tab-slide" data-col="5">检测</li>
+							<li class="table-tab-slide" data-col="7">科袖访谈</li>
+							<li class="rightbtn"><span>更多栏目</span><em class="foldtr"></em>
+								<ul class="table-drop">
+									<li class="table-tab-slide" data-col="6">会议</li>
+									<li class="table-tab-slide" data-col="8">招聘招生</li>
+								</ul>
+							</li>-->
+							
+						</ul>
+					</div>
+					<div class="table-body">
+					    <div class="haveData">
+					    	<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-0"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-1"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-2"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-3"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-4"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-5"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-6"></ul>
+								<button class="js-load-more"></button>
+							</div>
+							<div class="table-item-list">
+								<ul class="listitemdiv listmorediv" id="table-item-7"></ul>
+								<button class="js-load-more"></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="rightconBox floatR">
+				<div class="conItem advertBox advertItem advertItem-A"></div>
+				<div class="conItem privateInfo">
+					<div class="onlogined displayNone">
+						<div class="owener-info"></div>
+						<div class="statisticsBox">
+							<div class="col-w-4">
+								<p>文章</p>
+								<span id="myPubedArt">0</span>
+							</div>
+							<div class="col-w-4">
+								<p>回答</p>
+								<span id="myPubedAnswer">0</span>
+							</div>
+							<div class="col-w-4">
+								<p>总获赞</p>
+								<span id="agreeMecount">0</span>
+							</div>
+						</div>
+						<div class="goSpan clearfix">
+							<span class="floatL pubArt">写文章</span>
+							<span class="floatR pubQuestion">提问题</span>
+						</div>
+						<div class="goSpanLine">
+							<span class="goarrow">我的关注与收藏</span>
+						</div>
+					</div>	
+					<div class="unlogined">
+						<div class="madiaHead useHead"></div>
+						<div class="h3Font">Hi，欢迎您<br>登录后可以和大家交流哦～</div>
+						<div class="goSpan clearfix">
+							<span class="floatL">登录</span>
+							<span class="floatR">注册</span>
+						</div>
+					</div>	
+				</div>
+				<div class="conItem conBlock displayNone">
+					<div class="form-item otherBlock">
+						<div class="aboutTit">热门文章</div>
+						<div class="form-result currentArt currentArt2">
+							<ol class="hotList" id="hotNews">
+							</ol>
+						</div>
+					</div>	
+				</div>
+				<div id="scroll-fixed-ad">
+					<div class="conItem advertBox advertItem advertItem-B"></div>
+					<div class="conItem advertBox advertItem advertItem-C"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="js/correctBack.js"></script>
+<footer>
+	<script type="text/javascript" src="js/footer.js"></script>
+</footer>
+
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>
+<script type="text/javascript" src="js/jquery.page.js"></script>
+<script type="text/javascript" src="./js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+<script type="text/javascript" src="js/quickLogin.js"></script>
+<script type="text/javascript" src="js/scrollfix.js"></script>
+<script type="text/javascript" src="js/discover.js"></script>
+<script type="text/javascript">
+$(function () {	
+	addscript("ad_discover_a");
+	addscript("ad_discover_b");
+	addscript("ad_discover_c");	
+});
+
+</script>
+</body>
+</html>

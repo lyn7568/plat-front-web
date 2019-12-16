@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>头像上传-科袖网</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" media="screen" />
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/basic.css" rel="stylesheet" type="text/css" />
+<link href="css/jquery.Jcrop.css" rel="stylesheet" type="text/css" />
+<link type="text/css" href="css/login.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/webuploader/webuploader.css">	
+<script type="text/javascript" src="js/jquery-1.11.1.js"></script>
+<style type="text/css">
+#header{ width:100%; height:50%; background:#E28D30; }
+#footer{ width:100%; height:50%; background:#E8E8E8;}
+</style>
+</head>
+<body>
+
+<div class="coverbox">
+  <div class="photo-box">
+	<div class="photo-title">头像设置</div>
+             <div class="photo-set">
+                 <div class="photo-upload">
+                     <!--点击上传按钮-->
+                   <div class="load">
+                       <!--<div class="upbtn" style="Margin:auto" ><span class="plus">+</span>本地上传<input type="file" class="filebtn"  name="file" id="uploadInput" ></div>
+                         <p>只支持JPG、PNG，大小不超过5M</p>-->
+                         <div id="uploader">
+								<div id="fileList" class="uploader-list"></div>
+								<div id="filePicker">选择图片</div>
+						 </div>
+						<span class="resouimgmsg">建议尺寸340*340，大小在5M以内，JPG、PNG格式</span> 
+                     </div>
+                     <!---->
+                     <!--选择图片尺寸-->
+                     <div class="wrap" id="jcropdiv">
+                                 <div class="wl">
+                                     <div class="jc-demo-box" data="0">
+                                         <div id="target" class="jcrop_w" >
+                                            <img src="" id="headImage">
+                                         </div>
+                                     </div>
+                                  <!--    <div class="jy-up-ch" >
+                                         <a id="idLeft" href="" class="bch bch1"></a>
+                                         <a id="idSmall" href="" class="bch bch2"></a>
+                                         <a id="idBig" href="" class="bch bch3"></a>
+                                         <a id="idRight" href="" class="bch bch4"></a>
+                                     </div> -->
+                                 </div>
+                     </div>
+                  
+                 </div>
+     
+                 <div class="photo-size">
+                     <div class="wr" id="preview-pane">
+                         <div class="preview-container">
+                             <p style="margin:10px 20px;">头像预览</p>
+                             <div class="pre-1">
+                                 <img  src="" class="jcrop-preview jcrop_preview_s" alt="" id="largeImage"/>
+                             </div>
+                             <p style="font-size: 14px;">200px*200px</p>
+                             <div class="pre-2">
+                                 <img src="" class="jcrop-preview jcrop_preview_s" alt="" id="middleImage"/>
+                             </div>
+                             <p style="font-size: 13px;">50px*50px</p>
+                             <div class="pre-3">
+                                 <img src="" class="jcrop-preview jcrop_preview_s" alt="" id="smallImage"/>
+                             </div>
+                             <p style="font-size: 12px;">26px*26px</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>	
+	<input id="x" type="hidden"/>
+	<input id="y" type="hidden"/>
+	<input id="w" type="hidden"/>
+	<input id="h" type="hidden"/>
+
+    <div style="overflow:hidden; margin:10px 0; font-size:14px;">
+		<input type="button" value="保存" class="inputtxt inputtxtbtn save" id="saveImage" >
+		<input type="button" value="取消" class="inputtxt inputtxtbtn  close" >
+		<input type="button" value="返回" class="inputtxt inputtxtbtn " id="back">
+	</div>
+  </div>
+</div>
+ 
+<div id="header"></div>
+<div id="footer"></div>    
+         
+<script type="text/javascript" src="js/webuploader/webuploader.js"></script>
+<script type="text/javascript" src="js/jquery.HeadP.js"> </script>
+<script type="text/javascript" src="js/jquery.Jcrop.js"> </script>
+<script type="text/javascript" src="js/basic.js"> </script>
+<script type="text/javascript" src="js/jquery.similar.msgbox.js"></script>	
+<script type="text/javascript"src="js/jquery.cookie.js"></script>
+<script type="text/javascript" src="js/public/baseUtil.js"></script>
+<script type="text/javascript" src="js/public/genCom.js"></script>
+
+<script type="text/javascript">
+
+$(function (){
+ 
+     //初始化截图框
+     var _Jw = ($("#target").width() - 200) / 2 ,
+         _Jh = ($("#target").height() - 200) / 2 ,
+         _Jw2 = _Jw + 200,
+         _Jh2 = _Jh + 200;
+
+	    $('#target').Jcrop({
+	        setSelect: [_Jw, _Jh, _Jw2, _Jh2],
+	    });
+    
+    function target(){
+   		 var _Jw = ($("#target").width() - 201) / 2 ,
+         _Jh = ($("#target").height() - 201) / 2 ,
+         _Jw2 = _Jw + 201,
+         _Jh2 = _Jh + 201;
+
+	    $('#target').Jcrop({
+	        setSelect: [_Jw, _Jh, _Jw2, _Jh2],
+	    });
+    }
+   
+    $('#largeImage').attr("style","");
+    $('#middleImage').attr("style","");
+    $('#smallImage').attr("style","");
+    var headChange1 =GetQueryString("id");
+    if(headChange1!=""){
+    	var id = headChange1;
+    }else{
+   		var id = $.cookie('userid');
+    } 
+	var cacheImageKey=null;
+	var fileId = null;
+	userhead();
+	//初始化头像
+	function userhead(){
+		$.ajax("/ajax/image/hasProImg",{
+			data:{"id":id},
+			type:"GET",
+		  async: false,
+			dataType: 'json',
+			success:function(data){ 
+		    	console.log(data);
+				var $info = data.data || {};
+				if(data.success && data.data) {
+				console.log($info);
+					if($info == 1) {
+						$("#smallImage").attr("src","/images/head/"+id+"_s.jpg");
+						$("#middleImage").attr("src","/images/head/"+id+"_m.jpg");
+						$("#largeImage").attr("src","/images/head/"+id+"_l.jpg");
+					} else {
+						$("#smallImage").attr("src","/images/default-photo.jpg");
+						$("#middleImage").attr("src","/images/default-photo.jpg");
+						$("#largeImage").attr("src","/images/default-photo.jpg");
+					}
+				}
+			},
+			error:function(){
+				$.MsgBox.Alert('消息','服务器请求失败')},
+			}
+		);
+	}	
+	
+	if(id){
+		
+		
+		// 初始化Web Uploader
+		var uploader = WebUploader.create({
+			// 选完文件后，是否自动上传。
+		    auto: true,
+		    // 添加的文件数量
+		    fileNumLimit: 1,
+		    // swf文件路径
+		    swf: '../js/webuploader/Uploader.swf',
+		    // 文件接收服务端。
+		    server: '../ajax/cachedFileUpload',
+		    // 选择文件的按钮。可选。
+		    // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+	
+		    pick : {
+		    	id : "#filePicker",
+		    	multiple: false
+		    	},
+		    // 只允许选择图片文件。
+		    accept: {
+		        title: 'Images',
+		        extensions: 'gif,jpg,jpeg,bmp,png',
+		       	mimeTypes: 'image/gif,image/jpg,image/jpeg,image/bmp,image/png'
+		    }
+		   
+		});
+	
+		// 当有文件添加进来的时候
+		uploader.on( 'fileQueued', function( file ) {				
+			 fileId = file.id;			
+		    var $li = $(
+		            '<div id="' + file.id + '" class="file-item thumbnail">' +
+		                '<img>' +
+		            '</div>'
+		            )
+		            
+		        $img = $li.find('img');
+
+		    // $list为容器jQuery实例
+		    var $list = $('#fileList');
+		   
+		    $list.empty("");
+		  //  $list.append( $li );
+          // setTimeout(target,500);
+		    // 创建缩略图
+		    // 如果为非图片文件，可以不用调用此方法。
+		    // thumbnailWidth x thumbnailHeight 为 100 x 100
+		    uploader.makeThumb( file, function( error, src ) {
+		        if ( error ) {
+		            $img.replaceWith('<span>不能预览</span>');
+		            return;
+		        }
+		      
+		    }, 240, 240 );
+		    
+		    //判断上传文件格式
+		  /*   var fileNameAll = file.name;
+		    var AllImgExt=".jpg|.jpeg|.gif|.bmp|.png|";
+		    var extName = fileNameAll.substring(fileNameAll.lastIndexOf(".")).toLowerCase();//（把路径中的所有字母全部转换为小写）
+	        if(AllImgExt.indexOf(extName+"|")==-1){
+	            var ErrMsg="该文件类型不允许上传。请上传 "+AllImgExt+" 类型的文件，当前文件类型为"+extName;
+	            $.MsgBox.Alert('提示',ErrMsg);
+	            return false;
+	        }  */
+
+		    
+		});
+		
+    	// 文件上传过程中创建进度条实时显示。
+		uploader.on( 'uploadProgress', function( file, percentage ) {
+		    var $li = $( '#'+file.id ),
+		        $percent = $li.find('.progress span');
+
+		    // 避免重复创建
+		    if ( !$percent.length ) {
+		        $percent = $('<p class="progress"><span></span></p>')
+		                .appendTo( $li )
+		                .find('span');
+		    }
+
+		   $percent.css( 'width', percentage * 100 + '%' );
+			
+		});		
+		// 文件上传成功，给item添加成功class, 用样式标记上传成功。
+		cacheImageKey=null;
+		uploader.on( 'uploadSuccess', function(file,data) {
+			console.log(data);
+			$("#jcropdiv").show();
+			$(".load").hide();
+			uploader.removeFile(fileId);
+			cacheImageKey =data.data[0].cacheKey;			
+			$("#headImage").attr("src","/images/tmp/"+cacheImageKey);
+			$("#smallImage").attr("src","/images/tmp/"+cacheImageKey);
+			$("#middleImage").attr("src","/images/tmp/"+cacheImageKey);
+			$("#largeImage").attr("src","/images/tmp/"+cacheImageKey);
+			$('#largeImage').attr("style","");
+	  		$('#middleImage').attr("style","");
+	  		$('#smallImage').attr("style","");
+		   /*  setInterval(function(){
+		     	cutImage($(".jcrop_w>img"))
+		    },1000); */
+		   // cutImage($(".jcrop_w>img"))
+		    //window.clearInterval(cutImage($(".jcrop_w>img")));
+		});
+	}
+	
+	$('#headImage').load(function(){
+	   cutImage($(".jcrop_w>img"));
+	   target();
+	});
+	
+    //保存
+	$("#saveImage").on("click",function(){
+	//	userhead();
+	  
+	if(cacheImageKey==null) {
+		$.MsgBox.Alert("消息","请选择图片");
+		return;
+	}
+		var iw = $('.jcrop_w>img').width(),ih = $('.jcrop_w>img').height(),ow = (395 - iw) / 2,oh = (340 - ih) / 2;
+		var x = parseInt(($("#x").val()-ow)/395*100);
+		var y = parseInt(($("#y").val()-oh)/340*100);
+		var w = parseInt($("#w").val()/(395-ow-ow)*100);
+		var h = parseInt($("#h").val()/(340-oh-oh)*100);
+		if(x<0 || y<0 || ((w+x)>100) || ((h+y)>100)){
+		   $.MsgBox.Alert("消息","裁剪超出图片，请重新裁剪");
+			return;			
+		}
+		if(cacheImageKey){
+			$.ajax({
+				url:"../ajax/image/head",
+				type:"POST",
+				data:{"id":id,"fn":cacheImageKey,"x":x,"y":y,"w":w,"h":h},
+				dataType:"json",
+				success:function($data){
+				    console.log($data);
+					if($data.success){
+							location.reload(true);
+					}else{
+						$.MsgBox.Alert("message",$data.msg);
+					}
+				}
+			});
+		}
+	});
+
+    //取消
+	$(".close").on("click",function(){
+		$(".load").show();
+		$("#jcropdiv").hide();
+		//$("#filePicker").show();
+		$("#headImage").attr("src","");
+		$("#smallImage").attr("src","");
+		$("#middleImage").attr("src","");
+		$("#largeImage").attr("src","");	
+		$("#smallImage").attr("src","/images/head/"+id+"_s.jpg");
+		$("#middleImage").attr("src","/images/head/"+id+"_m.jpg");
+		$("#largeImage").attr("src","/images/head/"+id+"_l.jpg");
+ 		$('#target').Jcrop({ setSelect: [_Jw, _Jh, _Jw2, _Jh2],	});
+	    $('#largeImage').attr("style","");
+ 		$('#middleImage').attr("style","");
+ 		$('#smallImage').attr("style","");
+ 		$('#headImage').attr("style","");	
+	})
+    
+    //返回
+	$("#back").on("click",function(){
+		window.history.back(-1); 
+	}) 
+	
+	
+
+})
+
+
+
+</script>
+</body>
+</html>

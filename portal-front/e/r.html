@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>资源分享-科袖网</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+<link rel="stylesheet" href="../css/reset.css" />
+<link rel="stylesheet" href="../css/common.css" />
+<link rel="stylesheet" href="../css/share.css" />
+<style>
+	html,body{margin:0;padding:0px;background: #FFFFFF;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/public/swiper.min.js"></script>
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script type="text/javascript" src="../js/public/baseUtil.js"></script>	
+<script type="text/javascript" src="../js/public/shareCom.js"></script>	
+<script type="text/javascript" src="../js/public/openApp.js"></script>	
+</head>
+
+<body>
+	<div class="contentBody2">
+		<!--焦点图 start--> 
+		<div data-editor="topslider"> 
+		    <div id="index-container"> 
+			    <ul class="swiper-wrapper"> 
+				    <!--<li class="swiper-slide"><a class="tab-re"><img src="../images/banner/banner01.jpg" /></a></li>-->
+			    </ul> 
+		    	<div class="swiper-pagination" id="index-pagination"></div> 
+		    </div> 
+		</div> 
+	    <div class="showDetail">
+    		<div class="h1Font hWeight" id="resourceName"></div>
+    		<div class="showFont" id="application"></div>
+    		<div class="madiaBlock">
+    			<ul class="mui-table-view noactiveTab infoBlock">
+			        <li class="mui-table-view-cell">
+			            <div class="flexCenter mui-clearfix">
+			            	<a id="thisInfo">
+			            		<div class="madiaHead" id="thisPic"></div>
+								<div class="madiaInfo" style="padding-right: 80px;">
+									<p><span class="h1Font ellipsisSty" id="thisName"></span><em class="authiconNew" title="" id="authFlag"></em></p>
+									<p class="h3Font ellipsisSty" id="thisOther"></p>
+								</div>
+			            	</a>
+			                <div class="goSpan">
+								<span class="attenSpan">关注</span>
+							</div>
+			            </div>
+			            
+			        </li>
+			    </ul>
+    		</div>
+	    	<!--内容区-->
+			<div class="showMain showRes">
+				<ul>
+					<li>
+						<div class="showTit">所属机构</div>
+						<div class="showCon" id="resorceOrg"></div>
+					</li>
+					<li>
+						<div class="showTit">厂商型号</div>
+						<div class="showCon" id="modelNumber"></div>
+					</li>
+					<li>
+						<div class="showTit">性能参数</div>
+						<div class="showCon" id="performancePa"></div>
+					</li>
+					<li>
+						<div class="showTit">合作备注</div>
+						<div class="showCon" id="remarkContent"></div>
+					</li>
+					<li id="articleContent">
+						<div class="showTit">详细介绍</div>
+						<div class="showCon" id="detailDescp"></div>
+					</li>
+				</ul>
+			</div>
+    		<!--标签模块-->
+			<ul class="tagList">
+				<!--<li>
+					<span class="h2Font"></span>
+				</li>-->
+			</ul>
+			<div class="madiaBlock displayNone">
+				<div class="madiaTit">相关服务</div>
+				<ul class="mui-table-view" id="likeService">
+			        
+			    </ul>
+			</div>
+			<!-- <div class="madiaBlock displayNone">
+				<div class="madiaTit">相关文章</div>
+				<ul class="mui-table-view" id="likeArtical">
+			    </ul>
+			</div> -->
+			<!--您可能感兴趣的资源-->
+			<div class="madiaBlock displayNone">
+				<div class="madiaTit">您可能感兴趣的资源</div>
+				<ul class="mui-table-view" id="likeResource">
+			    </ul>
+			</div>
+			
+	    </div>
+	    <div class="shareEcode">
+			<img class="Ecodecon" src="../images/ecordCard.jpg" />
+			<div class="Ecodeinfo">
+				<a href="http://a.app.qq.com/o/simple.jsp?pkgname=com.ekexiu.app"><button class="frmbtn frmactive">下载移动客户端</button></a>
+			</div>
+	    </div>
+	</div>
+<script type="text/javascript">
+$(document).ready(function() {
+	var imgUrl = "http://www.ekexiu.com/images/logo180.png";
+	var lineLink = document.location.href;
+	var descContent;
+	var shareTitle;
+	var appid = '';
+	
+	var resourceId = GetQueryString("id");
+	var othisInfo=document.getElementById("thisInfo"); //用户/企业信息
+	var othisName = document.getElementById("thisName"); //专家名称
+	var othisOther = document.getElementById("thisOther"); //专家职称/职位
+	var oauthFlag = document.getElementById("authFlag"); //专家认证
+	var othisPic = document.getElementById("thisPic"); //专家头像
+	
+	var oresorcePic = document.getElementById("resorcePic"); //资源图片
+	var oresourceName = document.getElementById("resourceName"); //资源名称
+	var oapplication = document.getElementById("application"); //应用用途
+	var oresorceOrg = document.getElementById("resorceOrg"); //资源所属机构
+	var omodelNumber = document.getElementById("modelNumber"); //厂商型号
+	var operformancePa = document.getElementById("performancePa"); //性能参数
+	var oremarkContent = document.getElementById("remarkContent"); //合作备注
+	var odetailDescp = document.getElementById("detailDescp"); //详细描述
+	getRecourceMe();/*获取信息*/
+	relatedArticles();/*相关文章信息*/
+	relatedServices()
+	interestingResources();
+	pageViewLog(resourceId,2);
+
+	//进入发布者详情页面
+	$("#thisInfo").on("click", function() {
+		var reType = this.getAttribute("data-type");
+		if(reType=="1"){
+			var proId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/p.html?id=" + proId;
+		}else if(reType=="2"){
+			var cmpId=this.getAttribute("data-id");
+			location.href="http://" + window.location.host + "/e/c.html?id=" + cmpId;
+		}
+			
+	})
+	
+	var this_="../html/resourceShow.html?resourceId="+resourceId;
+	wcFresh(this_);
+	$("body").on("click",".goSpan",function(){
+		isInstalled(this_,true);
+		$(this).addClass("activeThis");
+	})
+	function getRecourceMe() {
+		$.ajax({
+			url:'../ajax/resource/queryOne',
+			data: {
+				'resourceId': resourceId,
+			},
+			dataType: 'json', //服务器返回json格式数据
+			type: 'get', //HTTP请求类型
+			timeout: 10000, //超时时间设置为10秒；
+			success: function(data) {
+				if(data.success) {
+					var mydata = data.data;
+					var resourceName = mydata.resourceName;
+					document.title = resourceName;
+					oresourceName.innerHTML = mydata.resourceName;
+					oapplication.innerHTML = "用途："+ mydata.supportedServices;
+					//微信再次分享配置
+					shareTitle = oresourceName.innerHTML;
+					descContent = oapplication.innerHTML;
+					if(mydata.editProfessor) {
+						othisInfo.setAttribute("data-id",mydata.editProfessor.id);
+						othisInfo.setAttribute("data-type",mydata.resourceType);
+						professorId = othisInfo.getAttribute("data-id");
+						if(mydata.orgName) { //所属机构
+							oresorceOrg.innerText = mydata.orgName;
+							oresorceOrg.parentNode.style.display="block";
+						}
+						//用户个人信息
+						othisName.innerHTML = mydata.editProfessor.name;
+						var otitleInfo="";
+						var oOrgInfo="";
+						if(mydata.editProfessor.title) {
+							otitleInfo = mydata.editProfessor.title + ",";
+						} else {
+							if(mydata.editProfessor.office) {
+								otitleInfo = mydata.editProfessor.office + ",";
+							}else{
+								otitleInfo = "";
+							}
+						}
+						if(mydata.editProfessor.orgName) {
+							oOrgInfo = mydata.editProfessor.orgName;
+						}
+						othisOther.innerHTML = otitleInfo + oOrgInfo;
+						
+						var professorFlag = autho(mydata.editProfessor.authType, mydata.editProfessor.orgAuth, mydata.editProfessor.authStatus);
+						oauthFlag.classList.add(professorFlag.sty);
+						othisPic.classList.add("useHead");
+						if(mydata.editProfessor.hasHeadImage == 1) {
+							othisPic.style.backgroundImage = 'url(../images/head/' + mydata.editProfessor.id + '_l.jpg)';
+						}
+					}else{
+						othisInfo.setAttribute("data-id",mydata.organization.id);
+						othisInfo.setAttribute("data-status",mydata.organization.authStatus);
+						othisInfo.setAttribute("data-type",mydata.resourceType);
+						if(mydata.organization.forShort) {
+							othisName.innerHTML = mydata.organization.forShort;
+						}else{
+							othisName.innerHTML = mydata.organization.name;
+						}
+						
+						if(mydata.organization.subject){
+							othisOther.innerHTML = (mydata.organization.subject).replace(/,/, " | ");
+						}
+						var mgimg="../images/default-icon.jpg";
+						if(mydata.organization.hasOrgLogo) {
+							mgimg="/images/org/" + mydata.organization.id + ".jpg";
+						}
+						othisPic.classList.add("cmpHead2");
+						othisPic.innerHTML='<div class="boxBlock"><img class="boxBlockimg" id="companyImg" src="'+ mgimg+'"></div>'
+						if(mydata.organization.authStatus==3){
+							oauthFlag.classList.add("authicon-com-ok");	
+						}
+					}
+					if(mydata.spec) { //厂商型号
+						omodelNumber.innerText = mydata.spec;
+						omodelNumber.parentNode.style.display="block";
+					}
+					if(mydata.parameter) { //性能参数
+						operformancePa.innerHTML = mydata.parameter;
+						operformancePa.parentNode.style.display="block";
+					}
+					if(mydata.cooperationNotes) { //合作备注
+						oremarkContent.innerHTML = mydata.cooperationNotes;
+						oremarkContent.parentNode.style.display="block";
+					}
+					if(mydata.descp) { //详细描述
+						odetailDescp.innerHTML = mydata.descp;
+						odetailDescp.parentNode.style.display="block";
+					}
+					if(mydata.subject) {
+						var oSub = mydata.subject.split(",");
+						var oSt = "";
+						for(var i = 0; i < oSub.length; i++) {
+							oSt += '<li><p class="h2Font">' + oSub[i] + '</p></li>'
+						}
+						$(".tagList").html(oSt);
+					}else{
+						$("#resourceList").parents(".otherShow").addClass("displayNone")
+					}
+					console.log(mydata.images.length)
+					if(mydata.images.length!=0) {
+						imgUrl="http://www.ekexiu.com/data/resource/" + mydata.images[0].imageSrc.replace(/.jpg/,"_s.jpg");
+						var rPdiv ='';
+						for(var i = 0; i < mydata.images.length; i++) {
+							rPdiv +='<li class="swiper-slide"><a class="tab-re"><img src="../data/resource/' + mydata.images[i].imageSrc + '" /></a></li>'
+						}
+						$("#index-container ul").append(rPdiv);
+					 	//轮换图片滚动
+					    var swiper = new Swiper('#index-container', {
+					        pagination: '#index-pagination',
+					        slidesPerView: 1,
+					        paginationClickable: true,
+					        loop: true,
+					        autoplay: 5000,
+					        autoplayDisableOnInteraction: false
+					    });
+					}else{
+						$("#index-container").parent().hide();
+					}
+				}
+			},
+			error: function(e) {
+				return;
+			}
+		});
+	}
+	/*资源里面相关文章*/
+	function relatedArticles() {
+		$.ajax({
+			url:'/ajax/article/byAssResource', 
+			type: "GET",
+			data: {
+				"id": resourceId,
+			},
+			dataType: "json",
+			success: function(data) {
+				if(data.success) {
+					if(data.data.length == 0) {
+						return;
+					}
+					// document.getElementById("likeArtical").parentNode.classList.remove("displayNone");
+					var $html= data.data;
+					var lengthT;
+					if($html.length>5){
+						lengthT=5;
+					}else{
+						lengthT=$html.length
+					}
+					for(var i = 0; i < $html.length; i++) {
+						(function(n) {
+							var oURL;
+							if($html[i].articleType==1) {
+								oURL="/ajax/professor/baseInfo/" + $html[i].professorId;
+							}else{
+								oURL="/ajax/org/" + $html[i].orgId;
+							}
+							$.ajax({
+								url:oURL,
+								type: "GET",
+								dataType: "json",
+								success: function(data) {
+									if(data.success) {
+										var likeRUl = document.getElementById("likeArtical");
+										var likeRli = document.createElement("li");
+										likeRli.className = 'mui-table-view-cell';
+										likeRli.setAttribute("data-id", $html[n].articleId);
+										
+										var comName="";
+										if($html[n].articleType==1) {
+											var stl = autho(data.data.authType, data.data.orgAuth, data.data.authStatus);
+											comName=data.data.name;
+											likeRli.setAttribute("data-type", 1);
+										}else if($html[n].articleType==2){
+											var stl={};
+											stl.sty="";
+											stl.title="";
+											if(data.data.authStatus==3) {
+												stl.sty="authicon-com-ok";
+												stl.title="认证企业";
+											}
+											if(data.data.forShort){
+												comName=data.data.forShort;
+											}else{
+												comName=data.data.name;
+											}
+											likeRli.setAttribute("data-type", 2);
+										}else if($html[n].articleType==3){
+											var stl={};
+											stl.sty="";
+											stl.title="";
+											comName=data.data.name;
+											likeRli.setAttribute("data-type", 3);
+										}
+										
+										var str = ""
+										str+='<div class="flexCenter OflexCenter mui-clearfix">'
+										if($html[n].articleImg) {
+											str += '<div class="madiaHead artHead" style="background-image: url(/data/article/' + $html[n].articleImg + ')"></div>'
+										} else {
+											str += '<div class="madiaHead artHead"></div>'
+										}
+										str += '<div class="madiaInfo OmadiaInfo">'
+										str += '<p class="ellipsisSty-2 h1Font">' + $html[n].articleTitle + '</p>'
+										str += '<p><span class="h2Font" style="margin-right:10px;">' + comName + '</span><span class="time">'+commenTime($html[n].publishTime)+'</span></p>'
+										str += '</div></div>'
+										likeRli.innerHTML = str;
+										likeRUl.appendChild(likeRli,likeRUl.lastChild);
+									}
+								},
+								error: function() {
+								}
+							});
+						})(i);
+				
+					}
+				}
+			},
+			error:  function() {
+			}
+		});
+	}
+	function relatedServices() {
+		$.ajax({
+			url:'/ajax/ware/byResourceWithModifyTime',
+			type: "GET",
+			data: {
+				"id": resourceId,
+				"rows":5
+			},
+			dataType: "json",
+			success: function(data) {
+				if(data.success) {
+					if(data.data.length == 0) {
+						return;
+					}
+					document.getElementById("likeService").parentNode.classList.remove("displayNone");
+					var $html= data.data;
+					for(var i = 0; i < $html.length; i++) {
+						var cnt="", rImg="../images/default-service.jpg"
+						if($html[i].images) {
+							var subs = strToAry($html[i].images)
+							if(subs.length > 0) {
+								rImg="/data/ware" + subs[0]
+							}
+						}
+						if($html.cnt){
+							cnt="内容："+$html.cnt
+						}
+						var li = document.createElement("li");
+						li.setAttribute("data-id",$html[i].id);
+						li.className = "mui-table-view-cell";
+						li.innerHTML = '<div class="flexCenter OflexCenter mui-clearfix">' +
+							' <div class="madiaHead resouseHead" style="background-image:url(' + rImg + ')"></div>' +
+							'<div class="madiaInfo OmadiaInfo">' +
+							'<p class="mui-ellipsis-2 h1Font">' + $html[i].name + '</p>' +
+							'<p><span class="h2Font ownerName"></span><em class="authiconNew ownerSty"></em></p>' +
+							'<p class="ellipsisSty h2Font">' + cnt + '</p>' +
+							'</div>' +
+							'</div>'
+						var $li=$(li)
+						document.getElementById("likeService").appendChild(li);
+						if($html[i].category==1){
+							proSigInfo($html[i].owner,$li)
+						}else{
+							orgSigInfo($html[i].owner,$li)
+						}
+					}
+				}
+			}
+		});
+	}
+	/*感兴趣的资源*/
+	function interestingResources() {
+		$.ajax({
+			url:"/ajax/resource/ralateResources",
+			data: {"resourceId": resourceId},
+			dataType: "json",
+			traditional: true,
+			type: 'get', //HTTP请求类型
+			success: function(data) {
+				if(data.success) {
+					console.log(data)
+					if(data.data.length == 0) {
+						return;
+					}
+					document.getElementById("likeResource").parentNode.classList.remove("displayNone");
+					var $respond=data.data;
+					var lengthT;
+					if($respond.length>5){
+						lengthT=5;
+					}else{
+						lengthT=$respond.length
+					}
+					for(var i = 0; i < lengthT; i++) {
+						(function(n) {
+							var imgL="../images/default-resource.jpg";
+							if($respond[i].images.length){
+								imgL='/data/resource/' + $respond[i].images[0].imageSrc
+							}
+							var oURL;
+							if($respond[i].resourceType==1) {
+								oURL="/ajax/professor/baseInfo/"+$respond[i].professorId;
+							}else{
+								oURL="/ajax/org/" + $respond[i].orgId;
+							}
+							$.ajax({
+								url:oURL,
+								"type": "GET",
+								'dataType': "json",
+								"success": function(data) {
+									if(data.success){
+										var thisName,userType,thisAuth,thisTitle
+										if(data.data.forShort){
+											thisName=data.data.forShort;
+										}else{
+											thisName=data.data.name;
+										}
+										if($respond.resourceType==1) {
+											userType = autho(data.data.authType, data.data.orgAuth, data.data.authStatus);
+											thisTitle = userType.title;
+											thisAuth = userType.sty;
+										}else {
+											if(data.data.authStatus==3) {
+												thisTitle = "科袖认证企业";
+												thisAuth = "authicon-com-ok";
+											}
+										}
+										var add = document.createElement("li");
+										add.className = "mui-table-view-cell"; 
+										add.setAttribute("data-id",$respond[n].resourceId);
+										var itemlist = '<div class="flexCenter OflexCenter"><div class="madiaHead resourceHead" style="background-image:url('+imgL+')"></div>';
+											itemlist += '<div class="madiaInfo OmadiaInfo">';
+											itemlist += '<p class="ellipsisSty-2 h1Font" id="usertitle">'+$respond[n].resourceName+'</p>';
+											itemlist += '<p><span class="h2Font">'+thisName+'</span><em class="authiconNew '+thisAuth+'" title="'+thisTitle+'"></em></p>';
+											itemlist += '</div></div>';
+											
+										add.innerHTML=itemlist;
+										document.getElementById("likeResource").appendChild(add);
+									}
+								},
+								'error': function() {
+								}
+							});
+						})(i);
+					}
+				}
+			},
+			error: function() {
+			}
+		});
+	}
+	function proSigInfo(id,$list){
+		$.ajax({
+			url:"/ajax/professor/baseInfo/"+id,
+			type: "GET",
+			data: {},
+			dataType: "json",
+			success: function(data) {
+				var userType = autho(data.data.authType, data.data.orgAuth, data.data.authStatus);
+				$list.find(".ownerName").html(data.data.name)
+				$list.find(".ownerSty").addClass(userType.sty)
+			}
+		});
+	}
+	function orgSigInfo(id,$list){
+		$.ajax({
+			url:"/ajax/org/" + id, 
+			type: "GET",
+			data: {},
+			dataType: "json",
+			success: function(data) {
+				var name=data.data.name;
+				if(data.forShort){
+					name=data.data.forShort
+				}
+				$list.find(".ownerName").html(name)
+				if(data.data.authStatus == 3){
+					$list.find(".ownerSty").addClass("authicon-com-ok")
+				}
+			}
+		});
+	}
+
+	/*文章跳转*/
+	$("#likeArtical").on("click", "li", function() {
+		location.href="http://" + window.location.host + "/e/a.html?id=" + $(this).attr("data-id");
+	})
+	/*点击资源列表*/
+	$("#likeResource").on("click", "li", function() {
+		location.href="http://" + window.location.host + "/e/r.html?id=" + $(this).attr("data-id");
+	})
+
+	$(".tagList").on("click", "li", function() {
+		var keyCon=$(this).find(".h2Font").text();
+		location.href="http://" + window.location.host + "/e/search.html?flag=2&key=" + keyCon;
+	})
+	
+	 /*微信分享*/
+	$.ajax({
+		url: "../ajax/weixin/jsapiTicket",
+		type: 'get',
+		dataType: 'json',
+		contentType: "application/x-www-form-urlencoded; charset=utf-8",
+		data: {
+			'url': location.href.split('#')[0]
+		},
+		success: function(data) {
+			if(data.data) {
+				wx.config({
+					debug: false, //调试模式好犀利
+					appId: data.data.appId,
+					timestamp: data.data.timestamp,
+					nonceStr: data.data.nonceStr,
+					signature: data.data.signature,
+					jsApiList: [ // 所有要调用的 API 都要加到这个列表中
+						"onMenuShareAppMessage",
+						"onMenuShareTimeline",
+						"onMenuShareQQ",
+						"onMenuShareQZone",
+						"scanQRCode",
+					]
+				});
+				wx.ready(function() {
+					// 在这里调用 API
+					wx.onMenuShareAppMessage({ //分享给朋友
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareTimeline({ //分享到朋友圈
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQQ({ //分享到QQ
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+					wx.onMenuShareQZone({ //分享到QQ空间
+						title: shareTitle, // 分享标题
+						desc: descContent, // 分享描述
+						link: lineLink, // 分享链接
+						imgUrl: imgUrl, // 分享图标
+						success: share_success_callback,
+						cancel: share_cancel_callback
+					});
+				});
+				//分享成功后的回调函数	
+				function share_success_callback() {}
+				//用户取消分享后执行的回调函数	
+				function share_cancel_callback() {}
+    		}
+		}
+	});
+})
+</script>
+</body>
+
+</html>
